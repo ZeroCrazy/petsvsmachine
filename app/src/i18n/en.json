@@ -1,0 +1,9 @@
+{
+    "login": {
+        "user": "Usuario",
+        "password": "Contraseña",
+        "button": "Login",
+        "userExist": "El usuario no existe",
+        "incorrectPassword": "Password incorrecto"
+    }
+}
