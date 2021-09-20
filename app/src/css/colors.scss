@@ -1,0 +1,19 @@
+@import "~bulma/sass/utilities/_all";
+
+
+$primary: #a65a08;
+
+$text: #6a748e;
+
+.button.is-primary {
+    background-color: $primary;
+    transition: 300ms;
+}
+
+.button.is-primary:hover {
+    background-color: #c47f00;
+}
+
+.button.is-primary:active {
+    background-color: #8b5b00;
+}

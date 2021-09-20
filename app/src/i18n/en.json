@@ -1,9 +1,10 @@
 {
-    "login": {
-        "user": "Usuario",
-        "password": "Contraseña",
-        "button": "Login",
-        "userExist": "El usuario no existe",
-        "incorrectPassword": "Password incorrecto"
+    "section": {
+        "dashboard": "Dashboard",
+        "marketplace": "Marketplace",
+        "feed": "Feed",
+        "newOffering": "New Offering",
+        "myaccount": "My account",
+        "login": "Login"
     }
 }
