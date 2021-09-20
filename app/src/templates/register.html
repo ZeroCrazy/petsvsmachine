@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@oruga-ui/oruga@0.4.4/dist/oruga-full.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/fontawesome-pro.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #11131b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Inicio del navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="images/logo.png">
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a href="index.html" class="navbar-item">
+                <i class="left fal fa-paw"></i> Dashboard
+            </a>
+      
+            <a class="navbar-item">
+                <i class="left fal fa-store"></i> Marketplace
+            </a>
+
+            <a href="feed.html" class="navbar-item">
+                <i class="left fal fa-bone"></i> Feed
+            </a>
+
+            <a class="navbar-item">
+                <i class="left fal fa-megaphone"></i> New Offering
+            </a>
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <i class="left fal fa-user-circle"></i> My account
+              </a>
+        
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  Wallet address:<br>0x17ee...99110a97ba18e
+                </a>
+              </div>
+            </div>
+
+            <div class="navbar-item">
+              <div class="buttons">
+                <a href="login.html" class="button is-primary">
+                  <strong>Login</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Final del navbar -->
+
+
+    <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-4">
+            <div class="title has-text-centered has-text-white">Free to join!</div>
+            <div class="">
+              <div class="card has-background-black">
+                <div class="card-content">
+                  <div class="field">
+                    <div class="control is-large">
+                      <button class="button is-fullwidth has-background-success">
+                        <span class="icon is-medium">
+                          <img src="images/icons/metamask.svg">
+                        </span>
+                        <span>Sign up with MetaMask</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control is-large">
+                      <input class="input is-large" type="text" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control is-large">
+                      <input class="input is-large" type="text" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="buttons">
+                    <button class="button is-primary is-fullwidth">Register</button>
+                  </div>
+                  <div class="buttons">
+                    <a href="login.html" style="background: transparent;border: 0px;" class="button is-fullwidth has-text-light">Already have an account?</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
