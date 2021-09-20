@@ -3,7 +3,7 @@ html, body {
     font-family: 'Roboto', sans-serif;
     background-color: #11131b;
 }
-/*
+
 html {
     box-sizing: border-box;
     overflow-y: scroll;
@@ -21,6 +21,8 @@ html {
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
 }
+/* 
+    Navbar
 */
 .navbar-link, a.navbar-item {
     color: #6a748e;
@@ -46,6 +48,24 @@ html {
     top: 53px;
 }
 
+a.navbar-link i.left, a.navbar-item i.left {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.navbar-link:hover, a.navbar-item:hover {
+    background-color: transparent;
+    color: #a65a08;
+}
+
+nav {
+    margin-bottom: 4rem;
+    background-color: #000 !important;
+}
+
+/*
+    Estilo para inputs de login y register
+*/
 .no-border {
     border: none !important;
 }
@@ -62,6 +82,9 @@ html {
     color: rgb(170, 170, 170);
 }
 
+/*
+    Colores de los botones principales
+*/
 .button.is-primary {
     background-color: #a65a08;
 }
@@ -72,25 +95,4 @@ html {
 
 .button.is-primary:active {
     background-color: #8b5b00;
-}
-
-a.navbar-link i.left, a.navbar-item i.left {
-    font-size: 14px;
-    margin-right: 10px;
-}
-
-.navbar-link:hover, a.navbar-item:hover {
-    background-color: transparent;
-    color: #a65a08;
-}
-
-nav {
-    margin-bottom: 4rem;
-    background-color: #000 !important;
-}
-
-.container {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
 }
