@@ -1,8 +1,16 @@
 @import "@/css/colors.scss";
 
+// SELECCION DE TEXTO
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-html, body {
-    margin: 0px;
-    font-family: 'Roboto', sans-serif;
-    background-color: #11131b;
+html,
+body {
+  background-color: #11131b;
+  font-family: "Roboto", sans-serif;
+  margin: 0px;
 }

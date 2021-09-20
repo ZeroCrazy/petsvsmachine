@@ -6,9 +6,8 @@
           <a class="navbar-item is-hidden-desktop">
             <a role="button" class="navbar-item" @click="open = true">
               <span class="icon">
-                   <i class="fas fa-2x fa-bars"></i>
+                <i class="fas fa-2x fa-bars"></i>
               </span>
-           
             </a>
           </a>
           <a class="navbar-item">
@@ -36,20 +35,28 @@
           </div>
 
           <div class="navbar-end">
-            <div class="navbar-item has-dropdown is-hoverable">
+            <div
+              v-if="authStatus"
+              class="navbar-item has-dropdown is-hoverable"
+            >
               <a class="navbar-link">
                 <i class="left fal fa-user-circle"></i>
                 {{ $t("section.myaccount") }}
               </a>
 
-              <div class="navbar-dropdown">
+              <div
+                class="
+                  navbar-dropdown
+                  animate__animated animate__slideInRight animate__faster
+                "
+              >
                 <a class="navbar-item">
                   Wallet address:<br />0x17ee...99110a97ba18e
                 </a>
               </div>
             </div>
 
-            <div class="navbar-item">
+            <div v-else class="navbar-item">
               <div class="buttons">
                 <a
                   class="button is-primary"
@@ -77,12 +84,16 @@
 
 <script>
 import { ref } from "vue";
+import useAuth from "@/modules/auth/composables/useAuth";
 
 export default {
   name: "Home",
   components: {},
   setup() {
     const open = ref(false);
+
+    const { logout, authStatus } = useAuth();
+    console.log(authStatus.value);
 
     return {
       sections: [
@@ -109,6 +120,8 @@ export default {
       ],
 
       open,
+      authStatus,
+      logout,
     };
   },
 };
@@ -117,31 +130,34 @@ export default {
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
 
+.navbar {
+  height: 56px;
+}
 .navbar-link,
 a.navbar-item {
   color: $text;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 400;
   text-decoration: none;
-  font-family: "Poppins", sans-serif;
 }
 
 .navbar-link.is-active,
 a.navbar-item.is-active {
-  position: relative;
   color: #fff;
+  position: relative;
 }
 
 .navbar-link.is-active,
 a.navbar-item.is-active::after {
+  border-bottom: 3px solid $primary;
   content: "";
   display: block;
-  border-bottom: 3px solid $primary;
-  width: 50%;
   height: 3px;
-  transform: translateX(30%);
   position: absolute;
   top: 53px;
+  transform: translateX(30%);
+  width: 50%;
 }
 
 a.navbar-link i.left,
@@ -158,7 +174,7 @@ a.navbar-item:hover {
 }
 
 nav {
-  margin-bottom: 4rem;
   background-color: #000 !important;
+  margin-bottom: 4rem;
 }
 </style>
