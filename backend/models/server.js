@@ -21,14 +21,6 @@ class Server {
         // ROUTES
         this.paths = {
             auth: '/api/auth',
-            users: '/api/users',
-            monsters: '/api/monsters',
-            teams: '/api/teams',
-            items: '/api/items',
-            skills: '/api/skills',
-            games: '/api/games',
-            chats: '/api/chats',
-            shop: '/api/shop',
         }
 
         // Conectar a la BBDD
@@ -59,14 +51,6 @@ class Server {
 
     routes() {
         this.app.use(this.paths.auth, require('../routes/auth.routes'))
-        this.app.use(this.paths.users, require('../routes/user.routes'))
-        this.app.use(this.paths.monsters, require('../routes/monsters.routes'))
-        this.app.use(this.paths.teams, require('../routes/teams.routes'))
-        this.app.use(this.paths.items, require('../routes/items.routes'))
-        this.app.use(this.paths.skills, require('../routes/skills.routes'))
-        this.app.use(this.paths.games, require('../routes/games.routes'))
-        this.app.use(this.paths.chats, require('../routes/chats.routes'))
-        this.app.use(this.paths.shop, require('../routes/shop.routes'))
     }
 
     sockets() {

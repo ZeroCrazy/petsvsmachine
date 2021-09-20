@@ -1,6 +1,4 @@
 const { validateJWTSocket } = require("../middlewares/validatorJWT")
-const { setOnline, setOffline } = require("../controllers/user_controller")
-const { finshGame } = require("../controllers/games_controller")
 
 const Sockets = {
     socket: null,
