@@ -1,0 +1,80 @@
+html, body {
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #11131b;
+}
+/*
+html {
+    box-sizing: border-box;
+    overflow-y: scroll;
+    -webkit-text-size-adjust: 100%;
+    word-break: normal;
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+    font-family: "Poppins",sans-serif;
+    font-size: 16px;
+    word-spacing: 1px;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+}
+*/
+.navbar-link, a.navbar-item {
+    color: #6a748e;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: "Poppins",sans-serif;
+}
+
+.navbar-link.is-active, a.navbar-item.is-active {
+    position: relative;
+    color: #fff;
+}
+
+.navbar-link.is-active, a.navbar-item.is-active::after {
+    content: "";
+    display: block;
+    border-bottom: 3px solid #a65a08;
+    width: 50%;
+    height: 3px;
+    transform: translateX(30%);
+    position: absolute;
+    top: 53px;
+}
+
+.button.is-primary {
+    background-color: #a65a08;
+}
+
+.button.is-primary:hover {
+    background-color: #c47f00;
+}
+
+.button.is-primary:active {
+    background-color: #8b5b00;
+}
+
+a.navbar-link i.left, a.navbar-item i.left {
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.navbar-link:hover, a.navbar-item:hover {
+    background-color: transparent;
+    color: #a65a08;
+}
+
+nav {
+    margin-bottom: 4rem;
+    background-color: #000 !important;
+}
+
+.container {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
