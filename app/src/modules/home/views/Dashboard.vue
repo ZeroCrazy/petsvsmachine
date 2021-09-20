@@ -14,13 +14,16 @@
         </div>
       </div>
     </div>
+
+    <GridLands />
   </div>
 </template>
 
 <script>
+import GridLands from "../components/GridLands.vue";
 export default {
   name: "Dashboard",
-  components: {},
+  components: { GridLands },
   setup() {
     return {};
   },
