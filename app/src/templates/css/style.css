@@ -46,6 +46,22 @@ html {
     top: 53px;
 }
 
+.no-border {
+    border: none !important;
+}
+
+.background-transparent {
+    background-color: transparent !important;
+}
+
+.input-loginregister {
+    background: #2f323e;
+}
+
+.input-loginregister::placeholder {
+    color: rgb(170, 170, 170);
+}
+
 .button.is-primary {
     background-color: #a65a08;
 }
