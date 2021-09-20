@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Login</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap">
@@ -38,7 +38,7 @@
       
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
-            <a href="index.html" class="navbar-item is-active">
+            <a href="index.html" class="navbar-item">
                 <i class="left fal fa-paw"></i> Dashboard
             </a>
       
@@ -83,12 +83,38 @@
 
 
     <div class="container">
-        <div class="columns">
-          <div class="column is-full">
-            <div class="card has-background-black">
-              <div class="card-content">
-                <div class="content">
-                  Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+        <div class="columns is-centered">
+          <div class="column is-4">
+            <div class="title has-text-centered has-text-white">Hi there, welcome back!</div>
+            <div class="">
+              <div class="card has-background-black">
+                <div class="card-content">
+                  <div class="field">
+                    <div class="control is-large">
+                      <button class="button is-fullwidth has-background-black-ter has-text-white">
+                        <span class="icon is-medium">
+                          <img src="images/icons/metamask.svg">
+                        </span>
+                        <span>Log in with MetaMask</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control is-large">
+                      <input class="input is-large" type="text" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <div class="control is-large">
+                      <input class="input is-large" type="text" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="buttons">
+                    <button class="button is-primary is-fullwidth">Login</button>
+                  </div>
+                  <div class="buttons">
+                    <a href="register.html" style="background: transparent;border: 0px;" class="button is-fullwidth has-text-light">Don't have an account? Click here to sign up</a>
+                  </div>
                 </div>
               </div>
             </div>
