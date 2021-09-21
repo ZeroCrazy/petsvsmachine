@@ -24,7 +24,7 @@ const register = async (req, res = response) => {
     // Verificar si el correo existe
     const exist = await player.exist();
 
-    if (exist.length > 0) resp(res, 409, {
+    if (exist.length > 0) return resp(res, 409, {
         errors: {
             email: true
         }

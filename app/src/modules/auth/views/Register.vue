@@ -3,7 +3,7 @@
     <div class="columns is-centered is-vcentered">
       <div class="column is-4">
         <div class="title has-text-centered has-text-white">
-          {{ $t("login.welcome") }}
+          {{ $t("register.welcome") }}
         </div>
         <div class="">
           <div class="card has-background-black">
@@ -13,16 +13,17 @@
                   <button
                     class="
                       button
+                      is-medium
                       no-border
-                      is-medium is-fullwidth
-                      has-background-black-ter has-text-white
+                      is-fullwidth
+                      has-background-success
                     "
                     @click="metamask = true"
                   >
                     <span class="icon is-medium">
                       <img :src="require('@/assets/icons/metamask.svg')" />
                     </span>
-                    <span> {{ $t("login.metamask") }}</span>
+                    <span> {{ $t("register.metamask") }}</span>
                   </button>
                 </div>
               </div>
@@ -33,7 +34,7 @@
                       class="input is-large no-border input-loginregister"
                       type="email"
                       required
-                      :placeholder="$t('login.email')"
+                      :placeholder="$t('register.email')"
                       v-model="userForm.email"
                     />
                   </div>
@@ -44,7 +45,7 @@
                       class="input is-large no-border input-loginregister"
                       type="password"
                       required
-                      :placeholder="$t('login.password')"
+                      :placeholder="$t('register.password')"
                       v-model="userForm.password"
                     />
                   </div>
@@ -59,18 +60,18 @@
                       'is-loading': isLoading,
                     }"
                   >
-                    {{ $t("login.button") }}
+                    {{ $t("register.button") }}
                   </button>
                 </div>
               </form>
 
               <div class="buttons mt-5">
                 <router-link
-                  :to="{ name: 'register' }"
+                  :to="{ name: 'login' }"
                   style="background: transparent; border: 0px"
                   class="button is-fullwidth has-text-light"
                 >
-                  {{ $t("login.noAccount") }}
+                  {{ $t("register.noAccount") }}
                 </router-link>
               </div>
             </div>
@@ -78,6 +79,11 @@
         </div>
         <div v-if="errors.active" class="notification is-danger is-light mt-4">
           {{ $t(errors.msg) }}
+          <ul>
+            <li v-for="(error, index) in errors.msg" :key="index">
+              {{ error.msg }}
+            </li>
+          </ul>
         </div>
         <vue-metamask
           v-if="metamask"
@@ -94,13 +100,15 @@
 import VueMetamask from "vue-metamask";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+
+import { validateEmail } from "../helpers";
 import useAuth from "../composables/useAuth";
 
 export default {
   name: "Dashboard",
   components: { VueMetamask },
   setup() {
-    const { loginUser, onCompleteMetamask } = useAuth();
+    const { createUser, onCompleteMetamask } = useAuth();
     const router = useRouter();
 
     const userForm = ref({
@@ -117,13 +125,32 @@ export default {
 
     const onSubmit = async () => {
       errors.value.active = false;
+      // Validar el email
+      if (userForm.value.email.trim().length === 0) {
+        errors.value.active = true;
+        errors.value.msg = "register.requiredEmail";
+        return false;
+      }
+      if (!validateEmail(userForm.value.email)) {
+        errors.value.active = true;
+        errors.value.msg = "register.invalidEmail";
+        return false;
+      }
+
+      if (userForm.value.password.trim().length === 0) {
+        errors.value.active = true;
+        errors.value.msg = "register.requiredPassowrd";
+        return false;
+      }
+
       isLoading.value = true;
-      const resp = await loginUser(userForm.value);
+      const resp = await createUser(userForm.value);
       isLoading.value = false;
       if (resp.ok) router.push({ name: "dashboard" });
       else {
         errors.value.active = true;
-        errors.value.msg = "login.loginError";
+        if (resp.msg.email) errors.value.msg = "register.existEmail";
+        else errors.value.msg = resp.msg;
       }
     };
 

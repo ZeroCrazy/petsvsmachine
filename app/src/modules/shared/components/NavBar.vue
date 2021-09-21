@@ -60,12 +60,13 @@
               <div class="buttons">
                 <a
                   class="button is-primary"
-                  @click="$router.push({ name: 'dashboard' })"
+                  @click="$router.push({ name: 'login' })"
                 >
                   <strong>{{ $t("section.login") }}</strong>
                 </a>
               </div>
             </div>
+
           </div>
         </div>
       </div>

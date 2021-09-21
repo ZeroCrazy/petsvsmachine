@@ -15,5 +15,19 @@
         "button": "Login",
         "noAccount": "Don't have an account? Click here to sign up",
         "loginError": "Password o contraseña incorrecta"
+    },
+    "register":{
+        "welcome": "Free to join!",
+        "metamask": "Sign up with MetaMask",
+        "email": "Email",
+        "password": "Password",
+        "button": "Register",
+        "noAccount": "Already have an account?",
+        "loginError": "Password o contraseña incorrecta",
+        "requiredEmail" : "El email es obligatorio",
+        "requiredPassowrd" : "La contraseña es obligatorio",
+        "invalidEmail" : "Introduce un email valido",
+        "existEmail": "Ya existe una cuenta con ese email"
+
     }
 }

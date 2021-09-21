@@ -21,3 +21,23 @@ export const login = async ({ email, password }) => {
     }
 
 }
+
+export const register = async ({ email, password }) => {
+
+    try {
+
+        const { data } = await request('post', 'auth/register', { email, password })
+
+        return {
+            ok: true,
+            data
+        };
+
+    } catch (error) {
+        return {
+            ok: false,
+            msg: error.response.data.errors
+        };
+    }
+
+}
