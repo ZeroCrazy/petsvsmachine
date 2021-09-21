@@ -67,6 +67,18 @@
               </div>
             </div>
 
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a
+                class="navbar-link"
+                href="https://bulma.io/documentation/overview/start/"
+              >
+                {{ $t("language.lang") }}
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" @click="setLang('en')"> {{ $t("language.english") }} </a>
+                <a class="navbar-item" @click="setLang('es')"> {{ $t("language.spanish") }} </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -87,6 +99,8 @@
 import { ref } from "vue";
 import useAuth from "@/modules/auth/composables/useAuth";
 
+import i18n from "@/i18n/i18n";
+
 export default {
   name: "Home",
   components: {},
@@ -94,7 +108,6 @@ export default {
     const open = ref(false);
 
     const { logout, authStatus } = useAuth();
-    console.log(authStatus.value);
 
     return {
       sections: [
@@ -119,10 +132,12 @@ export default {
           route: "newOffering",
         },
       ],
-
       open,
       authStatus,
       logout,
+      setLang: (lang) => {
+        i18n.setLocale(lang);
+      },
     };
   },
 };

@@ -1,4 +1,9 @@
 {
+    "language": {
+        "lang": "Language",
+        "spanish": "Spanish",
+        "english": "English"
+    },
     "section": {
         "dashboard": "Dashboard",
         "marketplace": "Marketplace",
@@ -6,5 +11,30 @@
         "newOffering": "New Offering",
         "myaccount": "My account",
         "login": "Login"
+    },
+    "login": {
+        "welcome": "Hi there, welcome back!",
+        "metamask": "Log in with MetaMask",
+        "email": "Email",
+        "password": "Password",
+        "button": "Login",
+        "noAccount": "Don't have an account? Click here to sign up",
+        "loginError": "Password o contraseña incorrect"
+    },
+    "register": {
+        "welcome": "Free to join!",
+        "metamask": "Sign up with MetaMask",
+        "username": "Usuario",
+        "email": "Email",
+        "password": "Contraseña",
+        "button": "Registro",
+        "noAccount": "Already have an account?",
+        "loginError": "Password o contraseña incorrecta",
+        "requiredUsername": "El usuario es obligatorio",
+        "requiredEmail": "El email es obligatorio",
+        "requiredPassowrd": "La contraseña es obligatorio",
+        "invalidEmail": "Introduce un email valido",
+        "existUsername": "Ya existe una cuenta con ese usuario",
+        "existEmail": "Ya existe una cuenta con ese email"
     }
 }

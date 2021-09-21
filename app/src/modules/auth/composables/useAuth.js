@@ -12,7 +12,6 @@ const useAuth = () => {
     }
 
     const loginUser = async (user) => {
-        console.log(user)
         const resp = await store.dispatch('auth/signInUser', user)
         return resp
     }
@@ -27,21 +26,29 @@ const useAuth = () => {
         store.commit('journal/clearEntries')
     }
 
-    const onCompleteMetamask = (data) => {
+    const createUserMetamask = async (data) => {
         console.log("data:", data);
-        switch (data.type) {
-            case 'MAINNET':
-                break;
-            case 'NO_INSTALL_METAMASK':
-                break;
-            case 'NO_LOGIN':
-                break;
-            case 'NETWORK_ERROR':
-                break;
-            case 'USER_DENIED_ACCOUNT_AUTHORIZATION':
-                break;
+        console.log(data.metaMaskAddress);
+        if (data.type === 'MAINNET') {
 
+            const resp = await store.dispatch('auth/signInUser', { user: false, metamask: data.metaMaskAddress });
+            console.log(resp);
+            return resp;
         }
+        // switch (data.type) {
+        //     case 'MAINNET':
+        //         const resp = await store.dispatch('auth/signInUser', false, data.metaMaskAddress);
+        //         return resp;
+        //     case 'NO_INSTALL_METAMASK':
+        //         break;
+        //     case 'NO_LOGIN':
+        //         break;
+        //     case 'NETWORK_ERROR':
+        //         break;
+        //     case 'USER_DENIED_ACCOUNT_AUTHORIZATION':
+        //         break;
+
+        // }
         return data;
     }
 
@@ -50,7 +57,7 @@ const useAuth = () => {
         createUser,
         loginUser,
         logout,
-        onCompleteMetamask,
+        createUserMetamask,
 
         authStatus: computed(() => store.getters['auth/currentState']),
         username: computed(() => store.getters['auth/username'])

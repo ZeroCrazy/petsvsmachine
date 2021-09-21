@@ -8,7 +8,7 @@ const config = {
 
 const getHeaders = () => {
     const headers = {
-        "x-token": sessionStorage.getItem("token")
+        "x-token": sessionStorage.getItem("idToken")
     }
     return headers;
 }

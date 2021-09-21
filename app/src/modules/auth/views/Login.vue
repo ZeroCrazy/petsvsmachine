@@ -82,7 +82,7 @@
         <vue-metamask
           v-if="metamask"
           userMessage="msg"
-          @onComplete="onCompleteMetamask"
+          @onComplete="onComplete"
         >
         </vue-metamask>
       </div>
@@ -100,7 +100,7 @@ export default {
   name: "Dashboard",
   components: { VueMetamask },
   setup() {
-    const { loginUser, onCompleteMetamask } = useAuth();
+    const { loginUser, createUserMetamask } = useAuth();
     const router = useRouter();
 
     const userForm = ref({
@@ -132,9 +132,12 @@ export default {
       userForm,
       errors,
       isLoading,
-      onCompleteMetamask,
       msg: "This is demo net work",
       metamask: ref(false),
+      onComplete: async (data) => {
+        const resp = await createUserMetamask(data);
+        if (resp.ok) router.push({ name: "dashboard" });
+      },
     };
   },
 };

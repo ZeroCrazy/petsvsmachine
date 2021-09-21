@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { login, register, identity } = require('../controllers/auth_controller');
+const { login, register, metamaskLogin } = require('../controllers/auth_controller');
 
 const { validator } = require('../middlewares/validator')
 const { validateJWT } = require('../middlewares/validatorJWT')
@@ -11,6 +11,8 @@ router.post('/register',
     check('password', 'Password is must').not().isEmpty(),
     check('password', 'Password is must have 6 characters').isLength({ min: 6 }),
     check('email', 'Incorrect format email').isEmail(),
+    check('username', 'Username is must').not().isEmpty(),
+
     validator,
     register);
 
@@ -21,10 +23,12 @@ router.post('/login',
     validator,
     login);
 
+router.post('/login/metamask',
+    check('metaMaskAddress', 'Metamask is must').not().isEmpty(),
+    validator,
+    metamaskLogin);
 
-// router.get('/identity',
-//     validateJWT,
-//     identity);
+
 
 
 
