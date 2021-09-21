@@ -132,6 +132,7 @@ export default {
 
 .navbar {
   height: 56px;
+  margin-bottom: 0px;
 }
 .navbar-link,
 a.navbar-item {

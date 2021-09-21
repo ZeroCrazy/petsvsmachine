@@ -1,18 +1,13 @@
 
-export const loginUser = ( state, { user, idToken, refreshToken }) => {
+export const loginUser = ( state, { auth, idToken }) => {
 
     if ( idToken ) {
         localStorage.setItem( 'idToken', idToken )
+        state.auth = auth
         state.idToken = idToken
     }
 
-    if ( refreshToken ) {
-        localStorage.setItem( 'refreshToken', refreshToken )
-        state.refreshToken = refreshToken
-    }
-
-    state.user   = user
-    state.status = 'authenticated'
+  
 }
 
 
