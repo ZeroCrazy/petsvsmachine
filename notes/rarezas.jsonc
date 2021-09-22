@@ -1,0 +1,46 @@
+// Stats max 1020
+{
+    "rarezas": [
+        // stats min globales
+        {
+            "comun": 200,
+            "poco_comun": 400,
+            "raro": 650,
+            "mitico": 750
+        },
+        {
+            "comun": 0.5,
+            "poco_comun": 0.35,
+            "raro": 0.10,
+            "mitico": 0.05
+        }
+    ],
+    "roles": {
+        "asesino": {
+            "ph": "moderado",
+            "atk": "alto",
+            "def": "bajo",
+            "spd": "alto"
+        },
+        "tanque-soporte": {
+            "ph": "alto",
+            "atk": "bajo",
+            "def": "alto",
+            "spd": "baja"
+        },
+        "tirador":{
+            "ph": "moderada",
+            "atk": "alto",
+            "def": "bajo",
+            "spd": "moderada"
+
+        },
+        "luchador":{
+            "ph": "moderada",
+            "atk": "moderada",
+            "def": "moderada",
+            "spd": "moderada"
+
+        }
+    }
+}
