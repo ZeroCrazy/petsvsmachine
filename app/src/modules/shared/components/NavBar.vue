@@ -14,8 +14,8 @@
             <img :src="require('@/assets/images/logo.png')" />
           </a>
         </div>
-
         <div class="navbar-menu">
+          <!-- SECCIONES -->
           <div class="navbar-start">
             <a
               v-for="({ name, icon, route: routeName }, index) in sections"
@@ -50,9 +50,9 @@
                   animate__animated animate__slideInRight animate__faster
                 "
               >
-                <a class="navbar-item">
-                  Wallet address:<br />0x17ee...99110a97ba18e
-                </a>
+                <a href="settings.html" class="navbar-item"> {{ $t("section.settings") }} </a>
+                <a class="navbar-item"> {{ $t("section.wallet") }}:<br />{{ metamask }} </a>
+                <a class="navbar-item" @click="logout"> {{ $t("section.logout") }} </a>
               </div>
             </div>
 
@@ -67,10 +67,28 @@
               </div>
             </div>
 
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a
+                class="navbar-link"
+                href="https://bulma.io/documentation/overview/start/"
+              >
+                {{ $t("language.lang") }}
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" @click="setLang('en')">
+                  {{ $t("language.english") }}
+                </a>
+                <a class="navbar-item" @click="setLang('es')">
+                  {{ $t("language.spanish") }}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </nav>
+
+    <!-- SIDEBAR -->
     <o-sidebar fullheight overlay mobile="fullwidth" :open="open">
       <o-button icon-left="times" label="Close" @click="open = false" />
       <img
@@ -84,8 +102,10 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import useAuth from "@/modules/auth/composables/useAuth";
+
+import i18n from "@/i18n/i18n";
 
 export default {
   name: "Home",
@@ -93,9 +113,9 @@ export default {
   setup() {
     const open = ref(false);
 
-    const { logout, authStatus } = useAuth();
-    console.log(authStatus.value);
-
+    const { logout, authStatus, metamaskAddress } = useAuth();
+    console.log(metamaskAddress);
+    console.log(metamaskAddress.value.length);
     return {
       sections: [
         {
@@ -119,10 +139,22 @@ export default {
           route: "newOffering",
         },
       ],
-
       open,
       authStatus,
       logout,
+      metamask: computed(
+        () =>
+          `${metamaskAddress.value.substr(
+            0,
+            6
+          )}...${metamaskAddress.value.substr(
+            metamaskAddress.value.length - 13,
+            13
+          )}`
+      ),
+      setLang: (lang) => {
+        i18n.setLocale(lang);
+      },
     };
   },
 };

@@ -1,11 +1,17 @@
 <template>
-  <div style="width: 500px; height: 500px">
+  <div style="width: 25vw; height: 25vw">
     <div
-      v-for="i in 20"
+      v-for="i in range"
       :key="i"
       class="is-flex is-flex-direction-row is-flex-wrap-wrap g-row"
+      :style="`height: calc(100% / ${range})`"
     >
-      <div class="g-column" v-for="i in 20" :key="i">
+      <div
+        class="g-column"
+        v-for="j in range"
+        :key="j"
+        :style="`width: calc(100% / ${range})`"
+      >
         <div class="square"></div>
       </div>
     </div>
@@ -16,7 +22,12 @@
 export default {
   name: "Home",
   components: {},
-  setup() {},
+  setup() {
+
+    return {
+      range: 20,
+    };
+  },
 };
 </script>
 
@@ -24,20 +35,20 @@ export default {
 @import "@/css/colors.scss";
 
 .g-row {
-  height: calc(100% / 20);
+  // height: calc(100% / 20);
   width: 100%;
 }
 
 .g-column {
   height: 100%;
-  width: calc(100% / 20);
+  // width: calc(100% / 20);
   padding: 1px;
 }
 .square {
   background-color: rgb(2, 59, 2);
   cursor: pointer;
   height: 100%;
-  transition: 300ms;
+  transition: 100ms;
   width: 100%;
   &:hover {
     background-color: green;

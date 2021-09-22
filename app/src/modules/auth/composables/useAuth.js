@@ -1,6 +1,9 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
+import { identity } from '../services'
+
+
 
 const useAuth = () => {
 
@@ -12,8 +15,7 @@ const useAuth = () => {
     }
 
     const loginUser = async (user) => {
-        console.log(user)
-        const resp = await store.dispatch('auth/signInUser', user)
+        const resp = await store.dispatch('auth/signInUser', {user})
         return resp
     }
 
@@ -24,25 +26,46 @@ const useAuth = () => {
 
     const logout = () => {
         store.commit('auth/logout')
-        store.commit('journal/clearEntries')
     }
 
-    const onCompleteMetamask = (data) => {
+    const createUserMetamask = async (data) => {
         console.log("data:", data);
-        switch (data.type) {
-            case 'MAINNET':
-                break;
-            case 'NO_INSTALL_METAMASK':
-                break;
-            case 'NO_LOGIN':
-                break;
-            case 'NETWORK_ERROR':
-                break;
-            case 'USER_DENIED_ACCOUNT_AUTHORIZATION':
-                break;
+        console.log(data.metaMaskAddress);
+        if (data.type === 'MAINNET') {
 
+            const resp = await store.dispatch('auth/signInUser', { user: false, metamask: data.metaMaskAddress });
+            console.log(resp);
+            return resp;
         }
+        // switch (data.type) {
+        //     case 'MAINNET':
+        //         const resp = await store.dispatch('auth/signInUser', false, data.metaMaskAddress);
+        //         return resp;
+        //     case 'NO_INSTALL_METAMASK':
+        //         break;
+        //     case 'NO_LOGIN':
+        //         break;
+        //     case 'NETWORK_ERROR':
+        //         break;
+        //     case 'USER_DENIED_ACCOUNT_AUTHORIZATION':
+        //         break;
+
+        // }
         return data;
+    }
+
+    const autoLogin = async () => {
+
+        const idToken = localStorage.getItem("idToken");
+        if (!idToken) return { ok: false };
+
+        const user = await identity();
+
+        const resp = await store.dispatch('auth/autoLogin', { user: { idToken, ...user } })
+
+        return resp
+
+
     }
 
     return {
@@ -50,10 +73,12 @@ const useAuth = () => {
         createUser,
         loginUser,
         logout,
-        onCompleteMetamask,
+        createUserMetamask,
+        autoLogin,
 
         authStatus: computed(() => store.getters['auth/currentState']),
-        username: computed(() => store.getters['auth/username'])
+        username: computed(() => store.getters['auth/username']),
+        metamaskAddress: computed(() => store.getters['auth/metamaskAddress']),
     }
 }
 

@@ -8,48 +8,70 @@
         <div class="">
           <div class="card has-background-black">
             <div class="card-content">
-              <div class="field">
-                <div class="control is-large">
-                  <button
-                    class="
-                      button
-                      is-medium
-                      no-border
-                      is-fullwidth
-                      has-background-success
-                    "
-                    @click="metamask = true"
-                  >
-                    <span class="icon is-medium">
-                      <img :src="require('@/assets/icons/metamask.svg')" />
-                    </span>
-                    <span> {{ $t("register.metamask") }}</span>
-                  </button>
-                </div>
-              </div>
+              <MetamaskButton type="success" />
+              <div class="field has-text-centered">or</div>
               <form @submit.prevent="onSubmit()">
                 <div class="field">
                   <div class="control is-large">
                     <input
-                      class="input is-large no-border input-loginregister"
+                      :class="{
+                        input: true,
+                        'is-large': true,
+                        'no-border': true,
+                        'input-loginregister': true,
+                        'border-danger': errors.username.length > 0,
+                      }"
+                      type="text"
+                      required
+                      :placeholder="$t('register.username')"
+                      v-model="userForm.username"
+                    />
+                  </div>
+                  <p v-if="errors.username.length > 0" class="help is-danger">
+                    {{ $t(errors.username) }}
+                  </p>
+                </div>
+                <div class="field">
+                  <div class="control is-large">
+                    <input
+                      :class="{
+                        input: true,
+                        'is-large': true,
+                        'no-border': true,
+                        'input-loginregister': true,
+                        'border-danger': errors.email.length > 0,
+                      }"
                       type="email"
                       required
                       :placeholder="$t('register.email')"
                       v-model="userForm.email"
                     />
                   </div>
+                  <p v-if="errors.email.length > 0" class="help is-danger">
+                    {{ $t(errors.email) }}
+                  </p>
                 </div>
                 <div class="field">
                   <div class="control is-large">
                     <input
-                      class="input is-large no-border input-loginregister"
+                      :class="{
+                        input: true,
+                        'is-large': true,
+                        'no-border': true,
+                        'input-loginregister': true,
+                        'border-danger': errors.password.length > 0,
+                      }"
                       type="password"
                       required
                       :placeholder="$t('register.password')"
                       v-model="userForm.password"
                     />
                   </div>
+                  <p v-if="errors.password.length > 0" class="help is-danger">
+                    {{ $t(errors.password) }}
+                  </p>
                 </div>
+
                 <div class="buttons">
                   <button
                     type="submit"
@@ -77,63 +99,76 @@
             </div>
           </div>
         </div>
-        <div v-if="errors.active" class="notification is-danger is-light mt-4">
+        <!-- <div v-if="errors.active" class="notification is-danger is-light mt-4">
           {{ $t(errors.msg) }}
+          {{errors.msg}}
           <ul>
             <li v-for="(error, index) in errors.msg" :key="index">
+              {{ $t(error.msg) }}
               {{ error.msg }}
             </li>
           </ul>
-        </div>
-        <vue-metamask
-          v-if="metamask"
-          userMessage="msg"
-          @onComplete="onCompleteMetamask"
-        >
-        </vue-metamask>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import VueMetamask from "vue-metamask";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+
+import MetamaskButton from "../components/MetamaskButton.vue";
 
 import { validateEmail } from "../helpers";
 import useAuth from "../composables/useAuth";
 
 export default {
   name: "Dashboard",
-  components: { VueMetamask },
+  components: { MetamaskButton },
   setup() {
-    const { createUser, onCompleteMetamask } = useAuth();
+    const { createUser } = useAuth();
     const router = useRouter();
 
     const userForm = ref({
+      username: "",
       email: "",
       password: "",
     });
 
     const errors = ref({
-      active: false,
-      msg: "",
+      username: "",
+      email: "",
+      password: "",
+      response: "",
     });
+
+    const clearErrors = () => {
+      errors.value.username = "";
+      errors.value.email = "";
+      errors.value.password = "";
+      errors.value.response = "";
+    };
 
     const isLoading = ref(false);
 
     const onSubmit = async () => {
-      errors.value.active = false;
+      clearErrors();
+      // Validar el usuario
+      if (userForm.value.username.trim().length === 0) {
+        errors.value.active = true;
+        errors.value.username = "register.requiredUsername";
+        return false;
+      }
       // Validar el email
       if (userForm.value.email.trim().length === 0) {
         errors.value.active = true;
-        errors.value.msg = "register.requiredEmail";
+        errors.value.email = "register.requiredEmail";
         return false;
       }
       if (!validateEmail(userForm.value.email)) {
         errors.value.active = true;
-        errors.value.msg = "register.invalidEmail";
+        errors.value.password = "register.invalidEmail";
         return false;
       }
 
@@ -148,9 +183,12 @@ export default {
       isLoading.value = false;
       if (resp.ok) router.push({ name: "dashboard" });
       else {
-        errors.value.active = true;
-        if (resp.msg.email) errors.value.msg = "register.existEmail";
-        else errors.value.msg = resp.msg;
+        errors.value.msg = [];
+        if (resp.msg.username) errors.value.username = "register.existUsername";
+        if (resp.msg.email) errors.value.email = "register.existEmail";
+        console.log(errors.value);
+        if (!resp.msg.username && !resp.msg.email)
+          errors.value.response = resp.msg;
       }
     };
 
@@ -159,9 +197,6 @@ export default {
       userForm,
       errors,
       isLoading,
-      onCompleteMetamask,
-      msg: "This is demo net work",
-      metamask: ref(false),
     };
   },
 };
@@ -178,12 +213,16 @@ export default {
   border: none !important;
 }
 
+.border-danger {
+  border: solid $danger 1px !important;
+}
+
 .background-transparent {
   background-color: transparent !important;
 }
 
 .input-loginregister {
-  background: $input-background-color;
+  background: $input-background-color !important;
   color: #ddd;
 }
 

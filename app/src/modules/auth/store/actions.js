@@ -1,11 +1,16 @@
-import { login, register } from '../services'
+import { login, loginMetamask, register } from '../services'
 
-export const signInUser = async ({ commit }, user) => {
-
-
-    const resp = await login(user);
+export const signInUser = async ({ commit }, { user, metamask = false }) => {
+    let resp;
+    if (metamask) {
+        console.log(metamask)
+        resp = await loginMetamask(metamask);
+    } else {
+        resp = await login(user);
+    }
     if (resp) {
-        commit('loginUser', { auth: true, idToken: resp.token });
+       
+        commit('loginUser', { auth: true, idToken: resp.token, username: resp.username, metamaskAddress: resp.metamaskAddress });
         return { ok: true }
     }
     else {
@@ -13,6 +18,12 @@ export const signInUser = async ({ commit }, user) => {
     }
 
 }
+
+export const autoLogin = async ({ commit }, { user }) => {
+    commit('loginUser', { auth: true, idToken: user.idToken, username: user.username, metamaskAddress: user.metamask_address });
+    return { ok: true }
+}
+
 
 export const createUser = async ({ commit }, user) => {
 
@@ -22,6 +33,7 @@ export const createUser = async ({ commit }, user) => {
         return { ok: true }
     }
     else {
+        console.log(resp)
         return { ok: false, msg: resp.msg }
     }
 
