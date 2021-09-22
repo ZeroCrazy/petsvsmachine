@@ -2,8 +2,6 @@ const mysql = require('mysql');
 
 class DatabaseController {
 
-    static instance = null;
-
     constructor(conn = null) {
         if (conn) this.conn = conn;
         else this.conn = mysql.createConnection({
@@ -13,12 +11,7 @@ class DatabaseController {
             database: process.env.DB_DATABASE,
         });
     }
-
-    static getInstance() {
-        if (!DatabaseController.instance) DatabaseController.instance = new DatabaseController();
-        return DatabaseController.instance
-    }
-
+ 
     getDB() {
         this.conn.connect();
     }

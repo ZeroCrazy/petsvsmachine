@@ -4,11 +4,8 @@ import { request } from '@/api/api'
 export const login = async ({ email, password }) => {
 
     try {
-
         const { data } = await request('post', 'auth/login', { email, password })
-
         return data;
-
     } catch (error) {
         return false;
         // if (error.response.status == 401) {
@@ -61,3 +58,16 @@ export const register = async ({ username, email, password }) => {
     }
 
 }
+
+export const identity = async () => {
+
+    try {
+        const { data } = await request('get', 'auth/identity')
+        return data;
+    } catch (error) {
+        return false;
+       
+    }
+
+}
+

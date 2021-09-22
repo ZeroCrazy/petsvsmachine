@@ -8,24 +8,8 @@
         <div class="">
           <div class="card has-background-black">
             <div class="card-content">
-              <div class="field">
-                <div class="control is-large">
-                  <button
-                    class="
-                      button
-                      no-border
-                      is-medium is-fullwidth
-                      has-background-black-ter has-text-white
-                    "
-                    @click="metamask = true"
-                  >
-                    <span class="icon is-medium">
-                      <img :src="require('@/assets/icons/metamask.svg')" />
-                    </span>
-                    <span> {{ $t("login.metamask") }}</span>
-                  </button>
-                </div>
-              </div>
+              <MetamaskButton type="dark" />
+              <div class="field has-text-centered">or</div>
               <form @submit.prevent="onSubmit()">
                 <div class="field">
                   <div class="control is-large">
@@ -79,28 +63,22 @@
         <div v-if="errors.active" class="notification is-danger is-light mt-4">
           {{ $t(errors.msg) }}
         </div>
-        <vue-metamask
-          v-if="metamask"
-          userMessage="msg"
-          @onComplete="onComplete"
-        >
-        </vue-metamask>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import VueMetamask from "vue-metamask";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import MetamaskButton from "../components/MetamaskButton.vue";
 import useAuth from "../composables/useAuth";
 
 export default {
   name: "Dashboard",
-  components: { VueMetamask },
+  components: { MetamaskButton },
   setup() {
-    const { loginUser, createUserMetamask } = useAuth();
+    const { loginUser } = useAuth();
     const router = useRouter();
 
     const userForm = ref({
@@ -132,12 +110,6 @@ export default {
       userForm,
       errors,
       isLoading,
-      msg: "This is demo net work",
-      metamask: ref(false),
-      onComplete: async (data) => {
-        const resp = await createUserMetamask(data);
-        if (resp.ok) router.push({ name: "dashboard" });
-      },
     };
   },
 };

@@ -14,10 +14,18 @@
 <script>
 import NavBar from "./modules/shared/components/NavBar.vue";
 
+import useAuth from "@/modules/auth/composables/useAuth";
+import { onMounted } from "vue";
+
 export default {
   name: "App",
   components: { NavBar },
   setup() {
+    const { autoLogin } = useAuth();
+
+    onMounted(() => {
+      autoLogin();
+    });
     return {};
   },
 };

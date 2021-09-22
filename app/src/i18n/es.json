@@ -10,7 +10,10 @@
         "feed": "Feed",
         "newOffering": "New Offering",
         "myaccount": "My account",
-        "login": "Login"
+        "login": "Login",
+        "wallet": "Wallet address",
+        "settings": "Settings",
+        "logout": "Logout"
     },
     "login": {
         "welcome": "Hi there, welcome back!",

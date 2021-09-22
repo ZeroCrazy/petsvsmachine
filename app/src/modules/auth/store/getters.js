@@ -5,7 +5,11 @@ export const currentState = ( state ) => {
 }
 
 export const username = ( state ) => {
-    return state.user?.name || ''
+    return state.user || ''
+}
+
+export const metamaskAddress = ( state ) => {
+    return state.metamaskAddress || ''
 }
 
 

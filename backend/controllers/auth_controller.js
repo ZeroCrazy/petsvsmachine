@@ -42,12 +42,13 @@ const register = async (req, res = response) => {
 
     if (!response) return resp(res, 404, { msg: 'An error ocurred' })
 
-    
+
     return resp(res, 200, { msg: 'Account created success' })
 
 }
 
 const login = async (req, res = response) => {
+
     try {
         const { email, password } = req.body;
 
@@ -65,9 +66,9 @@ const login = async (req, res = response) => {
         player.id = response.id;
 
         //Actualizar login
-        const resp = await player.updateLogin();
+        player.updateLogin();
 
-        return resp(res, 200, { token: player.token, });
+        return resp(res, 200, { token: player.token, username: response.username, metamaskAddress: response.metamask_address });
 
     } catch (error) {
         return resp(res, 500, { msg: error });
@@ -97,7 +98,7 @@ const metamaskLogin = async (req, res = response) => {
             //Actualizar login
             const response = await player.updateLogin();
 
-            return resp(res, 200, { token: player.token, });
+            return resp(res, 200, { token: player.token, username: user.username, metamaskAddress: user.metamask_address });
 
         } else {
             if (!response) return resp(res, 404, { msg: "User not found" })
@@ -115,20 +116,20 @@ const metamaskLogin = async (req, res = response) => {
 
 const identity = async (req, res = response) => {
 
-    // try {
-    //     const { uid } = req;
-    //     const user = new User();
-    //     user.id = uid;
-    //     const response = await user.get();
-    //     if (!response) return res.status(500).json({ msg: 'Server Error' })
-    //     const lv = new Level;
-    //     const exp = await lv.getAll();
-    //     res.status(200).json({ auth: response[0], exp })
+    try {
+        const { uid } = req;
+        const player = new Player();
+        player.id = uid;
+        const response = await player.get();
+        if (!response) return resp(res, 500, { msg: "Server Error" })
 
-    // } catch (error) {
-    //     console.log(error);
-    //     res.status(500).json({ msg: 'Server Error' })
-    // }
+        return resp(res, 200, response)
+
+    } catch (error) {
+        console.log(error)
+
+        return resp(res, 500, { msg: "Server Error" })
+    }
 
 }
 

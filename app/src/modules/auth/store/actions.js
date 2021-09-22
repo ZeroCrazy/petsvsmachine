@@ -1,22 +1,27 @@
 import { login, loginMetamask, register } from '../services'
 
-export const signInUser = async ({ commit }, {user, metamask}) => {
-    console.log(user, metamask)
+export const signInUser = async ({ commit }, { user, metamask = false }) => {
     let resp;
     if (metamask) {
-        console.log( metamask)
+        console.log(metamask)
         resp = await loginMetamask(metamask);
     } else {
         resp = await login(user);
     }
     if (resp) {
-        commit('loginUser', { auth: true, idToken: resp.token });
+       
+        commit('loginUser', { auth: true, idToken: resp.token, username: resp.username, metamaskAddress: resp.metamaskAddress });
         return { ok: true }
     }
     else {
         return { ok: false }
     }
 
+}
+
+export const autoLogin = async ({ commit }, { user }) => {
+    commit('loginUser', { auth: true, idToken: user.idToken, username: user.username, metamaskAddress: user.metamask_address });
+    return { ok: true }
 }
 
 

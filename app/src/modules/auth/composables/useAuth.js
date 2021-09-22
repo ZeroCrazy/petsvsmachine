@@ -1,6 +1,9 @@
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
+import { identity } from '../services'
+
+
 
 const useAuth = () => {
 
@@ -12,7 +15,7 @@ const useAuth = () => {
     }
 
     const loginUser = async (user) => {
-        const resp = await store.dispatch('auth/signInUser', user)
+        const resp = await store.dispatch('auth/signInUser', {user})
         return resp
     }
 
@@ -23,7 +26,6 @@ const useAuth = () => {
 
     const logout = () => {
         store.commit('auth/logout')
-        store.commit('journal/clearEntries')
     }
 
     const createUserMetamask = async (data) => {
@@ -52,15 +54,31 @@ const useAuth = () => {
         return data;
     }
 
+    const autoLogin = async () => {
+
+        const idToken = localStorage.getItem("idToken");
+        if (!idToken) return { ok: false };
+
+        const user = await identity();
+
+        const resp = await store.dispatch('auth/autoLogin', { user: { idToken, ...user } })
+
+        return resp
+
+
+    }
+
     return {
         checkAuthStatus,
         createUser,
         loginUser,
         logout,
         createUserMetamask,
+        autoLogin,
 
         authStatus: computed(() => store.getters['auth/currentState']),
-        username: computed(() => store.getters['auth/username'])
+        username: computed(() => store.getters['auth/username']),
+        metamaskAddress: computed(() => store.getters['auth/metamaskAddress']),
     }
 }
 
