@@ -67,6 +67,7 @@ a.navbar-link i.left, a.navbar-item i.left {
 
 nav {
   margin-bottom: 4rem;
+  background-color: #000 !important;
 }
 
 .navbar-menu {
