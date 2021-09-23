@@ -60,23 +60,27 @@
             </div>
           </div>
         </div>
-        <div v-if="errors.active" class="notification is-danger is-light mt-4">
-          {{ $t(errors.msg) }}
-        </div>
+
+        <Notification v-if="errors.active" :msg="$t(errors.msg)" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { defineAsyncComponent, ref } from "vue";
 import { useRouter } from "vue-router";
 import MetamaskButton from "../components/MetamaskButton.vue";
 import useAuth from "../composables/useAuth";
 
 export default {
   name: "Dashboard",
-  components: { MetamaskButton },
+  components: {
+    MetamaskButton,
+    Notification: defineAsyncComponent(() =>
+      import("../../shared/components/Notification.vue")
+    ),
+  },
   setup() {
     const { loginUser } = useAuth();
     const router = useRouter();

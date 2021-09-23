@@ -15,7 +15,7 @@ const useAuth = () => {
     }
 
     const loginUser = async (user) => {
-        const resp = await store.dispatch('auth/signInUser', {user})
+        const resp = await store.dispatch('auth/signInUser', { user })
         return resp
     }
 
@@ -29,8 +29,6 @@ const useAuth = () => {
     }
 
     const createUserMetamask = async (data) => {
-        console.log("data:", data);
-        console.log(data.metaMaskAddress);
         if (data.type === 'MAINNET') {
 
             const resp = await store.dispatch('auth/signInUser', { user: false, metamask: data.metaMaskAddress });
@@ -57,13 +55,14 @@ const useAuth = () => {
     const autoLogin = async () => {
 
         const idToken = localStorage.getItem("idToken");
-        if (!idToken) return { ok: false };
+        if (!idToken) return true
 
         const user = await identity();
+        if (!user) return true
 
-        const resp = await store.dispatch('auth/autoLogin', { user: { idToken, ...user } })
+        await store.dispatch('auth/autoLogin', { user: { idToken, ...user } })
 
-        return resp
+        return true
 
 
     }

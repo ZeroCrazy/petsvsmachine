@@ -3,13 +3,11 @@ import { login, loginMetamask, register } from '../services'
 export const signInUser = async ({ commit }, { user, metamask = false }) => {
     let resp;
     if (metamask) {
-        console.log(metamask)
         resp = await loginMetamask(metamask);
     } else {
         resp = await login(user);
     }
     if (resp) {
-       
         commit('loginUser', { auth: true, idToken: resp.token, username: resp.username, metamaskAddress: resp.metamaskAddress });
         return { ok: true }
     }
@@ -29,11 +27,10 @@ export const createUser = async ({ commit }, user) => {
 
     const resp = await register(user);
     if (resp.ok) {
-        commit('loginUser', { auth: true, idToken: resp.data.token });
+        commit('loginUser', { auth: true, idToken: resp.data.token, username: resp.data.username });
         return { ok: true }
     }
     else {
-        console.log(resp)
         return { ok: false, msg: resp.msg }
     }
 

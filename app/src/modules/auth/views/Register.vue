@@ -180,15 +180,17 @@ export default {
 
       isLoading.value = true;
       const resp = await createUser(userForm.value);
+
       isLoading.value = false;
       if (resp.ok) router.push({ name: "dashboard" });
       else {
         errors.value.msg = [];
         if (resp.msg.username) errors.value.username = "register.existUsername";
         if (resp.msg.email) errors.value.email = "register.existEmail";
-        console.log(errors.value);
         if (!resp.msg.username && !resp.msg.email)
           errors.value.response = resp.msg;
+        if (resp.msg[0].param === "password")
+          errors.value.password = "register.passwordFormat";
       }
     };
 
