@@ -148,6 +148,8 @@ nav {
   margin-right: 30%;
   position: relative;
   top: 49px;
+  transform: translatey(0px);
+	animation: float 3s ease-in-out infinite;
 }
 .land .coordinate {
   border-radius: 3px;
@@ -281,4 +283,22 @@ nav {
   white-space: nowrap;
   vertical-align: middle;
   color: #fff;
+}
+
+/*
+  Animaciones
+*/
+@keyframes float {
+	0% {
+    filter: drop-shadow(#000 0px 5px 15px 0px);
+		transform: translatey(0px);
+	}
+	50% {
+    filter: drop-shadow(#000 0px 25px 15px 0px);
+		transform: translatey(-5px);
+	}
+	100% {
+    filter: drop-shadow(#000 0px 5px 15px 0px);
+		transform: translatey(0px);
+	}
 }
