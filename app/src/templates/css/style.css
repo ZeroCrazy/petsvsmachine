@@ -20,6 +20,12 @@ html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.main-container {
+  height: calc(100vh - 56px);
 }
 /* 
     Navbar
@@ -58,7 +64,7 @@ a.navbar-link i.left, a.navbar-item i.left {
     color: #a65a08;
 }
 
-nav {
+.navbar-menu, nav {
     margin-bottom: 4rem;
     background-color: #000 !important;
 }
@@ -93,7 +99,7 @@ nav {
     background-color: #c47f00;
 }
 
-.button.is-primary:active {
+.button.is-primary:active, .button.is-primary.is-active {
     background-color: #8b5b00;
 }
 
@@ -101,92 +107,168 @@ nav {
     Página de feed.html
 */
 .land {
-    background: url('../images/land.svg');
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    width: 80%;
-    border-radius: 3px;
-    height: 201px;
-    background-color: rgb(255 255 255 / 5%);
-    border: 1px solid rgb(255 255 255 / 20%);
-  }
-  .land .production {
-    border-radius: 3px;
-    border: 1px solid #4a4a4a;
-    width: fit-content;
-    padding: 1px 7px;
-    float: right;
-    margin: 10px 10px 0px 0px;
-    font-size: x-small;
-    color: #fff;
-  }
-  .land .pet {
-    /*background: url('images/pets/dog.png');*/
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-    width: 40%;
-    height: 40%;
-    margin-left: 30%;
-    margin-right: 30%;
-    position: relative;
-    top: 49px;
-  }
-  .land .coordinate {
-    border-radius: 3px;
-    border: 1px solid #4a4a4a;
-    width: fit-content;
-    padding: 1px 7px;
-    bottom: 24px;
-    margin: 0px 0px 10px 10px;
-    font-size: x-small;
-    color: #fff;
-    position: absolute;
-  }
-  .land .time {
-    border-radius: 3px;
-    border: 2px solid rgb(0 0 0 / 15%);
-    width: fit-content;
-    padding: 0px 2px;
-    margin: 10px 0px 1px 10px;
-    font-size: x-small;
-    color: #fff;
-    float: left;
-    background: #a65a08;
-  }
-  .pet-options {
-    width: 19%;
-    height: 201px;
-    float: right;
-    
-  }
-  .pet-options .box {
-    /*width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;*/
-    width: 100%;
-    margin-left: 5px;
-    border-radius: 3px;
-    background: rgb(255 255 255 / 5%);
-    border: 1px solid rgb(255 255 255 / 20%);
-    padding: 8.7px 0px;
-    text-align: center;
-    color: #fff;
-    margin-bottom: 5px;
-  }
-  .pet-options .box:hover {
-    background: rgb(255 255 255 / 15%);
-    cursor: pointer;
-  }
-  .pet.common {
-    filter: drop-shadow(#00ffdd 0px 0px 5px);
-  }
-  .pet.uncommon {
-    filter: drop-shadow(#001eff 0px 0px 5px);
-  }
-  .pet.rare {
-    filter: drop-shadow(#ff0026 0px 0px 5px);
-  }
-  .pet.mythic {
-    filter: drop-shadow(#6f00ff 0px 0px 5px);
-  }
+  background: url('../images/land.svg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  width: 80%;
+  border-radius: 3px;
+  height: 201px;
+  background-color: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 20%);
+}
+.land .production {
+  border-radius: 3px;
+  border: 2px solid rgb(0 0 0 / 15%);
+  background-color: rgb(0 0 0 / 50%);
+  width: fit-content;
+  padding: 1px 7px;
+  float: right;
+  margin: 10px 10px 0px 0px;
+  font-size: x-small;
+  color: #fff;
+}
+.land .pet {
+  /*background: url('images/pets/dog.png');*/
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  width: 40%;
+  height: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  position: relative;
+  top: 49px;
+}
+.land .coordinate {
+  border-radius: 3px;
+  border: 2px solid rgb(0 0 0 / 15%);
+  background-color: rgb(0 0 0 / 50%);
+  width: fit-content;
+  padding: 1px 7px;
+  bottom: 24px;
+  margin: 0px 0px 10px 10px;
+  font-size: x-small;
+  color: #fff;
+  position: absolute;
+}
+.land .time {
+  border-radius: 3px;
+  border: 2px solid rgb(0 0 0 / 15%);
+  width: fit-content;
+  padding: 0px 2px;
+  margin: 10px 0px 1px 10px;
+  font-size: x-small;
+  color: #fff;
+  float: left;
+  background: #a65a08;
+}
+.shop-options, .pet-options {
+  width: 19%;
+  height: 201px;
+  float: right;
+  
+}
+.shop-options .box, .pet-options .box {
+  /*width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;*/
+  width: 100%;
+  margin-left: 5px;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 20%);
+  padding: 8.7px 0px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.shop-options .box:hover, .pet-options .box:hover {
+  background: rgb(255 255 255 / 15%);
+  cursor: pointer;
+}
+.pet.common {
+  filter: drop-shadow(#00ffdd 0px 0px 5px);
+}
+.pet.uncommon {
+  filter: drop-shadow(#001eff 0px 0px 5px);
+}
+.pet.rare {
+  filter: drop-shadow(#ff0026 0px 0px 5px);
+}
+.pet.mythic {
+  filter: drop-shadow(#6f00ff 0px 0px 5px);
+}
+/*
+  Página shop.html
+*/
+.shop-card {
+  color: #3c415c;
+  border: 2px solid #000000;
+  box-shadow: inset 0 -4px 0 #00000063;
+  box-sizing: border-box;
+}
+.shop-card .title {
+  font-weight: 700;
+  line-height: 1.25;
+  font-size: 16px;
+  word-spacing: 1px;
+  margin-bottom: 2px !important;
+}
+.shop-card .extrainfo {
+  line-height: 1.25;
+  font-size: 16px;
+  word-spacing: 1px;
+  margin-bottom: 15px !important;
+}
+.shop-card .description {
+  min-height: 72px;
+}
+.shop-card p {
+  margin-bottom: 20px !important;
+}
+.shop-options {
+  height: auto;
+  width: 100%;
+  float: unset;
+}
+.shop-options .box {
+  padding: 20px 0px;
+  margin: 0px 0px 5px 0px;
+}
+.shop-product {
+  /*background: url('../images/land.svg');*/
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  width: 100%;
+  border-radius: 3px;
+  height: 201px;
+  margin-bottom: 10px;
+  background-color: rgb(0 0 0 / 15%);
+}
+.shop-product .object {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  width: 40%;
+  height: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  position: relative;
+  top: 49px;
+}
+.shop-button, .shop-button:hover, .shop-button:focus, .shop-button:active {
+  height: 40px !important;
+  background: #71c638 !important;
+  border: 2px solid #263f2a !important;
+  box-shadow: 0 2px 0 rgb(0 0 0 / 20%), inset 0 -4px 0 #46881b, inset 0 2px 0 #b5ff84 !important;
+  border-radius: 8px !important;
+  padding: .25rem 1rem;
+  font-size: .875rem;
+  line-height: 1.5;
+  display: inline-block;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  color: #fff;
+}

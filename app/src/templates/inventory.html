@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Inventory</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap">
@@ -46,7 +46,7 @@
                 <i class="left fal fa-store"></i> Marketplace
             </a>
 
-            <a href="feed.html" class="navbar-item">
+            <a href="feed.html" class="navbar-item is-active">
                 <i class="left fal fa-bone"></i> Feed
             </a>
 
@@ -85,44 +85,68 @@
     <!-- Final del navbar -->
 
     <div class="container">
-        <div class="columns is-centered is-vcentered">
-          <div class="column is-4">
-            <div class="title has-text-centered has-text-white">Hi there, welcome back!</div>
-              <div class="card has-background-black">
-                <div class="card-content">
-                  <div class="field">
-                    <div class="control is-large">
-                      <button class="button no-border is-medium is-fullwidth has-background-black-ter has-text-white">
-                        <span class="icon is-medium">
-                          <img src="images/icons/metamask.svg">
-                        </span>
-                        <span>Log in with MetaMask</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="field has-text-centered">
-                    or
-                  </div>
-                  <div class="field">
-                    <div class="control is-large">
-                      <input class="input is-large no-border input-loginregister" type="email" placeholder="Email" required>
-                    </div>
-                  </div>
-                  <div class="field">
-                    <div class="control is-large">
-                      <input class="input is-large no-border input-loginregister" type="password" placeholder="Password" required>
-                    </div>
-                  </div>
-                  <div class="buttons">
-                    <button class="button is-primary is-fullwidth">Login</button>
-                  </div>
-                  <div class="buttons">
-                    <a href="register.html" style="background: transparent;border: 0px;" class="button is-fullwidth has-text-light">Don't have an account? Click here to sign up</a>
-                  </div>
-                </div>
-              </div>
+      
+      <div class="columns is-vcentered">
+        <div class="column is-4">
+          <div class="columns is-mobile">
+            <div class="column has-text-centered">
+              <a href="feed.html" class="button is-large is-primary"><i class="fal fa-bone"></i></a>
+            </div>
+            <div class="column has-text-centered">
+              <a href="shop.html" class="button is-large is-primary"><i class="fal fa-shopping-basket"></i></a>
+            </div>
+            <div class="column has-text-centered">
+              <a href="inventory.html" class="button is-large is-primary is-active"><i class="fal fa-backpack"></i></a>
+            </div>
+            <div class="column has-text-centered">
+              <a href="land.html" class="button is-large is-primary"><i class="fal fa-map"></i></a>
+            </div>
           </div>
         </div>
+        <div class="column is-6"></div>
+        <div class="column is-2">
+          <div class="columns is-mobile">
+            <div class="column has-text-centered">
+              <a href="shop.html" class="button is-small is-danger">
+                <span class="icon is-small">
+                  <i class="fal fa-home-alt"></i>
+                </span>
+                <b>60</b>
+              </a>
+            </div>
+            <div class="column has-text-centered">
+              <a href="feed.html" class="button is-small is-danger">
+                <span class="icon is-small">
+                  <i class="fal fa-bone"></i>
+                </span>
+                <b>60</b>
+              </a>
+            </div>
+            <div class="column has-text-centered">
+              <a href="inventory.html" class="button is-small is-danger">
+                <span class="icon is-small">
+                  <i class="fal fa-hand-paper"></i>
+                </span>
+                <b>60</b>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-full">
+          <div class="card has-background-black">
+            <div class="card-content">
+              <div class="content">
+                Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     </div>
 
 
