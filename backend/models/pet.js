@@ -23,8 +23,8 @@ class Pet extends Model {
     async create() {
         try {
             this.getDB();
-            const sql = `INSERT INTO ${this.table} (player_id, rarity, role, hp, attack, armor, speed) VALUES (?, ?, ?, ?, ?, ?, ?);`
-            const args = [this.player_id, this.rarity, this.role, this.hp, this.attack, this.armor, this.speed];
+            const sql = `INSERT INTO ${this.table} (player_id, rarity, role, hp, attack, armor, speed, production, days) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`
+            const args = [this.player_id, this.rarity, this.role, this.hp, this.attack, this.armor, this.speed, this.production, this.days];
             const response = await this.db.queryAsync(sql, args);
             return response.insertId;;
         } catch (error) {
@@ -38,7 +38,7 @@ class Pet extends Model {
     async getByPlayer() {
         try {
             this.getDB();
-            const sql = `SELECT id, image, rarity FROM ${this.table} WHERE player_id = ?;`
+            const sql = `SELECT id, image, rarity, production, days FROM ${this.table} WHERE player_id = ?;`
             const args = [this.player_id];
             const response = await this.db.queryAsync(sql, args);
             return response;;

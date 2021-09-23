@@ -1,8 +1,8 @@
 <template>
   <button class="button mb-4 is-primary" @click="a">HUEVO(DEVEL)</button>
   <div class="columns is-multiline">
-    <div v-for="{ id, image, rarity } in pets" :key="id" class="column is-4">
-      <BoxPet :image="image" :rarity="rarity" />
+    <div v-for="{ id, image, rarity, hours, production } in pets" :key="id" class="column is-4">
+      <BoxPet :image="image" :rarity="rarity" :hours="hours" :production="production" />
     </div>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
   setup() {
     const { getPetsByUser, pets } = useFeed();
 
-    onMounted(async () => {
+onMounted(async () => {
       const resp = await getPetsByUser();
       if (!resp.ok) alert("error");
     });

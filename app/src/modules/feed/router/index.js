@@ -4,12 +4,18 @@ export default [
     {
         path: '/feed',
         name: 'feed',
-        component: () => import('../layouts/Feed.vue'),
+        redirect: {name:'feedMain'},
+        component: () => import('../layouts/FeedLayout.vue'),
         children: [
             {
-                path: '',
-                name: 'feed',
+                path: 'home',
+                name: 'feedMain',
                 component: () => import('../views/Feed.vue'),
+            },
+            {
+                path: 'shop',
+                name: 'feedShop',
+                component: () => import('../views/Shop.vue'),
             }
         ]
     },

@@ -1,14 +1,16 @@
 <template>
   <div class="columns is-mobile">
     <div class="column has-text-centered">
-      <a href="feed.html" class="button is-large is-primary is-active"
+      <router-link
+        :to="{ name: 'feedMain' }"
+        class="button is-large is-primary is-active"
         ><i class="fal fa-bone"></i
-      ></a>
+      ></router-link>
     </div>
     <div class="column has-text-centered">
-      <a href="shop.html" class="button is-large is-primary"
+      <router-link :to="{ name: 'feedShop' }" class="button is-large is-primary"
         ><i class="fal fa-shopping-basket"></i
-      ></a>
+      ></router-link>
     </div>
     <div class="column has-text-centered">
       <a href="inventory.html" class="button is-large is-primary"

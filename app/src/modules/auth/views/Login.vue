@@ -60,26 +60,25 @@
             </div>
           </div>
         </div>
-
-        <Notification v-if="errors.active" :msg="$t(errors.msg)" />
+    
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { defineAsyncComponent, ref } from "vue";
+import { notification } from "ant-design-vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 import MetamaskButton from "../components/MetamaskButton.vue";
 import useAuth from "../composables/useAuth";
+
+import i18n from "@/i18n/i18n";
 
 export default {
   name: "Dashboard",
   components: {
     MetamaskButton,
-    Notification: defineAsyncComponent(() =>
-      import("../../shared/components/Notification.vue")
-    ),
   },
   setup() {
     const { loginUser } = useAuth();
@@ -104,6 +103,12 @@ export default {
       isLoading.value = false;
       if (resp.ok) router.push({ name: "dashboard" });
       else {
+        // Mostrar notificacion
+        notification.error({
+          message: i18n.t("login.loginError"),
+          // description: i18n.t("login.loginError"),
+          duration: 3,
+        });
         errors.value.active = true;
         errors.value.msg = "login.loginError";
       }
