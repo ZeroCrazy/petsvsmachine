@@ -87,10 +87,15 @@ nav {
 
 .input-loginregister {
   background: #2f323e;
+  color: rgb(170, 170, 170) !important;
 }
 
 .input-loginregister::placeholder {
-  color: rgb(170, 170, 170);
+  color: rgb(170, 170, 170) !important;
+}
+
+.btnlr-success {
+  background: #238636;
 }
 
 /*
