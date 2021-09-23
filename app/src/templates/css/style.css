@@ -87,10 +87,15 @@ nav {
 
 .input-loginregister {
   background: #2f323e;
+  color: rgb(170, 170, 170) !important;
 }
 
 .input-loginregister::placeholder {
-  color: rgb(170, 170, 170);
+  color: rgb(170, 170, 170) !important;
+}
+
+.btnlr-success {
+  background: #238636;
 }
 
 /*
@@ -143,6 +148,9 @@ nav {
   margin-right: 30%;
   position: relative;
   top: 49px;
+  transform: translatey(0px);
+	animation: float 3s ease-in-out infinite;
+  /*animation: float 3s cubic-bezier(0.76, 0.83, 0.9, 0.55) infinite;*/
 }
 .land .coordinate {
   border-radius: 3px;
@@ -276,4 +284,54 @@ nav {
   white-space: nowrap;
   vertical-align: middle;
   color: #fff;
+}
+
+/*
+  Land view
+*/
+.land-map {
+  max-width: 575px;
+  display: flow-root;
+}
+.land-map .land-view {
+  width: 25px;
+  height: 25px;
+  background: green;
+  float: left;
+  margin: 1px;
+  font-size: xx-small;
+  text-align: center;
+  line-height: 25px;
+  text-shadow: 1px 1px 0px #000;
+}
+.land-map .land-view:hover {
+  filter: brightness(var(--value, 2));
+  cursor: pointer;
+}
+.land-map .land-view.red {
+  background: red;
+}
+.land-map .land-view.busy {
+  background: #9f9f9f;
+}
+.land-map .land-view.onsale {
+  background: yellowgreen;
+}
+
+/*
+  Animaciones
+*/
+@keyframes float {
+	0% {
+    filter: drop-shadow(#000 0px 5px 15px 0px);
+		transform: translatey(0px);
+	}
+	50% {
+    filter: drop-shadow(#000 0px 25px 15px 0px);
+		transform: translatey(-3px);
+	}
+	100% {
+    filter: drop-shadow(#000 0px 5px 15px 0px);
+		transform: translatey(0px);
+	}
 }
