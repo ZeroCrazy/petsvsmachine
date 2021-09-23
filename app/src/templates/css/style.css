@@ -287,6 +287,38 @@ nav {
 }
 
 /*
+  Land view
+*/
+.land-map {
+  max-width: 575px;
+  display: flow-root;
+}
+.land-map .land-view {
+  width: 25px;
+  height: 25px;
+  background: green;
+  float: left;
+  margin: 1px;
+  font-size: xx-small;
+  text-align: center;
+  line-height: 25px;
+  text-shadow: 1px 1px 0px #000;
+}
+.land-map .land-view:hover {
+  filter: brightness(var(--value, 2));
+  cursor: pointer;
+}
+.land-map .land-view.red {
+  background: red;
+}
+.land-map .land-view.busy {
+  background: #9f9f9f;
+}
+.land-map .land-view.onsale {
+  background: yellowgreen;
+}
+
+/*
   Animaciones
 */
 @keyframes float {
