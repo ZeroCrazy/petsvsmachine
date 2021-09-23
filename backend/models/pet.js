@@ -35,6 +35,21 @@ class Pet extends Model {
         }
     }
 
+    async getByPlayer() {
+        try {
+            this.getDB();
+            const sql = `SELECT id, image, rarity FROM ${this.table} WHERE player_id = ?;`
+            const args = [this.player_id];
+            const response = await this.db.queryAsync(sql, args);
+            return response;;
+        } catch (error) {
+            console.log(error)
+            return false
+        } finally {
+            this.closeDB();
+        }
+    }
+
 
 
 }

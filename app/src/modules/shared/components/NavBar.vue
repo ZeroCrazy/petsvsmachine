@@ -35,6 +35,43 @@
           </div>
 
           <div class="navbar-end">
+            <!-- IDIOMA -->
+            <div class="navbar-item">
+              <a-dropdown :trigger="['hover']">
+                <a
+                  @click.prevent
+                  class="navbar-icon ant-dropdown-link"
+                  href="https://bulma.io/documentation/overview/start/"
+                >
+                  <i class="left fal fa-globe"></i>
+                </a>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item key="0">
+                      <a class="navbar-item" @click="setLang('en')">
+                        <div class="icon-text">
+                          <span :class="{'text-primary': (lang === 'en')}"> {{ $t("language.english") }}</span>
+                          <span v-if="lang === 'en'" class="icon text-primary">
+                            <i class="fas fas fa-check"></i>
+                          </span>
+                        </div>
+                      </a>
+                    </a-menu-item>
+                    <a-menu-item key="1">
+                      <a class="navbar-item" @click="setLang('es')">
+                        <div class="icon-text">
+                          <span :class="{'text-primary': (lang === 'es')}"> {{ $t("language.spanish") }}</span>
+                          <span v-if="lang === 'es'" class="icon text-primary">
+                            <i class="fas fas fa-check"></i>
+                          </span>
+                        </div>
+                      </a>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
+            </div>
+
             <div
               v-if="authStatus"
               class="navbar-item has-dropdown is-hoverable"
@@ -67,30 +104,13 @@
                 </a>
               </div>
             </div>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a
-                class="navbar-link"
-                href="https://bulma.io/documentation/overview/start/"
-              >
-                {{ $t("language.lang") }}
-              </a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" @click="setLang('en')">
-                  {{ $t("language.english") }}
-                </a>
-                <a class="navbar-item" @click="setLang('es')">
-                  {{ $t("language.spanish") }}
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </nav>
 
     <!-- SIDEBAR -->
-    <o-sidebar fullheight overlay mobile="fullwidth" :open="open">
+    <!-- <o-sidebar fullheight overlay mobile="fullwidth" :open="open">
       <o-button icon-left="times" label="Close" @click="open = false" />
       <img
         width="128"
@@ -98,7 +118,7 @@
         alt="Lightweight UI components for Vue.js"
       />
       <h3>Example</h3>
-    </o-sidebar>
+    </o-sidebar> -->
   </div>
 </template>
 
@@ -115,6 +135,12 @@ export default {
   setup() {
     const open = ref(false);
     const router = useRouter();
+    const lang = ref("es");
+
+    const setLang = (language) => {
+      lang.value = language;
+      i18n.setLocale(language);
+    };
 
     const { logout, authStatus, metamaskAddress } = useAuth();
 
@@ -143,6 +169,8 @@ export default {
       ],
       open,
       authStatus,
+      lang,
+      setLang,
       onLogout: () => {
         logout();
         router.push({ name: "login" });
@@ -157,9 +185,6 @@ export default {
             13
           )}`
       ),
-      setLang: (lang) => {
-        i18n.setLocale(lang);
-      },
     };
   },
 };
@@ -174,7 +199,7 @@ export default {
 }
 .navbar-link,
 a.navbar-item {
-  color: $text;
+  color: $text-nav;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -215,5 +240,25 @@ a.navbar-item:hover {
 nav {
   background-color: #000 !important;
   margin-bottom: 4rem;
+}
+
+.navbar-icon {
+  color: $text-nav;
+  transition: 300ms;
+  background-color: rgba(#fff, 0.1);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  &:hover {
+    color: $primary;
+  }
+  & > i {
+    vertical-align: -webkit-baseline-middle;
+  }
+}
+
+.text-primary {
+  color: $primary;
 }
 </style>

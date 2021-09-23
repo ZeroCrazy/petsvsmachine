@@ -45,11 +45,27 @@ const create = async (req, res = response) => {
 
 }
 
+const getByPlayer = async (req, res = response) => {
+
+    // Obtener el usuario
+    const { uid } = req;
+    // Obtener pets del usuario
+    const pet = new Pet();
+    pet.player_id = uid;
+    const pets = await pet.getByPlayer();
+    
+    if (!pets) return resp(res, 404, { msg: "Can't get pets" })
+   
+    return resp(res, 200,  pets )
+
+}
+
 
 
 
 module.exports = {
     create,
+    getByPlayer
 
 }
 

@@ -6,7 +6,7 @@ const randomNumber = (min, max) => {
 const getRarity = () => {
     const random = Math.random();
     let rarity;
-    if (random <= 0.05) rarity = 'mitic';
+    if (random <= 0.05) rarity = 'mythic';
     else if (random <= 0.15) rarity = 'rare';
     else if (random <= 0.5) rarity = 'uncommon';
     else rarity = 'common';
@@ -27,7 +27,7 @@ const getRole = () => {
 
 const getGeneticStats = (rarity) => {
 
-    if (rarity === 'mitic') {
+    if (rarity === 'mythic') {
         return getGenetic(200);
     } else if (rarity === 'rare') {
         return getGenetic(150);
