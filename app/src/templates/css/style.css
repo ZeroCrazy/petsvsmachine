@@ -1,106 +1,110 @@
 html, body {
-    margin: 0px;
-    font-family: 'Roboto', sans-serif;
-    background-color: #11131b;
+  margin: 0px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #11131b;
 }
 
 html {
-    box-sizing: border-box;
-    overflow-y: scroll;
-    -webkit-text-size-adjust: 100%;
-    word-break: normal;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    font-family: "Poppins",sans-serif;
-    font-size: 16px;
-    word-spacing: 1px;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  word-break: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  font-family: "Poppins",sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .main-container {
   height: calc(100vh - 56px);
 }
+
 /* 
     Navbar
 */
 .navbar-link, a.navbar-item {
-    color: #6a748e;
-    font-size: 14px;
-    font-weight: 400;
-    text-decoration: none;
-    font-family: "Poppins",sans-serif;
+  color: #6a748e;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+  font-family: "Poppins",sans-serif;
 }
 
 .navbar-link.is-active, a.navbar-item.is-active {
-    position: relative;
-    color: #fff;
+  position: relative;
+  color: #fff;
 }
 
 .navbar-link.is-active, a.navbar-item.is-active::after {
-    content: "";
-    display: block;
-    border-bottom: 1px solid #a65a08;
-    width: 50%;
-    height: 3px;
-    transform: translateX(30%);
-    position: absolute;
-    top: 53px;
+  content: "";
+  display: block;
+  border-bottom: 1px solid #a65a08;
+  width: 50%;
+  height: 3px;
+  transform: translateX(30%);
+  position: absolute;
+  top: 53px;
 }
 
 a.navbar-link i.left, a.navbar-item i.left {
-    font-size: 14px;
-    margin-right: 10px;
+  font-size: 14px;
+  margin-right: 10px;
 }
 
 .navbar-link:hover, a.navbar-item:hover {
-    background-color: transparent;
-    color: #a65a08;
+  background-color: transparent;
+  color: #a65a08;
 }
 
-.navbar-menu, nav {
-    margin-bottom: 4rem;
-    background-color: #000 !important;
+nav {
+  margin-bottom: 4rem;
+}
+
+.navbar-menu {
+  background-color: #000 !important;
 }
 
 /*
     Estilo para inputs de login y register
 */
 .no-border {
-    border: none !important;
+  border: none !important;
 }
 
 .background-transparent {
-    background-color: transparent !important;
+  background-color: transparent !important;
 }
 
 .input-loginregister {
-    background: #2f323e;
+  background: #2f323e;
 }
 
 .input-loginregister::placeholder {
-    color: rgb(170, 170, 170);
+  color: rgb(170, 170, 170);
 }
 
 /*
     Colores de los botones principales
 */
 .button.is-primary {
-    background-color: #a65a08;
+  background-color: #a65a08;
 }
 
 .button.is-primary:hover {
-    background-color: #c47f00;
+  background-color: #c47f00;
 }
 
 .button.is-primary:active, .button.is-primary.is-active {
-    background-color: #8b5b00;
+  background-color: #8b5b00;
 }
 
 /*
@@ -166,7 +170,6 @@ a.navbar-link i.left, a.navbar-item i.left {
   width: 19%;
   height: 201px;
   float: right;
-  
 }
 .shop-options .box, .pet-options .box {
   /*width: 60%;
@@ -198,6 +201,7 @@ a.navbar-link i.left, a.navbar-item i.left {
 .pet.mythic {
   filter: drop-shadow(#6f00ff 0px 0px 5px);
 }
+
 /*
   Página shop.html
 */
