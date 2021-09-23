@@ -38,6 +38,7 @@
         "requiredPassowrd": "La contraseña es obligatorio",
         "invalidEmail": "Introduce un email valido",
         "existUsername": "Ya existe una cuenta con ese usuario",
-        "existEmail": "Ya existe una cuenta con ese email"
+        "existEmail": "Ya existe una cuenta con ese email",
+        "passwordFormat": "La contraseña debe tener 6 caracteres"
     }
 }

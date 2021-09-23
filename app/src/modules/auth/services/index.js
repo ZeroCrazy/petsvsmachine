@@ -44,7 +44,6 @@ export const register = async ({ username, email, password }) => {
     try {
 
         const { data } = await request('post', 'auth/register', { username, email, password })
-
         return {
             ok: true,
             data

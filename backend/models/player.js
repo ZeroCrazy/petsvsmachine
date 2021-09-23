@@ -3,12 +3,10 @@ const Model = require("./model");
 class Player extends Model {
 
     table = this.tables.player;
-    id;
     username;
     email;
     password;
     metamask_address;
-    ip;
     group;
     role;
     login_at;
@@ -18,11 +16,12 @@ class Player extends Model {
     async register() {
         try {
             this.getDB();
-            const sql = `INSERT INTO ${this.table} (username, email, password, ip) VALUES (?, ?, ?, ?);`
-            const args = [this.username, this.email, this.password, this.ip];
+            const sql = `INSERT INTO ${this.table} (username, email, password) VALUES (?, ?, ?);`
+            const args = [this.username, this.email, this.password];
             const response = await this.db.queryAsync(sql, args);
-            return response;
+            return response.insertId;;
         } catch (error) {
+            console.log(error)
             return false
         } finally {
             this.closeDB();
@@ -31,8 +30,8 @@ class Player extends Model {
     async registerMetamask() {
         try {
             this.getDB();
-            const sql = `INSERT INTO ${this.table} (metamask_address, ip) VALUES (?, ?);`
-            const args = [this.metamask_address, this.ip];
+            const sql = `INSERT INTO ${this.table} (metamask_address) VALUES (?);`
+            const args = [this.metamask_address];
             const response = await this.db.queryAsync(sql, args);
             this.id = response.insertId;
             return true;
@@ -100,12 +99,15 @@ class Player extends Model {
         }
     }
 
-    async updateLogin() {
+    async updateLogin(ip) {
         try {
             this.getDB();
             const sql = `UPDATE ${this.table} SET login_at = NOW() WHERE id = ?;`
             const args = [this.id];
             const response = await this.db.queryAsync(sql, args);
+            const sql2 = `INSERT INTO ${this.tables.player_ip} (player_id, ip) VALUES (?, ?);`
+            const args2 = [this.id, ip];
+            const response2 = await this.db.queryAsync(sql2, args2);
             if (response) return true;
             else return false;
         } catch (error) {

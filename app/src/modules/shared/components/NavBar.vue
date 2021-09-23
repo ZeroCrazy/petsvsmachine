@@ -44,14 +44,16 @@
                 {{ $t("section.myaccount") }}
               </a>
 
-              <div
-                class="
-                  navbar-dropdown is-boxed
-                "
-              >
-                <a href="settings.html" class="navbar-item"> {{ $t("section.settings") }} </a>
-                <a class="navbar-item"> {{ $t("section.wallet") }}:<br />{{ metamask }} </a>
-                <a class="navbar-item" @click="logout"> {{ $t("section.logout") }} </a>
+              <div class="navbar-dropdown is-boxed">
+                <a href="settings.html" class="navbar-item">
+                  {{ $t("section.settings") }}
+                </a>
+                <a class="navbar-item">
+                  {{ $t("section.wallet") }}:<br />{{ metamask }}
+                </a>
+                <a class="navbar-item" @click="onLogout">
+                  {{ $t("section.logout") }}
+                </a>
               </div>
             </div>
 
@@ -102,6 +104,7 @@
 
 <script>
 import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
 import useAuth from "@/modules/auth/composables/useAuth";
 
 import i18n from "@/i18n/i18n";
@@ -111,10 +114,10 @@ export default {
   components: {},
   setup() {
     const open = ref(false);
+    const router = useRouter();
 
     const { logout, authStatus, metamaskAddress } = useAuth();
-    console.log(metamaskAddress);
-    console.log(metamaskAddress.value.length);
+
     return {
       sections: [
         {
@@ -140,7 +143,10 @@ export default {
       ],
       open,
       authStatus,
-      logout,
+      onLogout: () => {
+        logout();
+        router.push({ name: "login" });
+      },
       metamask: computed(
         () =>
           `${metamaskAddress.value.substr(

@@ -8,6 +8,13 @@
             "raro": 650,
             "mitico": 750
         },
+        // valor min stats
+        {
+            "comun": 50,
+            "poco_comun": 100,
+            "raro": 150,
+            "mitico": 200
+        },
         {
             "comun": 0.5,
             "poco_comun": 0.35,
@@ -28,19 +35,28 @@
             "def": "alto",
             "spd": "baja"
         },
-        "tirador":{
+        "tirador": {
             "ph": "moderada",
             "atk": "alto",
             "def": "bajo",
             "spd": "moderada"
-
         },
-        "luchador":{
+        "luchador": {
             "ph": "moderada",
             "atk": "moderada",
             "def": "moderada",
             "spd": "moderada"
-
         }
+    },
+    "opt": {
+        "baja": "20-85",
+        "moderada": "85-170",
+        "alta": "170-255"
+    },
+   
+    "reparto": {
+        "bajo": [],
+        "moderado": [],
+        "alto": []
     }
 }
