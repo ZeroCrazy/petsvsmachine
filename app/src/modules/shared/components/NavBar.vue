@@ -46,8 +46,7 @@
 
               <div
                 class="
-                  navbar-dropdown
-                  animate__animated animate__slideInRight animate__faster
+                  navbar-dropdown is-boxed
                 "
               >
                 <a href="settings.html" class="navbar-item"> {{ $t("section.settings") }} </a>
