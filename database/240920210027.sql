@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2021-09-24 00:27:15
+Date: 2021-09-24 00:33:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,24 +43,18 @@ CREATE TABLE `pet_list` (
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of pet_list
--- ----------------------------
-
--- ----------------------------
 -- Table structure for player_ip
 -- ----------------------------
 DROP TABLE IF EXISTS `player_ip`;
 CREATE TABLE `player_ip` (
   `player_id` int(11) NOT NULL,
   `ip` varchar(64) NOT NULL,
+  `operative_system` varchar(255) DEFAULT NULL,
+  `explorer` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`player_id`,`ip`),
   CONSTRAINT `fk_player_ip` FOREIGN KEY (`player_id`) REFERENCES `player_list` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of player_ip
--- ----------------------------
-INSERT INTO `player_ip` VALUES ('54', '::1');
 
 -- ----------------------------
 -- Table structure for player_list
@@ -73,8 +67,11 @@ CREATE TABLE `player_list` (
   `password` varchar(140) DEFAULT NULL,
   `metamask_address` varchar(64) DEFAULT NULL,
   `group` varchar(45) DEFAULT NULL,
-  `coin` varchar(255) DEFAULT NULL,
-  `role` varchar(45) DEFAULT NULL,
+  `coins` varchar(255) DEFAULT '0',
+  `role` varchar(45) DEFAULT '1',
+  `use_house` varchar(255) DEFAULT '0',
+  `use_food` varchar(255) DEFAULT '0',
+  `use_cress` varchar(255) DEFAULT '0',
   `login_at` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -83,11 +80,6 @@ CREATE TABLE `player_list` (
   UNIQUE KEY `wallet_metamask_UNIQUE` (`metamask_address`),
   UNIQUE KEY `username_UNIQUE` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of player_list
--- ----------------------------
-INSERT INTO `player_list` VALUES ('54', null, null, null, '0x17ee7109ef6d3c4871dfa6f527e99110a97ba18e', null, null, null, '2021-09-24 00:24:54', '2021-09-24 00:24:41', '2021-09-24 00:24:54');
 
 -- ----------------------------
 -- Table structure for shop_list
@@ -104,7 +96,3 @@ CREATE TABLE `shop_list` (
   `action` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of shop_list
--- ----------------------------
