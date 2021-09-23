@@ -33,6 +33,8 @@ const create = async (req, res = response) => {
     pet.attack = atk;
     pet.armor = def;
     pet.speed = spd;
+    pet.production = 8162;
+    pet.days = 7;
     // TODO: open at
 
     const response = await pet.create();
@@ -52,11 +54,18 @@ const getByPlayer = async (req, res = response) => {
     // Obtener pets del usuario
     const pet = new Pet();
     pet.player_id = uid;
-    const pets = await pet.getByPlayer();
-    
-    if (!pets) return resp(res, 404, { msg: "Can't get pets" })
-   
-    return resp(res, 200,  pets )
+    const data = await pet.getByPlayer();
+
+    if (!data) return resp(res, 404, { msg: "Can't get pets" })
+
+    const pets = data.map((row) => {
+        return {
+            ...row,
+            hours: row.days * 7
+        }
+    })
+
+    return resp(res, 200, pets)
 
 }
 

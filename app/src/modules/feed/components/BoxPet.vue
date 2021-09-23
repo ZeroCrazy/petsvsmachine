@@ -11,7 +11,7 @@
         </div>
         <div class="land">
           <div class="time">80:13</div>
-          <div class="production">CE: 7182/480h</div>
+          <div class="production">CE: {{production}}/{{hours}}h</div>
           <div
             :class="['pet', rarity]"
             :style="`
@@ -42,6 +42,14 @@ export default {
     },
     image: {
       type: String,
+      required: true,
+    },
+    production: {
+      type: Number,
+      required: true,
+    },
+    hours: {
+      type: Number,
       required: true,
     },
   },

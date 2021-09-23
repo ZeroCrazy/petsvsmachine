@@ -27,7 +27,7 @@
               "
               :class="{
                 'navbar-item': true,
-                'is-active': $route.name === routeName,
+                'is-active': routeName.includes($route.name) ,
               }"
             >
               <i :class="['left', 'fal', icon]"></i> {{ $t(name) }}
@@ -140,6 +140,7 @@ export default {
     const setLang = (language) => {
       lang.value = language;
       i18n.setLocale(language);
+      
     };
 
     const { logout, authStatus, metamaskAddress } = useAuth();
