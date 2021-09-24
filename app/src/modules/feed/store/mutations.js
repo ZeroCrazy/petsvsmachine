@@ -10,3 +10,7 @@ export const setShop = (state, shop) => {
 export const setResources = (state, resources) => {
     state.resources = resources
 }
+
+export const setLands = (state, lands) => {
+    state.lands = lands
+}

@@ -1,26 +1,20 @@
 <template>
   <div class="columns is-mobile">
-    <div class="column has-text-centered">
+    <div
+      v-for="({ icon, route: routeName }, index) in options"
+      :key="index"
+      class="column has-text-centered"
+    >
       <router-link
-        :to="{ name: 'feedMain' }"
-        class="button is-large is-primary is-active"
-        ><i class="fal fa-bone"></i
+        :to="{ name: routeName }"
+        :class="{
+          button: true,
+          'is-large': true,
+          'is-primary': true,
+          'is-active': $route.name === routeName,
+        }"
+        ><i :class="icon"></i
       ></router-link>
-    </div>
-    <div class="column has-text-centered">
-      <router-link :to="{ name: 'feedShop' }" class="button is-large is-primary"
-        ><i class="fal fa-shopping-basket"></i
-      ></router-link>
-    </div>
-    <div class="column has-text-centered">
-      <a href="inventory.html" class="button is-large is-primary"
-        ><i class="fal fa-backpack"></i
-      ></a>
-    </div>
-    <div class="column has-text-centered">
-      <a href="land.html" class="button is-large is-primary"
-        ><i class="fal fa-map"></i
-      ></a>
     </div>
   </div>
 </template>
@@ -34,11 +28,35 @@ export default {
   components: {},
 
   setup() {
-    return {};
+    const options = [
+      {
+        icon: "fal fa-bone",
+        route: "feedMain",
+      },
+      {
+        icon: "fal fa-shopping-basket",
+        route: "feedShop",
+      },
+      {
+        icon: "fal fa-backpack",
+        route: "feedMain",
+      },
+      {
+        icon: "fal fa-map",
+        route: "feedLands",
+      },
+    ];
+    return {
+      options,
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
+
+.button:focus {
+  box-shadow: none !important;
+}
 </style>

@@ -27,7 +27,7 @@
               "
               :class="{
                 'navbar-item': true,
-                'is-active': routeName.includes($route.name) ,
+                'is-active': routerName.includes(routeName),
               }"
             >
               <i :class="['left', 'fal', icon]"></i> {{ $t(name) }}
@@ -50,7 +50,9 @@
                     <a-menu-item key="0">
                       <a class="navbar-item" @click="setLang('en')">
                         <div class="icon-text">
-                          <span :class="{'text-primary': (lang === 'en')}"> {{ $t("language.english") }}</span>
+                          <span :class="{ 'text-primary': lang === 'en' }">
+                            {{ $t("language.english") }}</span
+                          >
                           <span v-if="lang === 'en'" class="icon text-primary">
                             <i class="fas fas fa-check"></i>
                           </span>
@@ -60,7 +62,9 @@
                     <a-menu-item key="1">
                       <a class="navbar-item" @click="setLang('es')">
                         <div class="icon-text">
-                          <span :class="{'text-primary': (lang === 'es')}"> {{ $t("language.spanish") }}</span>
+                          <span :class="{ 'text-primary': lang === 'es' }">
+                            {{ $t("language.spanish") }}</span
+                          >
                           <span v-if="lang === 'es'" class="icon text-primary">
                             <i class="fas fas fa-check"></i>
                           </span>
@@ -123,24 +127,30 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
-import { useRouter } from "vue-router";
+import { computed, ref, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import useAuth from "@/modules/auth/composables/useAuth";
 
 import i18n from "@/i18n/i18n";
-
+//TODO: Refactorizar en composables
 export default {
   name: "Home",
   components: {},
   setup() {
     const open = ref(false);
     const router = useRouter();
+    const route = useRoute();
+    const routerName = ref('');
     const lang = ref("es");
+
+    watch(
+      () => route.name,
+      () => (routerName.value = route.name)
+    );
 
     const setLang = (language) => {
       lang.value = language;
       i18n.setLocale(language);
-      
     };
 
     const { logout, authStatus, metamaskAddress } = useAuth();
@@ -172,6 +182,7 @@ export default {
       authStatus,
       lang,
       setLang,
+      routerName,
       onLogout: () => {
         logout();
         router.push({ name: "login" });

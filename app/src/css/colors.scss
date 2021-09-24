@@ -22,6 +22,6 @@ $input-placeholder-color:rgb(170, 170, 170);
     background-color: #c47f00;
 }
 
-.button.is-primary:active {
+.button.is-primary:active, .button.is-primary.is-active {
     background-color: #8b5b00;
 }

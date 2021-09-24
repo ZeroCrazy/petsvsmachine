@@ -15,7 +15,6 @@ class PlayerResources extends Model {
     async get() {
         try {
             const sql = `SELECT coins, house, food, cress FROM ${PlayerResources.table} WHERE player_id = ?;`
-            console.log(sql, this.player_id)
             const args = [this.player_id];
             const response = await this.query(sql, args);
             return response;

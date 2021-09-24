@@ -11,12 +11,12 @@ class Server {
         this.server = require('http').createServer(this.app);
         this.io = require('socket.io')(this.server, {
             cors: {
-              origin: "*",
-            //   methods: ["GET", "POST"],
-            //   allowedHeaders: ["my-custom-header"],
-            //   credentials: true
+                origin: "*",
+                //   methods: ["GET", "POST"],
+                //   allowedHeaders: ["my-custom-header"],
+                //   credentials: true
             }
-          });
+        });
 
         // ROUTES
         this.paths = {
@@ -24,6 +24,7 @@ class Server {
             pet: '/api/pets',
             shop: '/api/shop',
             player: '/api/player',
+            land: '/api/lands',
         }
 
         // Conectar a la BBDD
@@ -57,6 +58,7 @@ class Server {
         this.app.use(this.paths.pet, require('../routes/pets.routes'));
         this.app.use(this.paths.shop, require('../routes/shop.routes'));
         this.app.use(this.paths.player, require('../routes/player.routes'));
+        this.app.use(this.paths.land, require('../routes/land.routes'));
     }
 
     sockets() {

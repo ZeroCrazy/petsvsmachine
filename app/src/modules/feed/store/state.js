@@ -2,6 +2,7 @@
 export default () => ({
     pets: [],
     shop: [],
-    resources: null
+    resources: null,
+    lands:[]
 
 })

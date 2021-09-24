@@ -24,6 +24,15 @@ export default [
                     enterClass: "amimate__animated animate__fadeInLeft",
                     leaveClass: "amimate__animated animate__fadeOutRight",
                 }
+            },
+            {
+                path: 'lands',
+                name: 'feedLands',
+                component: () => import('../views/Lands.vue'),
+                meta:{
+                    enterClass: "amimate__animated animate__fadeInLeft",
+                    leaveClass: "amimate__animated animate__fadeOutRight",
+                }
             }
         ]
     },
