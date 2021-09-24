@@ -211,6 +211,22 @@ nav {
   filter: drop-shadow(#6f00ff 0px 0px 5px);
 }
 
+.land-map .land-view.common {
+  background-color: #00ffdd;
+}
+.land-map .land-view.uncommon {
+  background-color: #001eff;
+}
+.land-map .land-view.rare {
+  background-color: #ff0026;
+}
+.land-map .land-view.mythic {
+  background-color: #6f00ff;
+}
+.land-map .land-view.center {
+  background-color: #d9ff00;
+}
+
 /*
   Página shop.html
 */
@@ -297,25 +313,56 @@ nav {
   width: 25px;
   height: 25px;
   background: green;
+  color: #fff;
   float: left;
   margin: 1px;
   font-size: xx-small;
   text-align: center;
   line-height: 25px;
-  text-shadow: 1px 1px 0px #000;
+  /*text-shadow: 1px 1px 0px #000;*/
 }
 .land-map .land-view:hover {
   filter: brightness(var(--value, 2));
   cursor: pointer;
-}
-.land-map .land-view.red {
-  background: red;
 }
 .land-map .land-view.busy {
   background: #9f9f9f;
 }
 .land-map .land-view.onsale {
   background: yellowgreen;
+}
+.land-map .land-view.red {
+  background: red;
+}
+
+@media screen and (max-width: 425px) {
+  .land-map {
+    max-width: 360px;
+  }
+  .land-map .land-view {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .land-map {
+    max-width: 330px;
+  }
+  .land-map .land-view {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .land-map {
+    width: 300px;
+  }
+  .land-map .land-view {
+    width: 12px;
+    height: 13px;
+  }
 }
 
 /*
