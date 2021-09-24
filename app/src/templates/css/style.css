@@ -310,16 +310,15 @@ nav {
   display: flow-root;
 }
 .land-map .land-view {
-  width: 25px;
+  width: calc(100% / 21) !important;
+  border: 1px solid;
   height: 25px;
   background: green;
   color: #fff;
   float: left;
-  margin: 1px;
   font-size: xx-small;
   text-align: center;
   line-height: 25px;
-  /*text-shadow: 1px 1px 0px #000;*/
 }
 .land-map .land-view:hover {
   filter: brightness(var(--value, 2));
@@ -333,36 +332,6 @@ nav {
 }
 .land-map .land-view.red {
   background: red;
-}
-
-@media screen and (max-width: 425px) {
-  .land-map {
-    max-width: 360px;
-  }
-  .land-map .land-view {
-    width: 15px;
-    height: 15px;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .land-map {
-    max-width: 330px;
-  }
-  .land-map .land-view {
-    width: 13px;
-    height: 13px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .land-map {
-    width: 300px;
-  }
-  .land-map .land-view {
-    width: 12px;
-    height: 13px;
-  }
 }
 
 /*
