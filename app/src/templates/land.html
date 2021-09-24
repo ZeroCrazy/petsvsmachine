@@ -146,473 +146,451 @@
           <div class="card has-background-black">
             <div class="card-content">
               <div class="content">
-                <center><div id="map" class="land-map"></div></center>
-                <script>
-                  
-                  var json = [
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5", "position": "center" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                    { "player_id": "46", "land_id": "5" },
-                  ];
-                  var count_lands = 0;
-                  for (var key in json) {
-                    if (key) {
-                      count_lands++;
-                    }
-                  }
-                  var countland = 0;
-                  for (var i in json) {
-                    countland++;
-                    if(json[i].position){
-                      var css_position = 'red';
-                    } else {
-                      var css_position = '';
-                    }
-                    if(json[i].player_id){
-                      var css_player = 'busy';
-                    } else {
-                      var css_player = 'onsale';
-                    }
-                    document.getElementById('map').innerHTML += "<a href='' disabled><div id='land" + countland + "' class='land-view " + css_position + " " + css_player + "'>" + countland + "</div></a>";
-                  }
-                  console.log(countland)
-                </script>
+                <center>
+                  <div id="map" class="land-map">
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view center"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view center"></div>
+                    <div class="land-view center"></div>
+                    <div class="land-view center"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view center"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view mythic"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view uncommon"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view rare"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                    <div class="land-view common"></div>
+                              </div>
+                </center>
               </div>
             </div>
           </div>
