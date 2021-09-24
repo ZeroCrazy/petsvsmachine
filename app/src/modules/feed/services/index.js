@@ -22,3 +22,25 @@ export const createEgg = async () => {
 
 }
 
+export const getShopProducts = async () => {
+
+    try {
+        const { data } = await request('get', 'shop')
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+
+export const getResourcesUser = async () => {
+
+    try {
+        const { data } = await request('get', 'player/resources')
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+

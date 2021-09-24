@@ -1,6 +1,6 @@
 const { response } = require('express')
 const { resp } = require('../helpers/response');
-const { getRarity, getRole, getGeneticStats, getBaseStats } = require('../helpers/pets');
+const { getRarity, getRole, getGeneticStats, getBaseStats, getRarityId, getRoleId } = require('../helpers/pets');
 const Pet = require('../models/pet');
 
 const create = async (req, res = response) => {
@@ -27,8 +27,8 @@ const create = async (req, res = response) => {
 
     const pet = new Pet();
     pet.player_id = uid;
-    pet.rarity = rarity;
-    pet.role = role;
+    pet.rarity_id = getRarityId(rarity);
+    pet.role_id = getRoleId(role);
     pet.hp = hp;
     pet.attack = atk;
     pet.armor = def;

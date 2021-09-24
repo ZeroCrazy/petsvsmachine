@@ -1,20 +1,40 @@
 <template>
-  <div class="card shop-card has-background-warning">
+  <div class="card shop-card has-background-warning           
+">
     <div class="card-content">
       <div class="content">
         <div class="shop-product">
           <div
             class="object"
-            :style="`background: url(${require('@/assets/icons/house.png')})`"
-          ></div>
+          >
+            <a-image
+             :src="require('@/assets/icons/' + image)"
+            >
+              <template #placeholder>
+                <a-image
+                  src="https://thumbs.dreamstime.com/b/ninguna-imagen-de-la-u%C3%B1a-del-pulgar-placeholder-para-los-foros-blogs-y-las-p%C3%A1ginas-web-148010362.jpg"
+                  :preview="false"
+                />
+              </template>
+            </a-image>
+          </div>
         </div>
-        <p class="title"><b>House</b></p>
+        <p class="title">
+          <b>{{ title }}</b>
+        </p>
         <div class="extrainfo">
-          <span>Duration: <b>10 days</b></span>
-          <span style="float: right">Usage: <b>1</b></span>
+          <div style="float: left">
+            <span v-if="days"
+              >Duration: <b>{{ days }} days</b></span
+            >
+          </div>
+          <div style="float: right">
+            Usage: <b>{{ utilization }}</b>
+          </div>
+          <div class="is-clearfix"></div>
         </div>
-        <p class="description">You need a small house to start digging.</p>
-        <button class="button shop-button is-fullwidth">50 CE</button>
+        <p class="description">{{ description }}</p>
+        <button class="button shop-button is-fullwidth">{{ cost }} CE</button>
       </div>
     </div>
   </div>
@@ -25,8 +45,32 @@ export default {
   name: "BoxPet",
   components: {},
   props: {
-    data: {
-      type: Object,
+    title: {
+      type: String,
+      required: true,
+    },
+    days: {
+      days: Number,
+      required: true,
+    },
+    utilization: {
+      days: Number,
+      required: true,
+    },
+    description: {
+      days: String,
+      required: true,
+    },
+    cost: {
+      days: Number,
+      required: true,
+    },
+    image: {
+      days: String,
+      required: true,
+    },
+    action: {
+      days: String,
       required: true,
     },
   },

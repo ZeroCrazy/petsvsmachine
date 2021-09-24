@@ -21,7 +21,9 @@ class Server {
         // ROUTES
         this.paths = {
             auth: '/api/auth',
-            pet: '/api/pets'
+            pet: '/api/pets',
+            shop: '/api/shop',
+            player: '/api/player',
         }
 
         // Conectar a la BBDD
@@ -53,6 +55,8 @@ class Server {
     routes() {
         this.app.use(this.paths.auth, require('../routes/auth.routes'));
         this.app.use(this.paths.pet, require('../routes/pets.routes'));
+        this.app.use(this.paths.shop, require('../routes/shop.routes'));
+        this.app.use(this.paths.player, require('../routes/player.routes'));
     }
 
     sockets() {

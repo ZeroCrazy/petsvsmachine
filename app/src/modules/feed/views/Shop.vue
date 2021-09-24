@@ -1,96 +1,17 @@
 <template>
-  <div class="container">
+  <div class="container animate__animated animate__fadeIn">
     <div class="columns">
-      <div class="column is-3">
-        <div class="card shop-card has-background-warning">
-          <div class="card-content">
-            <div class="content">
-              <div class="shop-product">
-                <div
-                  class="object"
-                  style="
-                    background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png');
-                  "
-                ></div>
-              </div>
-              <p class="title"><b>Pet low cost</b></p>
-              <div class="extrainfo">
-                <span>Duration: <b>4 days</b></span>
-                <span style="float: right">Usage: <b>1</b></span>
-              </div>
-              <p class="description">
-                A temporary pet that gives 300CE/96h, is not affected by weather
-                events.
-              </p>
-              <button class="button shop-button is-fullwidth">150 CE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column is-3">
-        <div class="card shop-card has-background-warning">
-          <div class="card-content">
-            <div class="content">
-              <div class="shop-product">
-                <div
-                  class="object"
-                  :style="`background: url(${require('@/assets/icons/house.png')})`"
-                ></div>
-              </div>
-              <p class="title"><b>House</b></p>
-              <div class="extrainfo">
-                <span>Duration: <b>10 days</b></span>
-                <span style="float: right">Usage: <b>1</b></span>
-              </div>
-              <p class="description">
-                You need a small house to start digging.
-              </p>
-              <button class="button shop-button is-fullwidth">50 CE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column is-3">
-        <div class="card shop-card has-background-warning">
-          <div class="card-content">
-            <div class="content">
-              <div class="shop-product">
-                <div
-                  class="object"
-                  :style="`background: url(${require('@/assets/icons/food.png')})`"
-                ></div>
-              </div>
-              <p class="title"><b>Food</b></p>
-              <div class="extrainfo">
-                <span>Usage: <b>50</b></span>
-              </div>
-              <p class="description">
-                Don't forget to feed your pets every day.
-              </p>
-              <button class="button shop-button is-fullwidth">110 CE</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column is-3">
-        <div class="card shop-card has-background-warning">
-          <div class="card-content">
-            <div class="content">
-              <div class="shop-product">
-                <div
-                  class="object"
-                  :style="`background: url(${require('@/assets/icons/caress.png')})`"
-                ></div>
-              </div>
-              <p class="title"><b>Caress</b></p>
-              <div class="extrainfo">
-                <span>Usage: <b>10 days</b></span>
-              </div>
-              <p class="description">Take away the fear of pets.</p>
-              <button class="button shop-button is-fullwidth">40 CE</button>
-            </div>
-          </div>
-        </div>
+      <div v-for="product in shop" :key="product.id" class="column is-3">
+        <BoxShop
+          :title="product.title"
+          :days="product.days"
+          :utilization="product.utilization"
+          :description="product.description"
+          :cost="product.cost"
+          :image="product.image"
+          :action="product.action"
+          
+        />
       </div>
     </div>
   </div>
@@ -99,30 +20,24 @@
 <script>
 import { /*defineAsyncComponent,*/ onMounted } from "vue";
 import useFeed from "../composables/useFeed";
-import { createEgg } from "../services";
+import BoxShop from "../components/BoxShop.vue";
 
 export default {
   name: "Feed",
   components: {
+    BoxShop,
     // BoxPet: defineAsyncComponent(() => import("../components/BoxPet.vue")),
   },
   setup() {
-    const { getPetsByUser, pets } = useFeed();
+    const { getShop, shop } = useFeed();
 
     onMounted(async () => {
-      const resp = await getPetsByUser();
+      const resp = await getShop();
       if (!resp.ok) alert("error");
     });
 
-    const a = async () => {
-      const resp = await createEgg();
-      const resp2 = await getPetsByUser();
-      console.log(resp, resp2);
-    };
-
     return {
-      pets,
-      a,
+      shop,
     };
   },
 };

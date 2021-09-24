@@ -34,7 +34,7 @@ const getGeneticStats = (rarity) => {
     } else if (rarity === 'uncommon') {
         return getGenetic(100);
     } else if (rarity === 'common') {
-        return getGenetic(50); 
+        return getGenetic(50);
     }
 
 }
@@ -81,9 +81,37 @@ const getRangeStats = (tier) => {
     else if (tier === 'hight') return randomNumber(170, 255);
 }
 
+const getRarityId = (rarity) => {
+    switch (rarity) {
+        case 'common':
+            return 1;
+        case 'uncommon':
+            return 2;
+        case 'rare':
+            return 3;
+        case 'mythic':
+            return 4;
+    }
+  }
+
+const getRoleId = (rarity) => {
+    switch (rarity) {
+        case 'assasin':
+            return 1;
+        case 'tank-suport':
+            return 2;
+        case 'marker':
+            return 3;
+        case 'fighter':
+            return 4;
+    }
+  }
+
 module.exports = {
     getRarity,
     getRole,
     getGeneticStats,
-    getBaseStats
+    getBaseStats,
+    getRarityId,
+    getRoleId
 }

@@ -11,7 +11,8 @@
         </div>
         <div class="land">
           <div class="time">80:13</div>
-          <div class="production">CE: {{production}}/{{hours}}h</div>
+          <div class="production">CE: {{ production }}/{{ hours }}h</div>
+
           <div
             :class="['pet', rarity]"
             :style="`
@@ -30,7 +31,6 @@
 <script>
 // import { ref } from "vue";
 // import { useRouter } from "vue-router";
-
 
 export default {
   name: "BoxPet",
@@ -55,8 +55,7 @@ export default {
   },
 
   setup() {
-    return {
-    };
+    return {};
   },
 };
 </script>
