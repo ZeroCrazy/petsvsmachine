@@ -15,7 +15,6 @@ router.get('',
 
 // TODO: BORRAR
 router.get('/create',
-    validateJWT,
     init);
 
 
