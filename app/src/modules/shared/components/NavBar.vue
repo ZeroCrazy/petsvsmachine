@@ -38,11 +38,7 @@
             <!-- IDIOMA -->
             <div class="navbar-item">
               <a-dropdown :trigger="['hover']">
-                <a
-                  @click.prevent
-                  class="navbar-icon ant-dropdown-link"
-                  href="https://bulma.io/documentation/overview/start/"
-                >
+                <a @click.prevent class="navbar-icon ant-dropdown-link">
                   <i class="left fal fa-globe"></i>
                 </a>
                 <template #overlay>
@@ -80,7 +76,33 @@
               v-if="authStatus"
               class="navbar-item has-dropdown is-hoverable"
             >
-              <a class="navbar-link">
+              <a-dropdown :trigger="['hover']">
+                <a @click.prevent class="navbar-link ant-dropdown-link">
+                  <i class="left fal fa-user-circle"></i>
+                  {{ $t("section.myaccount") }}
+                </a>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item key="0">
+                      <a class="navbar-item">
+                        {{ $t("section.settings") }}
+                      </a>
+                    </a-menu-item>
+                    <a-menu-item key="1">
+                      <a class="navbar-item">
+                        {{ $t("section.wallet") }}:<br />{{ metamask }}
+                      </a>
+                    </a-menu-item>
+                    <a-menu-item key="2">
+                      <a class="navbar-item">
+                        {{ $t("section.logout") }}
+                      </a>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
+
+              <!-- <a class="navbar-link">
                 <i class="left fal fa-user-circle"></i>
                 {{ $t("section.myaccount") }}
               </a>
@@ -95,7 +117,7 @@
                 <a class="navbar-item" @click="onLogout">
                   {{ $t("section.logout") }}
                 </a>
-              </div>
+              </div> -->
             </div>
 
             <div v-else class="navbar-item">

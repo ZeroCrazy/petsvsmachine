@@ -29,7 +29,7 @@
             >
           </div>
           <div style="float: right">
-            Usage: <b>{{ utilization }}</b>
+            Usage: <b>{{ usages }}</b>
           </div>
           <div class="is-clearfix"></div>
         </div>
@@ -53,7 +53,7 @@ export default {
       days: Number,
       required: true,
     },
-    utilization: {
+    usages: {
       days: Number,
       required: true,
     },

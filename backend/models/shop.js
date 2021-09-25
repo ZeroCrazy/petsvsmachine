@@ -9,7 +9,7 @@ class Shop extends Model {
     title;
     image;
     days;
-    utilization;
+    usages;
     description;
     cost;
     action;
@@ -18,7 +18,7 @@ class Shop extends Model {
 
     async get() {
         try {
-            const sql = `SELECT id, title, image, days, utilization, description, cost, action FROM ${this.table};`
+            const sql = `SELECT id, title, image, days, usages, description, cost, action FROM ${this.table};`
             const response = await this.query(sql);
             return response;
         } catch (error) {

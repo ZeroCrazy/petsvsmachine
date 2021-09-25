@@ -5,7 +5,7 @@
         <BoxShop
           :title="product.title"
           :days="product.days"
-          :utilization="product.utilization"
+          :usages="product.usages"
           :description="product.description"
           :cost="product.cost"
           :image="product.image"
