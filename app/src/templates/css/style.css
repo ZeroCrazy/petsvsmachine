@@ -233,6 +233,20 @@ nav {
   margin-left: 1%;
   margin-right: 1%;
 }
+.pet-attr-number {
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  background: #238636;
+  margin-top: -18px;
+  margin-right: -9px;
+  float: right;
+  text-align: center;
+  font-weight: bold;
+  /*font-size: 12px;*/
+  color: #fff;
+}
 
 /*
   Página shop.html
