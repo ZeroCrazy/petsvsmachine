@@ -163,6 +163,7 @@ nav {
   font-size: x-small;
   color: #fff;
   position: absolute;
+  text-transform: capitalize;
 }
 .land .time {
   border-radius: 3px;
@@ -198,16 +199,16 @@ nav {
   background: rgb(255 255 255 / 15%);
   cursor: pointer;
 }
-.pet.common {
+.coordinate.common, .pet.common {
   filter: drop-shadow(#00ffdd 0px 0px 5px);
 }
-.pet.uncommon {
+.coordinate.uncommon, .pet.uncommon {
   filter: drop-shadow(#001eff 0px 0px 5px);
 }
-.pet.rare {
+.coordinate.rare, .pet.rare {
   filter: drop-shadow(#ff0026 0px 0px 5px);
 }
-.pet.mythic {
+.coordinate.mythic, .pet.mythic {
   filter: drop-shadow(#6f00ff 0px 0px 5px);
 }
 
@@ -225,6 +226,12 @@ nav {
 }
 .land-map .land-view.center {
   background-color: #d9ff00;
+}
+.navbar-btn-feed-left {
+  float: left;
+  width: 23%;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 /*
