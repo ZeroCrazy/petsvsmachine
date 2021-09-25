@@ -1,40 +1,30 @@
 <template>
   <div class="container">
-    <div class="columns is-vcentered mt-6">
+    <div class="columns is-vcentered pt-6">
       <div class="column is-4">
-        <LeftMenu />
+        <OptionsMenu />
       </div>
       <div class="column is-5"></div>
       <div class="column is-2">
-        <RightMenu />
+        <ResourcesMenu />
       </div>
     </div>
 
     <router-view />
-    <!-- <router-view v-slot="{ Component, route }">
-    
-        <transition 
-        :enter-active-class="route.meta.enterClass"
-        :leave-active-class="route.meta.leaveClass"
-        mode="out-in"
-      
-       >
-          <component :is="Component" />
-        </transition>
-      </router-view> -->
+  
   </div>
 </template>
 
 <script>
 // import { defineAsyncComponent } from "vue";
-import LeftMenu from "../components/LeftMenu.vue";
-import RightMenu from "../components/RightMenu.vue";
+import OptionsMenu from "../components/OptionsMenu.vue";
+import ResourcesMenu from "../components/ResourcesMenu.vue";
 
 export default {
   name: "Feed",
   components: {
-    LeftMenu,
-    RightMenu,
+    OptionsMenu,
+    ResourcesMenu,
   },
   setup() {
     return {};

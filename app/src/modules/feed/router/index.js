@@ -26,6 +26,15 @@ export default [
                 }
             },
             {
+                path: 'inventory',
+                name: 'feedInventory',
+                component: () => import('../views/Inventory.vue'),
+                meta:{
+                    enterClass: "amimate__animated animate__fadeInLeft",
+                    leaveClass: "amimate__animated animate__fadeOutRight",
+                }
+            },
+            {
                 path: 'lands',
                 name: 'feedLands',
                 component: () => import('../views/Lands.vue'),

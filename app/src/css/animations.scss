@@ -1,0 +1,14 @@
+@keyframes float {
+  0% {
+    filter: drop-shadow(#000 0px 5px 15px 0px);
+    transform: translatey(0px);
+  }
+  50% {
+    filter: drop-shadow(#000 0px 25px 15px 0px);
+    transform: translatey(-3px);
+  }
+  100% {
+    filter: drop-shadow(#000 0px 5px 15px 0px);
+    transform: translatey(0px);
+  }
+}

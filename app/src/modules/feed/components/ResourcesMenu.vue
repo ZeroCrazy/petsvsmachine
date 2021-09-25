@@ -22,7 +22,7 @@ import { onMounted } from "vue";
 import useFeed from "../composables/useFeed";
 
 export default {
-  name: "RightMenu",
+  name: "ResourcesMenu",
   components: {},
   setup() {
     const { resourcesUser: resources, getResourcesUser } = useFeed();

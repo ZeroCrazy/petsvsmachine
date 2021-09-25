@@ -140,7 +140,7 @@ export default {
     const open = ref(false);
     const router = useRouter();
     const route = useRoute();
-    const routerName = ref('');
+    const routerName = ref("");
     const lang = ref("es");
 
     watch(
@@ -208,6 +208,10 @@ export default {
 .navbar {
   height: 56px;
   margin-bottom: 0px;
+}
+
+.navbar-link:not(.is-arrowless)::after {
+  border-color: $primary;
 }
 .navbar-link,
 a.navbar-item {

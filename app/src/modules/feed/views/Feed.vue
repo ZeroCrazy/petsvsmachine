@@ -42,7 +42,6 @@ export default {
     });
 
     onBeforeUnmount(() => {
-      console.log(123);
       transition.value.enter = false;
       transition.value.leave = true;
     });
@@ -64,5 +63,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
+
 </style>
 

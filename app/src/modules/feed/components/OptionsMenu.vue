@@ -24,7 +24,7 @@
 // import { useRouter } from "vue-router";
 
 export default {
-  name: "LeftMenu",
+  name: "OptionsMenu",
   components: {},
 
   setup() {
@@ -39,7 +39,7 @@ export default {
       },
       {
         icon: "fal fa-backpack",
-        route: "feedMain",
+        route: "feedInventory",
       },
       {
         icon: "fal fa-map",

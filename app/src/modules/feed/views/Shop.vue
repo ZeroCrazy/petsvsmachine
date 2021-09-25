@@ -10,7 +10,6 @@
           :cost="product.cost"
           :image="product.image"
           :action="product.action"
-          
         />
       </div>
     </div>
@@ -18,18 +17,16 @@
 </template>
 
 <script>
-import { /*defineAsyncComponent,*/ onMounted } from "vue";
-import useFeed from "../composables/useFeed";
-import BoxShop from "../components/BoxShop.vue";
+import { defineAsyncComponent, onMounted } from "vue";
+import useShop from "../composables/useShop";
 
 export default {
   name: "Feed",
   components: {
-    BoxShop,
-    // BoxPet: defineAsyncComponent(() => import("../components/BoxPet.vue")),
+    BoxShop: defineAsyncComponent(() => import("../components/BoxShop.vue")),
   },
   setup() {
-    const { getShop, shop } = useFeed();
+    const { getShop, shop } = useShop();
 
     onMounted(async () => {
       const resp = await getShop();

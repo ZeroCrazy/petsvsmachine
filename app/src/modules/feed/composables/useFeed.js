@@ -40,10 +40,6 @@ const useFeed = () => {
         return resp
     }
 
-    const getShop = async () => {
-        const resp = await store.dispatch('feed/getShop')
-        return resp
-    }
 
     const getResourcesUser = async () => {
         const resp = await store.dispatch('feed/getResources')
@@ -60,12 +56,10 @@ const useFeed = () => {
 
     return {
         getPetsByUser,
-        getShop,
         getResourcesUser,
         resourcesUser,
         resources,
         pets: computed(() => store.getters['feed/pets']),
-        shop: computed(() => store.getters['feed/shop']),
     }
 }
 

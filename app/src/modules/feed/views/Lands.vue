@@ -5,15 +5,13 @@
         <div class="card has-background-black">
           <div class="card-content">
             <div class="content">
-              <center>
-                <div id="map" class="land-map">
-                  <div
-                    v-for="land in lands"
-                    :key="land.id"
-                    :class="['land-view', land.rarity]"
-                  ></div>
-                </div>
-              </center>
+              <div id="map" class="land-map">
+                <div
+                  v-for="land in lands"
+                  :key="land.id"
+                  :class="['land-view', land.rarity]"
+                ></div>
+              </div>
             </div>
           </div>
         </div>
@@ -34,7 +32,6 @@ export default {
 
     onMounted(async () => {
       const resp = await getLands();
-      console.log(lands);
       if (!resp.ok) alert("error");
     });
 
@@ -47,26 +44,28 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
+.content {
+  text-align: -webkit-center;
+}
 
 .land-map {
-  max-width: 575px;
   display: flow-root;
+  max-width: 575px;
 }
 .land-map .land-view {
-  width: 25px;
-  height: 25px;
+  width: calc(100% / 21) !important;
   background: green;
+  border: 1px solid;
   color: #fff;
   float: left;
-  margin: 1px;
   font-size: xx-small;
-  text-align: center;
+  height: 25px;
   line-height: 25px;
-  /*text-shadow: 1px 1px 0px #000;*/
+  text-align: center;
 }
 .land-map .land-view:hover {
-  filter: brightness(var(--value, 2));
   cursor: pointer;
+  filter: brightness(var(--value, 2));
 }
 .land-map .land-view.busy {
   background: #9f9f9f;

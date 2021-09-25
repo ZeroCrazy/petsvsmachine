@@ -62,6 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
+@import "@/css/animations.scss";
 
 .land {
   background: url("../../../assets/images/land.svg");
@@ -85,14 +86,16 @@ export default {
   width: fit-content;
 }
 .land .pet {
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
   background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+	animation: float 3s ease-in-out infinite;
   height: 40%;
   margin-left: 30%;
   margin-right: 30%;
   position: relative;
   top: 49px;
+  transform: translatey(0px);
   width: 40%;
 }
 .land .coordinate {

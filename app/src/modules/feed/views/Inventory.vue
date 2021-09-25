@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="columns p-0 m-0">
+  <div class="container animate__animated animate__fadeIn">
+    <div class="columns">
       <div class="column is-full">
         <div class="card has-background-black">
           <div class="card-content">
@@ -14,16 +14,13 @@
         </div>
       </div>
     </div>
-
-    <!-- <GridLands /> -->
   </div>
 </template>
 
 <script>
-// import GridLands from "../components/GridLands.vue";
 export default {
-  name: "Dashboard",
-  // components: { GridLands },
+  name: "Inventory",
+  components: {},
   setup() {
     return {};
   },
@@ -33,3 +30,4 @@ export default {
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
 </style>
+
