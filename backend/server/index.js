@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const { SocketController } = require('../sockets/socket_controller');
+const { weatherEvent } = require('../jobs');
 
 class Server {
 
@@ -9,6 +10,7 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.server = require('http').createServer(this.app);
+        this.cron = require('node-cron');
         this.io = require('socket.io')(this.server, {
             cors: {
                 origin: "*",
@@ -37,7 +39,10 @@ class Server {
         this.routes();
 
         // SOCKETS
-        this.sockets()
+        this.sockets();
+
+        // CRONTAB
+        this.cronjobs();
 
     }
 
@@ -65,6 +70,16 @@ class Server {
 
     sockets() {
         this.io.on('connection', (socket) => SocketController(socket, this.io))
+    }
+
+    cronjobs() {
+        // this.cron.schedule('* * * * *', () => {
+        //     console.log('running a task every minute');
+        //   });
+        this.cron.schedule('*/20 * * * *', () => {
+            console.log('running a task every 20minute');
+            weatherEvent();
+        });
     }
 
     listen() {

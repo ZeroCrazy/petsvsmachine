@@ -156,8 +156,41 @@ const get = async (req, res = response) => {
 }
 
 
+// TODO:
+const useHome = async (req, res = response) => {
+
+    const { uid } = req;
+
+    // comprobar que el usuario es el proietario del farm
+    // comprobar que tiene suficientes casas
+    // comprobar que no tiene una casa puesta
+
+}
+
+// TODO:
+const useFood = async (req, res = response) => {
+
+    const { uid } = req;
+
+    // comprobar que el usuario es el proietario del farm
+    // comprobar que tiene suficientes huesos
+    // comprobar que no tiene 2 huesos
+
+}
+
+// TODO:
+const useCress = async (req, res = response) => {
+
+    const { uid } = req;
+
+    // comprobar que el usuario es el proietario del farm
+    // comprobar que tiene suficientes huesos
+
+}
+
 module.exports = {
-    get
+    get,
+    useHome
 
 }
 
