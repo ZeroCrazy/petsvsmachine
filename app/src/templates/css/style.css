@@ -163,10 +163,10 @@ nav {
   overflow: hidden;
 }
 .land .floor {
-  background: url('../images/land2.svg') no-repeat;
+  background: url('../images/land_floor.png') no-repeat;
   background-size: cover;
-  width: 170px;
-  height: 92px;
+  width: 129px;
+  height: 80px;
   margin-left: auto;
   margin-right: auto;
 }
