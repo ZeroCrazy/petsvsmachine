@@ -336,6 +336,20 @@ nav {
 .no-cursor {
   cursor: auto !important;
 }
+.add-pet {
+  width: 100%;
+}
+.add-pet div {
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: calc(2ch - -59px);
+}
+.add-pet i {
+  color: #fff;
+  text-align: center;
+  font-size: 40px;
+}
 
 /*
   Página shop.html
