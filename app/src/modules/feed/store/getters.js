@@ -3,6 +3,10 @@ export const pets = (state) => {
     return state.pets
 }
 
+export const farm = (state) => {
+    return state.farm
+}
+
 export const shop = (state) => {
     return state.shop
 }

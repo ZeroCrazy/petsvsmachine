@@ -1,22 +1,21 @@
 <template>
-  <div class="container">
+  <div class="container pt-5">
     <div class="columns is-vcentered pt-6">
       <div class="column is-4">
         <OptionsMenu />
       </div>
-      <div class="column is-5"></div>
-      <div class="column is-2">
+      <div class="column is-4"></div>
+      <div class="column is-4">
         <ResourcesMenu />
       </div>
     </div>
-
-    <router-view />
-  
+    <div class="pt-4">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
-// import { defineAsyncComponent } from "vue";
 import OptionsMenu from "../components/OptionsMenu.vue";
 import ResourcesMenu from "../components/ResourcesMenu.vue";
 

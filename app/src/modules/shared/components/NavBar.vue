@@ -94,30 +94,13 @@
                       </a>
                     </a-menu-item>
                     <a-menu-item key="2">
-                      <a class="navbar-item">
+                      <a class="navbar-item" @click="onLogout">
                         {{ $t("section.logout") }}
                       </a>
                     </a-menu-item>
                   </a-menu>
                 </template>
               </a-dropdown>
-
-              <!-- <a class="navbar-link">
-                <i class="left fal fa-user-circle"></i>
-                {{ $t("section.myaccount") }}
-              </a>
-
-              <div class="navbar-dropdown is-boxed">
-                <a href="settings.html" class="navbar-item">
-                  {{ $t("section.settings") }}
-                </a>
-                <a class="navbar-item">
-                  {{ $t("section.wallet") }}:<br />{{ metamask }}
-                </a>
-                <a class="navbar-item" @click="onLogout">
-                  {{ $t("section.logout") }}
-                </a>
-              </div> -->
             </div>
 
             <div v-else class="navbar-item">

@@ -1,4 +1,5 @@
 const Model = require("./model");
+const PlayerResources = require('../models/playerResources');
 
 class Player extends Model {
 
@@ -14,26 +15,46 @@ class Player extends Model {
     updated_at;
 
     async register() {
+        const conn = await this.getConnection();
         try {
+            conn.beginTransaction()
             const sql = `INSERT INTO ${this.table} (username, email, password) VALUES (?, ?, ?);`
             const args = [this.username, this.email, this.password];
-            const response = await this.query(sql, args);
-            return response.insertId;;
+            const response = await this.query(sql, args, conn);
+            const id = response.insertId;
+            const sql2 = `INSERT INTO ${PlayerResources.table} (player_id, coins, house, food, cress) VALUES (?, ?, ?, ?, ?);`
+            const args2 = [id, 0, 0, 0, 0];
+            const response2 = await this.query(sql2, args2, conn);
+            conn.commit();
+            return id
+
         } catch (error) {
-            console.log(error)
+            conn.rollback();
             return false
+        } finally {
+            conn.release();
         }
+
     }
     async registerMetamask() {
+        const conn = await this.getConnection();
         try {
+            conn.beginTransaction()
             const sql = `INSERT INTO ${this.table} (metamask_address) VALUES (?);`
             const args = [this.metamask_address];
-            const response = await this.query(sql, args);
+            const response = await this.query(sql, args, conn);
             this.id = response.insertId;
+            const sql2 = `INSERT INTO ${PlayerResources.table} (player_id, coins, house, food, cress) VALUES (?, ?, ?, ?, ?);`
+            const args2 = [this.id, 0, 0, 0, 0];
+            const response2 = await this.query(sql2, args2, conn);
+            conn.commit();
             return true;
         } catch (error) {
+            conn.rollback();
             return false
-        } 
+        } finally {
+            conn.release();
+        }
     }
 
     async existUsername() {
@@ -54,7 +75,7 @@ class Player extends Model {
             return response;
         } catch (error) {
             return false
-        } 
+        }
     }
 
     async login() {
@@ -66,7 +87,7 @@ class Player extends Model {
             else return response[0];
         } catch (error) {
             return false
-        } 
+        }
     }
 
     async loginMetamask() {
@@ -78,7 +99,7 @@ class Player extends Model {
             else return { ok: true, user: response[0] };
         } catch (error) {
             return { ok: false }
-        } 
+        }
     }
 
     async updateLogin(ip) {
@@ -93,7 +114,7 @@ class Player extends Model {
             else return false;
         } catch (error) {
             return false
-        } 
+        }
     }
 
     async get() {
@@ -105,7 +126,7 @@ class Player extends Model {
             else return false;
         } catch (error) {
             return false
-        } 
+        }
     }
 
 

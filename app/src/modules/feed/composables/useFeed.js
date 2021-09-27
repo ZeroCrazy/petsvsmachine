@@ -35,10 +35,10 @@ const useFeed = () => {
 
     const resources = computed(() => store.getters['feed/resources']);
 
-    const getPetsByUser = async () => {
-        const resp = await store.dispatch('feed/getPetsUser')
-        return resp
-    }
+    // const getPetsByUser = async () => {
+    //     const resp = await store.dispatch('feed/getPetsUser')
+    //     return resp
+    // }
 
 
     const getResourcesUser = async () => {
@@ -55,11 +55,11 @@ const useFeed = () => {
 
 
     return {
-        getPetsByUser,
+        // getPetsByUser,
         getResourcesUser,
         resourcesUser,
         resources,
-        pets: computed(() => store.getters['feed/pets']),
+        // pets: computed(() => store.getters['feed/pets']),
     }
 }
 

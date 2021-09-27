@@ -69,12 +69,41 @@ const getByPlayer = async (req, res = response) => {
 
 }
 
+const getDetails = async (req, res = response) => {
+
+    // Obtener el usuario
+    const { uid } = req;
+    // Obtener id
+    const { id } = req.params;
+
+    // Obtener pets del usuario
+    const pet = new Pet();
+    pet.id = id;
+    pet.player_id = uid;
+    const data = await pet.get();
+
+    if (!data) return resp(res, 404, { msg: "Can't get pets" })
+    if (data.length === 0) return resp(res, 200, [])
+
+    const pets = data.map((row) => {
+        return {
+            ...row,
+            hours: row.days * 7
+        }
+    })
+   
+
+    return resp(res, 200, ...pets)
+
+}
+
 
 
 
 module.exports = {
     create,
-    getByPlayer
+    getByPlayer,
+    getDetails
 
 }
 

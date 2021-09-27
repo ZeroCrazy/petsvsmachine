@@ -8,13 +8,43 @@ const pool = mysql.createPool({
 });
 
 
-const query = (sql, args) => {
+const query = (sql, args, conn = null) => {
   return new Promise((resolve, reject) => {
-    pool.query(sql, args, (error, response) => {
+
+    if (conn) {
+      conn.query(sql, args, (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
+        }
+      }
+      )
+    } else {
+      pool.query(sql, args, (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
+        }
+      })
+
+    }
+
+  })
+}
+
+const getConn = () => {
+  return new Promise((resolve, reject) => {
+    pool.getConnection((error, connection) => {
       if (error) {
+        connection.rollback(() => {
+          connection.release();
+          //Failure
+        });
         reject(error);
       } else {
-        resolve(response);
+        resolve(connection);
       }
     }
     )
@@ -22,6 +52,8 @@ const query = (sql, args) => {
 }
 
 
+
 module.exports = {
-  query
+  query,
+  getConn
 }

@@ -1,10 +1,19 @@
-import { getPetsByUser, getShopProducts, getResourcesUser, getAllLands } from '../services'
+import { getPetsByUser, getShopProducts, getResourcesUser, getAllLands, getFarmByUser } from '../services'
 
 export const getPetsUser = async ({ commit }) => {
 
     const pets = await getPetsByUser();
     if (!pets) return { ok: false }
     commit('setPets', pets);
+    return { ok: true }
+
+}
+
+export const getFarmUser = async ({ commit }) => {
+
+    const farm = await getFarmByUser();
+    if (!farm) return { ok: false }
+    commit('setFarm', farm);
     return { ok: true }
 
 }

@@ -47,6 +47,22 @@ class Pet extends Model {
         } 
     }
 
+    async get() {
+        try {
+            const sql = `SELECT t1.id, t1.player_id, t1.image, t2.name AS rarity, t1.production, t1.days,
+            t1.hp, t1.attack, t1.armor, t1.speed, t1.is_shop, t1.is_open, t1.open_at 
+            FROM ${this.table} t1
+            LEFT JOIN ${this.tables.rarity} t2 ON t1.rarity_id = t2.id
+            WHERE t1.id = ? AND t1.player_id = ?;`
+            const args = [this.id, this.player_id];
+            const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        } 
+    }
+
 
 
 }

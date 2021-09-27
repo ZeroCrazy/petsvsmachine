@@ -25,6 +25,7 @@ class Server {
             shop: '/api/shop',
             player: '/api/player',
             land: '/api/lands',
+            farm: '/api/farm',
         }
 
         // Conectar a la BBDD
@@ -59,6 +60,7 @@ class Server {
         this.app.use(this.paths.shop, require('../routes/shop.routes'));
         this.app.use(this.paths.player, require('../routes/player.routes'));
         this.app.use(this.paths.land, require('../routes/land.routes'));
+        this.app.use(this.paths.farm, require('../routes/farm.routes'));
     }
 
     sockets() {

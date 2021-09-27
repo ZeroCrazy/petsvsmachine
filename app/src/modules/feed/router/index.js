@@ -4,44 +4,33 @@ export default [
     {
         path: '/feed',
         name: 'feed',
-        redirect: {name:'feedMain'},
-        component: () => import('../layouts/FeedLayout.vue'),
+        redirect: { name: 'feedMain' },
+        component: () => import('../layouts/Feed.vue'),
         children: [
             {
-                path: 'home',
+                path: 'farm',
                 name: 'feedMain',
-                component: () => import('../views/Feed.vue'),
-                meta:{
-                    enterClass: "amimate__animated animate__fadeInLeft",
-                    leaveClass: "amimate__animated animate__fadeOutRight",
-                }
+                component: () => import('../views/Farm.vue'),
             },
             {
                 path: 'shop',
                 name: 'feedShop',
                 component: () => import('../views/Shop.vue'),
-                meta:{
-                    enterClass: "amimate__animated animate__fadeInLeft",
-                    leaveClass: "amimate__animated animate__fadeOutRight",
-                }
             },
             {
                 path: 'inventory',
                 name: 'feedInventory',
                 component: () => import('../views/Inventory.vue'),
-                meta:{
-                    enterClass: "amimate__animated animate__fadeInLeft",
-                    leaveClass: "amimate__animated animate__fadeOutRight",
-                }
             },
             {
                 path: 'lands',
                 name: 'feedLands',
                 component: () => import('../views/Lands.vue'),
-                meta:{
-                    enterClass: "amimate__animated animate__fadeInLeft",
-                    leaveClass: "amimate__animated animate__fadeOutRight",
-                }
+            },
+            {
+                path: 'details/:id',
+                name: 'feedDetails',
+                component: () => import('../views/Details.vue'),
             }
         ]
     },

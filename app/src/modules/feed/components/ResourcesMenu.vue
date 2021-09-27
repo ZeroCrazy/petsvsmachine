@@ -1,11 +1,11 @@
 <template>
   <div class="columns is-mobile">
     <div
-      class="column has-text-centered"
+      class="column has-text-centered p-0 ml-2 "
       v-for="{ id, icon, value } in resources"
       :key="id"
     >
-      <a href="shop.html" class="button is-small is-danger">
+      <a class="button is-small is-danger is-fullwidth">
         <span v-if="icon" class="icon is-small">
           <i :class="icon"></i>
         </span>
@@ -40,4 +40,8 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
+
+.column:last-child {
+  margin-right: 1rem !important;
+}
 </style>

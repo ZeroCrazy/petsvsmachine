@@ -3,13 +3,14 @@
     <div
       v-for="({ icon, route: routeName }, index) in options"
       :key="index"
-      class="column has-text-centered"
+      class="column has-text-centered p-0 ml-2"
     >
       <router-link
         :to="{ name: routeName }"
         :class="{
           button: true,
           'is-large': true,
+          'is-fullwidth': true,
           'is-primary': true,
           'is-active': $route.name === routeName,
         }"
@@ -58,5 +59,9 @@ export default {
 
 .button:focus {
   box-shadow: none !important;
+}
+
+.column:first-child {
+  margin-left: 1rem !important;
 }
 </style>

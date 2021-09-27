@@ -3,25 +3,39 @@
     <div class="card-content">
       <div class="content">
         <div class="pet-options">
-          <button class="mb-0 box"><i class="fal fa-home-alt"></i></button>
-          <button class="mb-0 box"><i class="fal fa-bone"></i></button>
+          <button class="mb-0 box">
+            <div v-if="haveHouse" class="pet-attr-number"><span>1</span></div>
+            <i class="fal fa-home-alt"></i>
+          </button>
+          <button class="mb-0 box">
+            <div v-if="haveBone" class="pet-attr-number">
+              <span>{{ startBone ? 2 : 1 }}</span>
+            </div>
+            <i class="fal fa-bone"></i>
+          </button>
           <button class="mb-0 box"><i class="fal fa-hand-paper"></i></button>
-          <button class="mb-0 box"><i class="fal fa-eye"></i></button>
+          <button
+            @click="
+              $router.push({ name: 'feedDetails', params: { id: pet_id } })
+            "
+            class="mb-0 box"
+          >
+            <i class="fal fa-eye"></i>
+          </button>
           <button class="mb-0 box"><i class="fal fa-trash-alt"></i></button>
         </div>
         <div class="land">
-          <div class="time">80:13</div>
-          <div class="production">CE: {{ production }}/{{ hours }}h</div>
+          <div class="time">{{ timer }}</div>
+          <div class="production">CE: {{ pet_ce }}/{{ pet_time }}h</div>
 
           <div
-            :class="['pet', rarity]"
+            :class="['pet', pet_rarity]"
             :style="`
-              background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${Math.floor(
-                Math.random() * 150
-              )}.png');
+              background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png');
             `"
           ></div>
-          <div class="coordinate">20, -15</div>
+          <div :class="['coordinate', land_rarity]">{{ land_rarity }}</div>
+          <!-- Rareza de la land -->
         </div>
       </div>
     </div>
@@ -29,33 +43,27 @@
 </template>
 
 <script>
-// import { ref } from "vue";
-// import { useRouter } from "vue-router";
+import { ref, computed } from "vue";
+import { propsBoxPet } from "../interfaces/boxPet";
 
 export default {
   name: "BoxPet",
   components: {},
-  props: {
-    rarity: {
-      type: String,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: true,
-    },
-    production: {
-      type: Number,
-      required: true,
-    },
-    hours: {
-      type: Number,
-      required: true,
-    },
-  },
+  props: propsBoxPet,
 
-  setup() {
-    return {};
+  setup(props) {
+    const calcTime = ref(false);
+
+    calcTime.value = props.minsToComplete + props.extraTime;
+
+    const timer = computed(() => {
+      const hours = Math.floor(calcTime.value / 60);
+      const mins = calcTime.value % 60;
+
+      return `${hours}:${mins}`;
+    });
+
+    return { timer };
   },
 };
 </script>
@@ -89,7 +97,7 @@ export default {
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
-	animation: float 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
   height: 40%;
   margin-left: 30%;
   margin-right: 30%;
@@ -99,16 +107,17 @@ export default {
   width: 40%;
 }
 .land .coordinate {
-  background-color: rgb(0 0 0 / 50%);
   border-radius: 3px;
   border: 2px solid rgb(0 0 0 / 15%);
-  bottom: 24px;
-  color: $text;
-  font-size: x-small;
-  margin: 0px 0px 10px 10px;
-  padding: 1px 7px;
-  position: absolute;
+  background-color: rgb(0 0 0 / 50%);
   width: fit-content;
+  padding: 1px 7px;
+  bottom: 24px;
+  margin: 0px 0px 10px 10px;
+  font-size: x-small;
+  color: #fff;
+  position: absolute;
+  text-transform: capitalize;
 }
 .land .time {
   background: $primary;
@@ -147,15 +156,35 @@ export default {
   background: rgb(255 255 255 / 15%);
   cursor: pointer;
 }
+
+.pet-attr-number {
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  background: #238636;
+  margin-top: -18px;
+  margin-right: -9px;
+  float: right;
+  text-align: center;
+  font-weight: bold;
+  /*font-size: 12px;*/
+  color: #fff;
+}
+
+.coordinate.common,
 .pet.common {
   filter: drop-shadow($common 0px 0px 5px);
 }
+.coordinate.uncommon,
 .pet.uncommon {
   filter: drop-shadow($uncommon 0px 0px 5px);
 }
+.coordinate.rare,
 .pet.rare {
   filter: drop-shadow($rare 0px 0px 5px);
 }
+.coordinate.mythic,
 .pet.mythic {
   filter: drop-shadow($mythic 0px 0px 5px);
 }
