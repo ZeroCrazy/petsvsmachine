@@ -341,9 +341,10 @@ nav {
 }
 .add-pet div {
   width: max-content;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: calc(2ch - -59px);
+  line-height: 24ch;
 }
 .add-pet i {
   color: #fff;
