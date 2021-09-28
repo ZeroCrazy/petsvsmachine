@@ -68,7 +68,8 @@
 <script>
 import { ref, computed } from "vue";
 import { propsBoxPet } from "../interfaces/boxPet";
-
+import { notification } from "ant-design-vue";
+import i18n from "@/i18n/i18n";
 import useFarm from "../composables/useFarm";
 
 export default {
@@ -81,11 +82,25 @@ export default {
 
     const feed = async (resource) => {
       if (resource === "food") {
-        if (props.bones >= 2) return;
+        if (props.bones >= 2) {
+          // Mostrar notificacion
+          notification.info({
+            message: i18n.t("farm.maxFood"),
+            duration: 3,
+          });
+          return;
+        }
         const resp = await feedPet(props.id);
         if (resp.ok) return true;
       } else if (resource === "house") {
-        if (props.haveHouse) return;
+        if (props.haveHouse){
+          // Mostrar notificacion
+          notification.info({
+            message: i18n.t("farm.maxHouse"),
+            duration: 3,
+          });
+          return;
+        };
         const resp = await putHouse(props.id);
         if (resp.ok) return true;
       } else if (resource === "cress") {

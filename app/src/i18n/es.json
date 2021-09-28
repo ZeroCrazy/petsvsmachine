@@ -40,5 +40,9 @@
         "existUsername": "Ya existe una cuenta con ese usuario",
         "existEmail": "Ya existe una cuenta con ese email",
         "passwordFormat": "La contraseña debe tener 6 caracteres"
+    },
+    "farm": {
+        "maxFood": "Ya has alimentado a la pet por hoy",
+        "maxHouse": "Esta pet ya tiene una casa"
     }
 }
