@@ -83,7 +83,15 @@
       </div>
     </nav>
     <!-- Final del navbar -->
-
+    <!-- Inicio del Subnavbar -->
+    <div class="sky">
+      <div class="cloud variant-1"></div>
+      <div class="cloud variant-2"></div>
+      <div class="cloud variant-3"></div>
+      <div class="cloud variant-4"></div>
+      <div class="cloud variant-5"></div>
+      <div class="cloud variant-6"></div>
+    </div>
     <div class="container">
       
       <div class="columns is-vcentered">
@@ -102,43 +110,46 @@
         <div class="column is-3">
           <div class="columns is-mobile">
             <div class="column has-text-centered">
-              <a class="button is-small is-danger navbar-btn-feed-left">
+              <div class="is-small navbar-btn-feed-left no-cursor btn-resources production">
                 <span class="icon is-small">
                   CE
                 </span>
                 <b>60</b>
-              </a>
-              <a class="button is-small is-danger navbar-btn-feed-left">
+              </div>
+              <div class="is-small navbar-btn-feed-left no-cursor btn-resources house">
                 <span class="icon is-small">
                   <i class="fal fa-home-alt"></i>
                 </span>
                 <b>60</b>
-              </a>
-              <a class="button is-small is-danger navbar-btn-feed-left">
+              </div>
+              <div class="is-small navbar-btn-feed-left no-cursor btn-resources food">
                 <span class="icon is-small">
                   <i class="fal fa-bone"></i>
                 </span>
                 <b>60</b>
-              </a>
-              <a class="button is-small is-danger navbar-btn-feed-left">
+              </div>
+              <div class="is-small navbar-btn-feed-left no-cursor btn-resources caress">
                 <span class="icon is-small">
                   <i class="fal fa-hand-paper"></i>
                 </span>
                 <b>60</b>
-              </a>
+              </div>
             </div>
             
           </div>
         </div>
       </div>
+      <!-- Final del Subnavbar -->
       <div class="columns is-multiline">
+
+
         <div class="column is-4">
-          <div class="card has-background-link">
+          <div class="card">
             <div class="card-content">
               <div class="content">
                 <div class="pet-options">
-                  <button class="box"><div class="pet-attr-number"><span>1</span></div> <i class="fal fa-home-alt"></i></button>
-                  <button class="box"><div class="pet-attr-number"><span>2</span></div> <i class="fal fa-bone"></i></button>
+                  <button class="box"><i class="fal fa-home-alt"></i></button>
+                  <button class="box"><i class="fal fa-bone"></i></button>
                   <button class="box"><i class="fal fa-hand-paper"></i></button>
                   <button class="box"><i class="fal fa-eye"></i></button>
                   <button class="box"><i class="fal fa-trash-alt"></i></button>
@@ -147,75 +158,147 @@
                   <div class="time">80:13</div>
                   <div class="production">CE: 7182/480h</div>
                   <div class="pet common" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png');"></div>
-                  <div class="coordinate rare">Rare</div> <!-- Rareza de la land -->
+                  <div class="coordinate rare">Rare</div>
+                  <div class="resources">
+                    <div class="coordinate have-house"><i class="fal fa-home-alt"></i></div>
+                    <div class="coordinate have-food"><i class="fal fa-bone"></i></div>
+                    <div class="coordinate have-caress"><i class="fal fa-hand-paper"></i></div>
+                  </div>
+                  <div class="floor"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="column is-4">
-          <div class="card has-background-link">
+          <div class="card">
             <div class="card-content">
               <div class="content">
                 <div class="pet-options">
-                  <button class="box"><div class="pet-attr-number"><span>1</span></div> <i class="fal fa-home-alt"></i></button>
-                  <button class="box"><div class="pet-attr-number"><span>2</span></div> <i class="fal fa-bone"></i></button>
+                  <button class="box"><i class="fal fa-home-alt"></i></button>
+                  <button class="box"><i class="fal fa-bone"></i></button>
                   <button class="box"><i class="fal fa-hand-paper"></i></button>
                   <button class="box"><i class="fal fa-eye"></i></button>
                   <button class="box"><i class="fal fa-trash-alt"></i></button>
                 </div>
                 <div class="land">
-                  <div class="time">14:10</div>
-                  <div class="production">CE: 850/140h</div>
-                  <div class="pet uncommon" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png');"></div>
-                  <div class="coordinate rare">Rare</div> <!-- Rareza de la land -->
+                  <div class="time">80:13</div>
+                  <div class="production">CE: 7182/480h</div>
+                  <div class="pet common" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png');"></div>
+                  <div class="coordinate rare">Rare</div>
+                  <div class="resources">
+                    <div class="coordinate have-light flashit"><i class="fal fa-bolt"></i></div>
+                    <div class="coordinate have-house"><i class="fal fa-home-alt"></i></div>
+                    <div class="coordinate have-food"><i class="fal fa-bone"></i></div>
+                    <div class="coordinate have-caress"><i class="fal fa-hand-paper"></i></div>
+                  </div>
+                  <div class="floor"></div>
+                </div>
+                <div class="rain"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-content">
+              <div class="content">
+                <div class="pet-options">
+                  <button class="box"><i class="fal fa-home-alt"></i></button>
+                  <button class="box"><i class="fal fa-bone"></i></button>
+                  <button class="box"><i class="fal fa-hand-paper"></i></button>
+                  <button class="box"><i class="fal fa-eye"></i></button>
+                  <button class="box"><i class="fal fa-trash-alt"></i></button>
+                </div>
+                <div class="land">
+                  <div class="time">80:13</div>
+                  <div class="production">CE: 7182/480h</div>
+                  <div class="pet common" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png');"></div>
+                  <div class="coordinate rare">Rare</div>
+                  <div class="resources">
+                    <div class="coordinate have-house"><i class="fal fa-home-alt"></i></div>
+                    <div class="coordinate have-food"><i class="fal fa-bone"></i></div>
+                    <div class="coordinate have-caress"><i class="fal fa-hand-paper"></i></div>
+                  </div>
+                  <div class="floor"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="column is-4">
-          <div class="card has-background-link">
+          <div class="card">
             <div class="card-content">
               <div class="content">
                 <div class="pet-options">
-                  <button class="box"><div class="pet-attr-number"><span>1</span></div> <i class="fal fa-home-alt"></i></button>
-                  <button class="box"><div class="pet-attr-number"><span>2</span></div> <i class="fal fa-bone"></i></button>
+                  <button class="box"><i class="fal fa-home-alt"></i></button>
+                  <button class="box"><i class="fal fa-bone"></i></button>
                   <button class="box"><i class="fal fa-hand-paper"></i></button>
                   <button class="box"><i class="fal fa-eye"></i></button>
                   <button class="box"><i class="fal fa-trash-alt"></i></button>
                 </div>
                 <div class="land">
-                  <div class="time">14:10</div>
-                  <div class="production">CE: 850/140h</div>
-                  <div class="pet uncommon" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png');"></div>
-                  <div class="coordinate rare">Rare</div> <!-- Rareza de la land -->
+                  <div class="time">80:13</div>
+                  <div class="production">CE: 7182/480h</div>
+                  <div class="pet common" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png');"></div>
+                  <div class="coordinate rare">Rare</div>
+                  <div class="resources">
+                    <div class="coordinate have-house"><i class="fal fa-home-alt"></i></div>
+                    <div class="coordinate have-food"><i class="fal fa-bone"></i></div>
+                    <div class="coordinate have-caress"><i class="fal fa-hand-paper"></i></div>
+                  </div>
+                  <div class="floor"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="column is-4">
-          <div class="card has-background-link">
+          <div class="card">
             <div class="card-content">
               <div class="content">
                 <div class="pet-options">
-                  <button class="box"><div class="pet-attr-number"><span>1</span></div> <i class="fal fa-home-alt"></i></button>
-                  <button class="box"><div class="pet-attr-number"><span>2</span></div> <i class="fal fa-bone"></i></button>
+                  <button class="box"><i class="fal fa-home-alt"></i></button>
+                  <button class="box"><i class="fal fa-bone"></i></button>
                   <button class="box"><i class="fal fa-hand-paper"></i></button>
                   <button class="box"><i class="fal fa-eye"></i></button>
                   <button class="box"><i class="fal fa-trash-alt"></i></button>
                 </div>
                 <div class="land">
-                  <div class="time">14:10</div>
-                  <div class="production">CE: 9850/140h</div>
-                  <div class="pet float rare" style="background: url('images/pets/a1.png');"></div>
-                  <div class="coordinate rare">Rare</div> <!-- Rareza de la land -->
+                  <div class="time">80:13</div>
+                  <div class="production">CE: 7182/480h</div>
+                  <div class="pet common" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png');"></div>
+                  <div class="coordinate rare">Rare</div>
+                  <div class="resources">
+                    <div class="coordinate have-house"><i class="fal fa-home-alt"></i></div>
+                    <div class="coordinate have-food"><i class="fal fa-bone"></i></div>
+                    <div class="coordinate have-caress"><i class="fal fa-hand-paper"></i></div>
+                  </div>
+                  <div class="floor"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <div class="column is-4">
+          <div class="card">
+            <div class="card-content">
+              <div class="content">
+                <div class="land add-pet">
+                  <a href="inventory.html">
+                    <div>
+                      <i class="fal fa-plus-circle"></i>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+
       </div>
 
 
