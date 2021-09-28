@@ -18,3 +18,28 @@ export const setResources = (state, resources) => {
 export const setLands = (state, lands) => {
     state.lands = lands
 }
+
+
+export const usageResource = (state, resource) => {
+    state.resources[resource] = state.resources[resource] - 1;
+}
+
+export const petUpdate = (state, data) => {
+
+    for (let i in state.farm) {
+        if (data.id === state.farm[i].id) {
+            if (data.action === 'food') {
+                state.farm[i].bones++;
+            } else if (data.action === 'house') {
+                state.farm[i].haveHouse = true;
+            } else if (data.action === 'cress') {
+                state.farm[i].isAfraid = false;
+            }
+            break;
+        }
+    }
+
+}
+
+
+

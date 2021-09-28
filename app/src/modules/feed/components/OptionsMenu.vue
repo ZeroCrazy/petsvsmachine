@@ -1,17 +1,15 @@
 <template>
   <div class="columns is-mobile">
-    <div
-      v-for="({ icon, route: routeName }, index) in options"
-      :key="index"
-      class="column has-text-centered p-0 ml-2"
-    >
+    <div class="column has-text-centered">
       <router-link
+        v-for="({ icon, route: routeName }, index) in options"
+        :key="index"
         :to="{ name: routeName }"
         :class="{
           button: true,
           'is-large': true,
-          'is-fullwidth': true,
           'is-primary': true,
+          'navbar-btn-feed-left': true,
           'is-active': $route.name === routeName,
         }"
         ><i :class="icon"></i
@@ -61,7 +59,14 @@ export default {
   box-shadow: none !important;
 }
 
-.column:first-child {
-  margin-left: 1rem !important;
+.navbar-btn-feed-left {
+  float: left;
+  width: 23%;
+  margin-left: 1%;
+  margin-right: 1%;
 }
+
+// .column:first-child {
+//   margin-left: 1rem !important;
+// }
 </style>

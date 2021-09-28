@@ -1,16 +1,26 @@
 <template>
-  <div class="container pt-5">
-    <div class="columns is-vcentered pt-6">
-      <div class="column is-4">
-        <OptionsMenu />
-      </div>
-      <div class="column is-4"></div>
-      <div class="column is-4">
-        <ResourcesMenu />
-      </div>
+  <div>
+    <div class="sky">
+      <div class="cloud variant-1"></div>
+      <div class="cloud variant-2"></div>
+      <div class="cloud variant-3"></div>
+      <div class="cloud variant-4"></div>
+      <div class="cloud variant-5"></div>
+      <div class="cloud variant-6"></div>
     </div>
-    <div class="pt-4">
-      <router-view />
+    <div class="container pt-5">
+      <div class="columns is-vcentered pt-6">
+        <div class="column is-4">
+          <OptionsMenu />
+        </div>
+        <div class="column is-4"></div>
+        <div class="column is-4">
+          <ResourcesMenu />
+        </div>
+      </div>
+      <div class="pt-4">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -33,100 +43,77 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
+@import "@/css/animations.scss";
 
-.land {
-  background: url("../../../assets/images/land.svg");
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  width: 80%;
-  border-radius: 3px;
-  height: 201px;
-  background-color: rgb(255 255 255 / 5%);
-  border: 1px solid rgb(255 255 255 / 20%);
-}
-.land .production {
-  border-radius: 3px;
-  border: 2px solid rgb(0 0 0 / 15%);
-  background-color: rgb(0 0 0 / 50%);
-  width: fit-content;
-  padding: 1px 7px;
-  float: right;
-  margin: 10px 10px 0px 0px;
-  font-size: x-small;
-  color: $text;
-}
-.land .pet {
-  /*background: url('images/pets/dog.png');*/
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  width: 40%;
-  height: 40%;
-  margin-left: 30%;
-  margin-right: 30%;
-  position: relative;
-  top: 49px;
-}
-.land .coordinate {
-  border-radius: 3px;
-  border: 2px solid rgb(0 0 0 / 15%);
-  background-color: rgb(0 0 0 / 50%);
-  width: fit-content;
-  padding: 1px 7px;
-  bottom: 24px;
-  margin: 0px 0px 10px 10px;
-  font-size: x-small;
-  color: $text;
-  position: absolute;
-}
-.land .time {
-  border-radius: 3px;
-  border: 2px solid rgb(0 0 0 / 15%);
-  width: fit-content;
-  padding: 0px 2px;
-  margin: 10px 0px 1px 10px;
-  font-size: x-small;
-  color: $text;
-  float: left;
-  background: $primary;
-}
-.shop-options,
-.pet-options {
-  width: 19%;
-  height: 201px;
-  float: right;
-}
-.shop-options .box,
-.pet-options .box {
-  /*width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;*/
+
+.sky {
+  background: linear-gradient(#00b3e8 0, #00a2d3 100%);
+  box-shadow: 0 0 20px #d0e4f2;
+  position: fixed;
   width: 100%;
-  margin-left: 5px;
-  border-radius: 3px;
-  background: rgb(255 255 255 / 5%);
-  border: 1px solid rgb(255 255 255 / 20%);
-  padding: 8.7px 0px;
-  text-align: center;
-  color: $text;
-  margin-bottom: 5px;
+  height: 100vh;
+  top: 0px;
 }
-.shop-options .box:hover,
-.pet-options .box:hover {
-  background: rgb(255 255 255 / 15%);
-  cursor: pointer;
+.sky .cloud {
+  background: #ebf5fc;
+  border-radius: 200px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  height: 39px;
+  margin-right: -102px;
+  position: absolute;
+  right: 0%;
+  width: 102px;
 }
-.pet.common {
-  filter: drop-shadow($common 0px 0px 5px);
+.sky .cloud.variant-1 {
+  top: 33%;
+  -webkit-transform: scale(0.2);
+  -webkit-animation: clouds-in-out 16s 0s infinite linear;
 }
-.pet.uncommon {
-  filter: drop-shadow($uncommon 0px 0px 5px);
+.sky .cloud.variant-2 {
+  top: 45%;
+  -webkit-transform: scale(0.4);
+  -webkit-animation: clouds-in-out 17s 2s infinite linear;
 }
-.pet.rare {
-  filter: drop-shadow($rare 0px 0px 5px);
+.sky .cloud.variant-3 {
+  top: 63%;
+  -webkit-transform: scale(0.6);
+  -webkit-animation: clouds-in-out 18s 4s infinite linear;
 }
-.pet.mythic {
-  filter: drop-shadow($mythic 0px 0px 5px);
+.sky .cloud.variant-4 {
+  top: 36%;
+  -webkit-transform: scale(0.8);
+  -webkit-animation: clouds-in-out 19s 6s infinite linear;
 }
+.sky .cloud.variant-5 {
+  top: 72%;
+  -webkit-transform: scale(1);
+  -webkit-animation: clouds-in-out 20s 8s infinite linear;
+}
+.sky .cloud.variant-6 {
+  top: 81%;
+  -webkit-transform: scale(0.7);
+  -webkit-animation: clouds-in-out 30s 3s infinite linear;
+}
+.sky .cloud:before, .sky .cloud:after {
+  background: #ebf5fc;
+  border-radius: 100px;
+  content: '';
+  height: 45px;
+  left: 10px;
+  position: absolute;
+  top: -10px;
+  width: 60px;
+  -webkit-transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+.sky .cloud:after {
+  height: 60px;
+  left: auto;
+  right: 12px;
+  top: -24px;
+  width: 60px;
+}
+
 </style>
 

@@ -35,11 +35,55 @@ class Farm extends Model {
         }
     }
 
+    async isOwner(player_id) {
+        try {
+            const sql = `SELECT t1.* 
+            FROM ${Farm.table} t1        
+            INNER JOIN pet_list t2 ON t1.pet_id = t2.id
+            WHERE t2.player_id = ? AND t1.id = ?
+            ;`
+            const args = [player_id, this.id];
+            const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
+    async haveHome(farm_id) {
+        try {
+            const sql = `SELECT id 
+            FROM petsvsmachine.farm_events
+            WHERE farm_id = ? AND event_id = 1 AND finish_at > current_timestamp()`
+            const args = [farm_id];
+            const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
     async useHome(farm_id) {
         try {
             const hours = `SELECT hours FROM shop_list WHERE id = 2`
             const sql = `INSERT INTO farm_events (farm_id, event_id, start_at, finish_at)
              VALUES (?, 1, CURRENT_TIMESTAMP(), ADDDATE(CURRENT_TIMESTAMP(), INTERVAL (${hours}) hour);`
+            const args = [farm_id];
+            const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+//TODO: implementar la query
+    async haveFood(farm_id) {
+        try {
+            const sql = `SELECT id 
+            FROM petsvsmachine.farm_events
+            WHERE farm_id = ? AND event_id = 2 AND DATE_FORMAT(start_at, '%Y-%m-%d') = CURDATE() `
             const args = [farm_id];
             const response = await this.query(sql, args);
             return response;

@@ -20,19 +20,18 @@
           :haveHouse="data.haveHouse"
           :bones="data.bones"
           :isAfraid="data.isAfraid"
+          :empty="false"
         />
+      </div>
+      <div class="column is-4">
+        <BoxPet empty />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {
-  defineAsyncComponent,
-  onMounted,
-  onUnmounted,
-  ref,
-} from "vue";
+import { defineAsyncComponent, onMounted, onUnmounted, ref } from "vue";
 import useFarm from "../composables/useFarm";
 // import { createEgg } from "../services";
 
@@ -78,5 +77,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
+
 </style>
 

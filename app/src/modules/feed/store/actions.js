@@ -1,4 +1,5 @@
-import { getPetsByUser, getShopProducts, getResourcesUser, getAllLands, getFarmByUser } from '../services'
+import { getPetsByUser, getShopProducts, getResourcesUser, getAllLands, getFarmByUser, feedPetUser, housePetUser, cressPetUser } from '../services'
+
 
 export const getPetsUser = async ({ commit }) => {
 
@@ -34,6 +35,33 @@ export const getResources = async ({ commit }) => {
     commit('setResources', resources);
     return { ok: true }
 
+}
+
+export const feedPet = async ({ commit }, id) => {
+
+    const response = await feedPetUser(id);
+    if (!response) return { ok: false }
+    commit('usageResource', 'food');
+    commit('petUpdate', {action:'food', id});
+    return { ok: true }
+}
+
+export const housePet = async ({ commit }, id) => {
+
+    const response = await housePetUser(id);
+    if (!response) return { ok: false }
+    commit('usageResource', 'house');
+    commit('petUpdate', {action:'house', id});
+    return { ok: true }
+}
+
+export const cressPet = async ({ commit }, id) => {
+
+    const response = await cressPetUser(id);
+    if (!response) return { ok: false }
+    commit('usageResource', 'cress');
+    commit('petUpdate', {action:'cress', id});
+    return { ok: true }
 }
 
 export const getLands = async ({ commit }) => {

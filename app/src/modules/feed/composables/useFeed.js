@@ -10,45 +10,35 @@ const useFeed = () => {
         coins: {
             id:1,
             icon: false,
+            name: 'production',
             text: 'CE',
-            value: 0,
+            value: computed(() => store.getters['feed/resources'].coins),
         },
         house: {
             id:2,
             icon: "fal fa-home-alt",
+            name: 'house',
             text: false,
-            value: 0,
+            value: computed(() => store.getters['feed/resources'].house),
         },
         food: {
             id:3,
             icon: "fal fa-bone",
+            name: 'food',
             text: false,
-            value: 0,
+            value: computed(() => store.getters['feed/resources'].food),
         },
         cress: {
             id:4,
             icon: "fal fa-hand-paper",
+            name: 'caress',
             text: false,
-            value: 0,
+            value: computed(() => store.getters['feed/resources'].cress),
         }
     })
 
-    const resources = computed(() => store.getters['feed/resources']);
-
-    // const getPetsByUser = async () => {
-    //     const resp = await store.dispatch('feed/getPetsUser')
-    //     return resp
-    // }
-
-
     const getResourcesUser = async () => {
         const resp = await store.dispatch('feed/getResources')
-        if (resp.ok) {
-            resourcesUser.value.coins.value = resources.value.coins
-            resourcesUser.value.house.value = resources.value.house
-            resourcesUser.value.food.value = resources.value.food
-            resourcesUser.value.cress.value = resources.value.cress
-        }
         return resp
     }
 
@@ -58,7 +48,7 @@ const useFeed = () => {
         // getPetsByUser,
         getResourcesUser,
         resourcesUser,
-        resources,
+        resources: computed(() => store.getters['feed/resources']),
         // pets: computed(() => store.getters['feed/pets']),
     }
 }

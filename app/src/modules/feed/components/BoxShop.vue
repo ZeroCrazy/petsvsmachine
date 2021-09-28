@@ -1,25 +1,15 @@
 <template>
-  <div class="card shop-card has-background-warning           
-">
+  <div class="card shop-card has-text-white">
     <div class="card-content">
       <div class="content">
         <div class="shop-product">
           <div
             class="object"
-          >
-            <a-image
-             :src="require('@/assets/icons/' + image)"
-            >
-              <template #placeholder>
-                <a-image
-                  src="https://thumbs.dreamstime.com/b/ninguna-imagen-de-la-u%C3%B1a-del-pulgar-placeholder-para-los-foros-blogs-y-las-p%C3%A1ginas-web-148010362.jpg"
-                  :preview="false"
-                />
-              </template>
-            </a-image>
-          </div>
+            :style="`background: url(${require('@/assets/icons/' + image)})`"
+          ></div>
+         
         </div>
-        <p class="title">
+        <p class="title is-size-4 has-text-white">
           <b>{{ title }}</b>
         </p>
         <div class="extrainfo">
@@ -85,23 +75,20 @@ export default {
 @import "@/css/colors.scss";
 
 .shop-card {
-  color: #3c415c;
-  border: 2px solid #000000;
-  box-shadow: inset 0 -4px 0 #00000063;
-  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 .shop-card .title {
+  font-size: x-large;
   font-weight: 700;
   line-height: 1.25;
-  font-size: 16px;
-  word-spacing: 1px;
   margin-bottom: 2px !important;
+  word-spacing: 1px;
 }
 .shop-card .extrainfo {
-  line-height: 1.25;
   font-size: 16px;
-  word-spacing: 1px;
+  line-height: 1.25;
   margin-bottom: 15px !important;
+  word-spacing: 1px;
 }
 .shop-card .description {
   min-height: 72px;
@@ -119,44 +106,37 @@ export default {
   margin: 0px 0px 5px 0px;
 }
 .shop-product {
-  /*background: url('../images/land.svg');*/
-  background-repeat: no-repeat;
+  background-color: rgb(255 255 255 / 5%);
   background-position: center bottom;
-  width: 100%;
+  background-repeat: no-repeat;
   border-radius: 3px;
+  border: 1px solid rgb(255 255 255 / 20%);
   height: 201px;
   margin-bottom: 10px;
-  background-color: rgb(0 0 0 / 15%);
+  width: 100%;
 }
 .shop-product .object {
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
   background-position: center center !important;
-  width: 40%;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
   height: 40%;
   margin-left: 30%;
   margin-right: 30%;
   position: relative;
   top: 49px;
+  width: 40%;
 }
 .shop-button,
 .shop-button:hover,
 .shop-button:focus,
 .shop-button:active {
-  height: 40px !important;
-  background: #71c638 !important;
-  border: 2px solid #263f2a !important;
-  box-shadow: 0 2px 0 rgb(0 0 0 / 20%), inset 0 -4px 0 #46881b,
-    inset 0 2px 0 #b5ff84 !important;
-  border-radius: 8px !important;
-  padding: 0.25rem 1rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  display: inline-block;
-  font-weight: 700;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
+  background: #1eb73b !important;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
   color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
 }
 </style>

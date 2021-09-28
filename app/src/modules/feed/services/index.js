@@ -77,3 +77,35 @@ export const getAllLands = async () => {
 
 }
 
+export const housePetUser = async (id) => {
+
+    try {
+        const { data } = await request('post', `farm/house/${id}`)
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+
+export const feedPetUser = async (id) => {
+
+    try {
+        const { data } = await request('post', `farm/food/${id}`)
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+
+export const cressPetUser = async (id) => {
+    try {
+        const { data } = await request('post', `farm/cress/${id}`)
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+

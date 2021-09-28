@@ -16,7 +16,7 @@ const getResources = async (req, res = response) => {
     if (!response) return resp(res, 404, { msg: "Cant't get resources" });
 
 
-    return resp(res, 200, ...response );
+    return resp(res, 200, response );
 
 
 
