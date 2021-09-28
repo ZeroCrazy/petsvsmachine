@@ -43,6 +43,7 @@
     },
     "farm": {
         "maxFood": "Ya has alimentado a la pet por hoy",
-        "maxHouse": "Esta pet ya tiene una casa"
+        "maxHouse": "Esta pet ya tiene una casa",
+        "noResources": "No tienes suficientes recursos"
     }
 }

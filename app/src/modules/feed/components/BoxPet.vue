@@ -71,6 +71,7 @@ import { propsBoxPet } from "../interfaces/boxPet";
 import { notification } from "ant-design-vue";
 import i18n from "@/i18n/i18n";
 import useFarm from "../composables/useFarm";
+import useFeed from "../composables/useFeed";
 
 export default {
   name: "BoxPet",
@@ -79,8 +80,17 @@ export default {
 
   setup(props) {
     const { feedPet, putHouse, cressPet } = useFarm();
+    const { resources } = useFeed();
 
     const feed = async (resource) => {
+      if (resources.value[resource] < 1) {
+        // Mostrar notificacion
+        notification.error({
+          message: i18n.t("farm.noResources"),
+          duration: 3,
+        });
+        return;
+      }
       if (resource === "food") {
         if (props.bones >= 2) {
           // Mostrar notificacion
@@ -90,17 +100,18 @@ export default {
           });
           return;
         }
+
         const resp = await feedPet(props.id);
         if (resp.ok) return true;
       } else if (resource === "house") {
-        if (props.haveHouse){
+        if (props.haveHouse) {
           // Mostrar notificacion
           notification.info({
             message: i18n.t("farm.maxHouse"),
             duration: 3,
           });
           return;
-        };
+        }
         const resp = await putHouse(props.id);
         if (resp.ok) return true;
       } else if (resource === "cress") {
