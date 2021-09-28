@@ -152,9 +152,9 @@ class Farm extends Model {
             WHERE b.pet_id IS NULL AND random > 0.8;
             `;
 
-            const args = [farm_id];
+            const args = [];
             const response = await this.query(sql, args);
-            return response;
+            return true;
         } catch (error) {
             return false
         }

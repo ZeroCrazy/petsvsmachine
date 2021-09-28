@@ -1,9 +1,9 @@
 const Farm = require("../models/farm")
 
 
-const weatherEvent = () => {
-    const farm = Farm;
-    farm.weatherEvent();
+const weatherEvent = async () => {
+    const farm = new Farm();
+    const resp = await farm.weatherEvent();
 }
 
 

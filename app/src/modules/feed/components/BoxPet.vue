@@ -120,22 +120,18 @@ export default {
       }
     };
 
-    // addFood, addHouse, cureAfraid
-
     const calcTime = ref(false);
-
     calcTime.value = props.minsToComplete + props.extraTime;
-
-    const timer = computed(() => {
-      const hours = Math.floor(calcTime.value / 60);
-      const mins = calcTime.value % 60;
-
-      return `${hours}:${mins}`;
-    });
 
     return {
       feed,
-      timer,
+      timer: computed(() => {
+        let hours = Math.floor(calcTime.value / 60);
+        if (hours < 10) hours = "0" + hours;
+        let mins = calcTime.value % 60;
+        if (mins < 10) mins = "0" + mins;
+        return `${hours}:${mins}`;
+      }),
     };
   },
 };

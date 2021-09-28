@@ -5,9 +5,6 @@ const { generateJWT } = require('../helpers/generateJWT');
 const { resp } = require('../helpers/response');
 const Player = require('../models/player');
 
-// const MailController = require('../controllers/mail_controller');
-// const startdb = require('../helpers/dbconnector')
-
 const register = async (req, res = response) => {
 
 
@@ -19,6 +16,7 @@ const register = async (req, res = response) => {
     player.email = email;
     const salt = bcryptjs.genSaltSync();
     player.password = bcryptjs.hashSync(password, salt);
+
     // Verificar si el correo existe
     const existEmail = await player.existEmail();
 
@@ -83,11 +81,8 @@ const metamaskLogin = async (req, res = response) => {
         const { ok, user } = await player.loginMetamask();
         if (ok) {
             if (!user) {
-              
                 const response = await player.registerMetamask();
                 if (!response) return resp(res, 404, { msg: "User not found" })
-
-
             } else {
                 player.id = user.id
             }
@@ -104,10 +99,6 @@ const metamaskLogin = async (req, res = response) => {
         } else {
             if (!response) return resp(res, 404, { msg: "User not found" })
         }
-
-
-
-
 
     } catch (error) {
         console.log(error)
@@ -133,7 +124,6 @@ const identity = async (req, res = response) => {
     }
 
 }
-
 
 module.exports = {
     login,
