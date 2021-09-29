@@ -15,15 +15,15 @@
       </div>
     </div>
 
-    <GridLands />
+    <!-- <GridLands /> -->
   </div>
 </template>
 
 <script>
-import GridLands from "../components/GridLands.vue";
+// import GridLands from "../components/GridLands.vue";
 export default {
   name: "Dashboard",
-  components: { GridLands },
+  // components: { GridLands },
   setup() {
     return {};
   },

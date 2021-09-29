@@ -60,23 +60,26 @@
             </div>
           </div>
         </div>
-        <div v-if="errors.active" class="notification is-danger is-light mt-4">
-          {{ $t(errors.msg) }}
-        </div>
+    
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { notification } from "ant-design-vue";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import MetamaskButton from "../components/MetamaskButton.vue";
 import useAuth from "../composables/useAuth";
 
+import i18n from "@/i18n/i18n";
+
 export default {
   name: "Dashboard",
-  components: { MetamaskButton },
+  components: {
+    MetamaskButton,
+  },
   setup() {
     const { loginUser } = useAuth();
     const router = useRouter();
@@ -100,6 +103,12 @@ export default {
       isLoading.value = false;
       if (resp.ok) router.push({ name: "dashboard" });
       else {
+        // Mostrar notificacion
+        notification.error({
+          message: i18n.t("login.loginError"),
+          // description: i18n.t("login.loginError"),
+          duration: 3,
+        });
         errors.value.active = true;
         errors.value.msg = "login.loginError";
       }

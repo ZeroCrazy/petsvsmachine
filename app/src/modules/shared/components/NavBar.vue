@@ -27,7 +27,7 @@
               "
               :class="{
                 'navbar-item': true,
-                'is-active': $route.name === routeName,
+                'is-active': routerName.includes(routeName),
               }"
             >
               <i :class="['left', 'fal', icon]"></i> {{ $t(name) }}
@@ -35,24 +35,72 @@
           </div>
 
           <div class="navbar-end">
+            <!-- IDIOMA -->
+            <div class="navbar-item">
+              <a-dropdown :trigger="['hover']">
+                <a @click.prevent class="navbar-icon ant-dropdown-link">
+                  <i class="left fal fa-globe"></i>
+                </a>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item key="0">
+                      <a class="navbar-item" @click="setLang('en')">
+                        <div class="icon-text">
+                          <span :class="{ 'text-primary': lang === 'en' }">
+                            {{ $t("language.english") }}</span
+                          >
+                          <span v-if="lang === 'en'" class="icon text-primary">
+                            <i class="fas fas fa-check"></i>
+                          </span>
+                        </div>
+                      </a>
+                    </a-menu-item>
+                    <a-menu-item key="1">
+                      <a class="navbar-item" @click="setLang('es')">
+                        <div class="icon-text">
+                          <span :class="{ 'text-primary': lang === 'es' }">
+                            {{ $t("language.spanish") }}</span
+                          >
+                          <span v-if="lang === 'es'" class="icon text-primary">
+                            <i class="fas fas fa-check"></i>
+                          </span>
+                        </div>
+                      </a>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
+            </div>
+
             <div
               v-if="authStatus"
               class="navbar-item has-dropdown is-hoverable"
             >
-              <a class="navbar-link">
-                <i class="left fal fa-user-circle"></i>
-                {{ $t("section.myaccount") }}
-              </a>
-
-              <div
-                class="
-                  navbar-dropdown is-boxed
-                "
-              >
-                <a href="settings.html" class="navbar-item"> {{ $t("section.settings") }} </a>
-                <a class="navbar-item"> {{ $t("section.wallet") }}:<br />{{ metamask }} </a>
-                <a class="navbar-item" @click="logout"> {{ $t("section.logout") }} </a>
-              </div>
+              <a-dropdown :trigger="['hover']">
+                <a @click.prevent class="navbar-link ant-dropdown-link">
+                  <i class="left fal fa-user-circle"></i>
+                  {{ $t("section.myaccount") }}
+                </a>
+                <template #overlay>
+                  <a-menu>
+                    <a-menu-item key="0">
+                      <a class="navbar-item">
+                        {{ $t("section.settings") }}
+                      </a>
+                    </a-menu-item>
+                    <a-menu-item key="1">
+                      <a class="navbar-item">
+                        {{ $t("section.wallet") }}:<br />{{ metamask }}
+                      </a>
+                    </a-menu-item>
+                    <a-menu-item key="2">
+                      <a class="navbar-item" @click="onLogout">
+                        {{ $t("section.logout") }}
+                      </a>
+                    </a-menu-item>
+                  </a-menu>
+                </template>
+              </a-dropdown>
             </div>
 
             <div v-else class="navbar-item">
@@ -65,30 +113,13 @@
                 </a>
               </div>
             </div>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a
-                class="navbar-link"
-                href="https://bulma.io/documentation/overview/start/"
-              >
-                {{ $t("language.lang") }}
-              </a>
-              <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" @click="setLang('en')">
-                  {{ $t("language.english") }}
-                </a>
-                <a class="navbar-item" @click="setLang('es')">
-                  {{ $t("language.spanish") }}
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </nav>
 
     <!-- SIDEBAR -->
-    <o-sidebar fullheight overlay mobile="fullwidth" :open="open">
+    <!-- <o-sidebar fullheight overlay mobile="fullwidth" :open="open">
       <o-button icon-left="times" label="Close" @click="open = false" />
       <img
         width="128"
@@ -96,25 +127,39 @@
         alt="Lightweight UI components for Vue.js"
       />
       <h3>Example</h3>
-    </o-sidebar>
+    </o-sidebar> -->
   </div>
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import useAuth from "@/modules/auth/composables/useAuth";
 
 import i18n from "@/i18n/i18n";
-
+//TODO: Refactorizar en composables
 export default {
   name: "Home",
   components: {},
   setup() {
     const open = ref(false);
+    const router = useRouter();
+    const route = useRoute();
+    const routerName = ref("");
+    const lang = ref("es");
+
+    watch(
+      () => route.name,
+      () => (routerName.value = route.name)
+    );
+
+    const setLang = (language) => {
+      lang.value = language;
+      i18n.setLocale(language);
+    };
 
     const { logout, authStatus, metamaskAddress } = useAuth();
-    console.log(metamaskAddress);
-    console.log(metamaskAddress.value.length);
+
     return {
       sections: [
         {
@@ -140,7 +185,13 @@ export default {
       ],
       open,
       authStatus,
-      logout,
+      lang,
+      setLang,
+      routerName,
+      onLogout: () => {
+        logout();
+        router.push({ name: "login" });
+      },
       metamask: computed(
         () =>
           `${metamaskAddress.value.substr(
@@ -151,9 +202,6 @@ export default {
             13
           )}`
       ),
-      setLang: (lang) => {
-        i18n.setLocale(lang);
-      },
     };
   },
 };
@@ -166,9 +214,13 @@ export default {
   height: 56px;
   margin-bottom: 0px;
 }
+
+.navbar-link:not(.is-arrowless)::after {
+  border-color: $primary;
+}
 .navbar-link,
 a.navbar-item {
-  color: $text;
+  color: $text-nav;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -209,5 +261,25 @@ a.navbar-item:hover {
 nav {
   background-color: #000 !important;
   margin-bottom: 4rem;
+}
+
+.navbar-icon {
+  color: $text-nav;
+  transition: 300ms;
+  background-color: rgba(#fff, 0.1);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  &:hover {
+    color: $primary;
+  }
+  & > i {
+    vertical-align: -webkit-baseline-middle;
+  }
+}
+
+.text-primary {
+  color: $primary;
 }
 </style>

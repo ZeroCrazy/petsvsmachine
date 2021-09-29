@@ -1,20 +1,15 @@
-const DatabaseController = require("../controllers/database_controller");
+const { query, getConn } = require("../db");
 const tables = require("../helpers/tables");
 
 class Model {
-    constructor(db = null) {
-        // this.db = DatabaseController.getInstance();
-        this.db = db;
-        this.tables = tables
-    }
 
-    getDB(){
-        this.db = new DatabaseController();
-    }
+    tables = tables
+    query = query
+    getConnection = getConn
 
-    closeDB(){
-        this.db.closeDB()
-    }
+
 }
 
 module.exports = Model;
+
+

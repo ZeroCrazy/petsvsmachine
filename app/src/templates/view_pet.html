@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@oruga-ui/oruga@0.4.4/dist/oruga-full.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/fontawesome-pro.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #11131b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Inicio del navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="images/logo.png">
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a href="index.html" class="navbar-item">
+                <i class="left fal fa-paw"></i> Dashboard
+            </a>
+      
+            <a class="navbar-item">
+                <i class="left fal fa-store"></i> Marketplace
+            </a>
+
+            <a href="feed.html" class="navbar-item is-active">
+                <i class="left fal fa-bone"></i> Feed
+            </a>
+
+            <a class="navbar-item">
+                <i class="left fal fa-megaphone"></i> New Offering
+            </a>
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <i class="left fal fa-user-circle"></i> My account
+              </a>
+        
+              <div class="navbar-dropdown">
+                <a href="settings.html" class="navbar-item">
+                  Settings
+                </a>
+                <a class="navbar-item">
+                  Wallet address:<br>0x17ee...99110a97ba18e
+                </a>
+              </div>
+            </div>
+
+            <div class="navbar-item">
+              <div class="buttons">
+                <a href="login.html" class="button is-primary">
+                  <strong>Login</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Final del navbar -->
+    <!-- Inicio del Subnavbar -->
+    <div class="sky">
+      <div class="cloud variant-1"></div>
+      <div class="cloud variant-2"></div>
+      <div class="cloud variant-3"></div>
+      <div class="cloud variant-4"></div>
+      <div class="cloud variant-5"></div>
+      <div class="cloud variant-6"></div>
+    </div>
+    <div class="container">
+      
+      <div class="columns is-vcentered">
+        <div class="column is-4">
+          <div class="columns is-mobile">
+            <div class="column has-text-centered">
+              <a href="feed.html" class="button is-large is-primary navbar-btn-feed-left is-active"><i class="fal fa-bone"></i></a>
+              <a href="shop.html" class="button is-large is-primary navbar-btn-feed-left"><i class="fal fa-shopping-basket"></i></a>
+              <a href="inventory.html" class="button is-large is-primary navbar-btn-feed-left"><i class="fal fa-backpack"></i></a>
+              <a href="land.html" class="button is-large is-primary navbar-btn-feed-left"><i class="fal fa-map"></i></a>
+            </div>
+            
+          </div>
+        </div>
+        <div class="column is-5"></div>
+        <div class="column is-3">
+          <div class="columns is-mobile">
+            <div class="column has-text-centered">
+              <div class="is-small navbar-btn-feed-left no-cursor btn-resources production">
+                <span class="icon is-small">
+                  CE
+                </span>
+                <b>60</b>
+              </div>
+              <div class="is-small navbar-btn-feed-left no-cursor btn-resources house">
+                <span class="icon is-small">
+                  <i class="fal fa-home-alt"></i>
+                </span>
+                <b>60</b>
+              </div>
+              <div class="is-small navbar-btn-feed-left no-cursor btn-resources food">
+                <span class="icon is-small">
+                  <i class="fal fa-bone"></i>
+                </span>
+                <b>60</b>
+              </div>
+              <div class="is-small navbar-btn-feed-left no-cursor btn-resources caress">
+                <span class="icon is-small">
+                  <i class="fal fa-hand-paper"></i>
+                </span>
+                <b>60</b>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <!-- Final del Subnavbar -->
+      <div class="columns is-multiline">
+
+
+        <div class="column is-8">
+          <div class="card">
+            <div class="card-content">
+              <div class="content">
+                <div class="land view-pet">
+                  <div class="time">80:13</div>
+                  <div class="production">CE: 7182/480h</div>
+                  <div class="pet common" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png');"></div>
+                  <div class="coordinate rare">Rare</div>
+                  <div class="resources">
+                    <div class="coordinate btn have-house"><i class="fal fa-home-alt"></i></div>
+                    <div class="coordinate btn have-food"><i class="fal fa-bone"></i></div>
+                    <div class="coordinate btn have-light flashit"><i class="fal fa-bolt"></i></div>
+                  </div>
+                  <div class="floor"></div>
+                </div>
+                <div class="rain"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="column is-4">
+          <p class="title is-size-3 has-text-white"><i class="fal fa-chevron-circle-right"></i> Pet</p>
+          <div class="card shop-card has-text-white mb-5">
+            <div class="card-content">
+              <div class="content">
+                <p class="title is-size-4 has-text-white">Active tools</p>
+                <div class="columns is-multiline">
+                  <div class="column is-12">
+                    <div class="pet-options pet-tools">
+                      <div class="item"><button class="box no-cursor"><i class="fal fa-home-alt"></i></button> <span>You need a small house to start digging.</span></div>
+                      <div class="item"><button class="box no-cursor"><i class="fal fa-bone"></i></button> <span>Don't forget to feed your pets every day.</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <p class="title is-size-3 has-text-white"><i class="fal fa-chevron-circle-right"></i> Land</p>
+          <div class="card shop-card has-text-white mb-3">
+            <div class="card-content">
+              <div class="content">
+                <p class="title is-size-4 has-text-white">About</p>
+                <div class="columns is-multiline">
+                  <div class="column is-12">
+                    <div class="pet-options pet-tools">
+                      <div class="item"><div class="land-about-rarity rare">Rare</div></div>
+                      <div class="item is-size-6"><button class="box no-cursor"><i class="fal fa-paw"></i></button> <span><b>Capacity: </b> 25</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card shop-card has-text-white mb-5">
+            <div class="card-content">
+              <div class="content">
+                <p class="title is-size-4 has-text-white">Active pets</p>
+                <div class="columns is-multiline">
+                  <div class="column is-6">
+                    <div class="pet-options pet-tools">
+                      <div class="item"><div class="land-about-rarity rare">1235126</div></div>
+                    </div>
+                  </div>
+                  <div class="column is-6">
+                    <div class="pet-options pet-tools">
+                      <div class="item"><div class="land-about-rarity common">1235126</div></div>
+                    </div>
+                  </div>
+                  <div class="column is-6">
+                    <div class="pet-options pet-tools">
+                      <div class="item"><div class="land-about-rarity common">1235126</div></div>
+                    </div>
+                  </div>
+                  <div class="column is-6">
+                    <div class="pet-options pet-tools">
+                      <div class="item"><div class="land-about-rarity uncommon">1235126</div></div>
+                    </div>
+                  </div>
+                  <div class="column is-6">
+                    <div class="pet-options pet-tools">
+                      <div class="item"><div class="land-about-rarity rare">1235126</div></div>
+                    </div>
+                  </div>
+                  <div class="column is-6">
+                    <div class="pet-options pet-tools">
+                      <div class="item"><div class="land-about-rarity mythic">1235126</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+
+      </div>
+
+
+
+    </div>
+
+
+</body>
+</html>

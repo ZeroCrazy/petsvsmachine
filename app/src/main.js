@@ -7,8 +7,10 @@ import store from './store'
 import i18n from "./i18n/i18n";
 
 // CSS
-import Oruga from '@oruga-ui/oruga-next'
-import '@oruga-ui/oruga-next/dist/oruga-full.css'
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
+// import Oruga from '@oruga-ui/oruga-next'
+// import '@oruga-ui/oruga-next/dist/oruga-full.css'
 
 import 'bulma/css/bulma.css'
 import 'animate.css/animate.css'  // you need to require the css somewhere
@@ -22,6 +24,7 @@ const app = createApp(App);
 app.use(i18n);
 app.use(store);
 app.use(router);
-app.use(Oruga);
+app.use(Antd);
+// app.use(Oruga);
 
 app.mount('#app');

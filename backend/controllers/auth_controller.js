@@ -5,29 +5,23 @@ const { generateJWT } = require('../helpers/generateJWT');
 const { resp } = require('../helpers/response');
 const Player = require('../models/player');
 
-// const MailController = require('../controllers/mail_controller');
-// const startdb = require('../helpers/dbconnector')
-
 const register = async (req, res = response) => {
 
 
     const { username, email, password } = req.body;
-
-    const ip = req.connection.remoteAddress;
-
+ 
     const player = new Player();
     // Encriptar la contraseña
     player.username = username;
     player.email = email;
-    player.ip = ip;
     const salt = bcryptjs.genSaltSync();
     player.password = bcryptjs.hashSync(password, salt);
+
     // Verificar si el correo existe
     const existEmail = await player.existEmail();
 
     //Verificar si el usuario existe
     const existUsername = await player.existUsername();
-    console.log(existUsername)
 
     if (existEmail.length > 0 || existUsername.length > 0) {
         return resp(res, 409, {
@@ -42,8 +36,10 @@ const register = async (req, res = response) => {
 
     if (!response) return resp(res, 404, { msg: 'An error ocurred' })
 
+    // Generar el JWT
+    const token = await generateJWT(response);
 
-    return resp(res, 200, { msg: 'Account created success' })
+    return resp(res, 200, { token, username })
 
 }
 
@@ -66,7 +62,8 @@ const login = async (req, res = response) => {
         player.id = response.id;
 
         //Actualizar login
-        player.updateLogin();
+        const ip = req.connection.remoteAddress;
+        player.updateLogin(ip);
 
         return resp(res, 200, { token: player.token, username: response.username, metamaskAddress: response.metamask_address });
 
@@ -84,8 +81,6 @@ const metamaskLogin = async (req, res = response) => {
         const { ok, user } = await player.loginMetamask();
         if (ok) {
             if (!user) {
-                const ip = req.connection.remoteAddress;
-                player.ip = ip;
                 const response = await player.registerMetamask();
                 if (!response) return resp(res, 404, { msg: "User not found" })
             } else {
@@ -96,17 +91,14 @@ const metamaskLogin = async (req, res = response) => {
             player.id = user.id;
 
             //Actualizar login
-            const response = await player.updateLogin();
-
-            return resp(res, 200, { token: player.token, username: user.username, metamaskAddress: user.metamask_address });
+            const ip = req.connection.remoteAddress;
+            player.updateLogin(ip);
+            const userData = user ? user : { metamask_address: metaMaskAddress };
+            return resp(res, 200, { token: player.token, username: userData.username, metamaskAddress: userData.metamask_address });
 
         } else {
             if (!response) return resp(res, 404, { msg: "User not found" })
         }
-
-
-
-
 
     } catch (error) {
         console.log(error)
@@ -132,7 +124,6 @@ const identity = async (req, res = response) => {
     }
 
 }
-
 
 module.exports = {
     login,

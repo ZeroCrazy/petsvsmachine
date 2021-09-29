@@ -1,14 +1,13 @@
 const Model = require("./model");
+const PlayerResources = require('../models/playerResources');
 
 class Player extends Model {
 
     table = this.tables.player;
-    id;
     username;
     email;
     password;
     metamask_address;
-    ip;
     group;
     role;
     login_at;
@@ -16,117 +15,117 @@ class Player extends Model {
     updated_at;
 
     async register() {
+        const conn = await this.getConnection();
         try {
-            this.getDB();
-            const sql = `INSERT INTO ${this.table} (username, email, password, ip) VALUES (?, ?, ?, ?);`
-            const args = [this.username, this.email, this.password, this.ip];
-            const response = await this.db.queryAsync(sql, args);
-            return response;
+            conn.beginTransaction()
+            const sql = `INSERT INTO ${this.table} (username, email, password) VALUES (?, ?, ?);`
+            const args = [this.username, this.email, this.password];
+            const response = await this.query(sql, args, conn);
+            const id = response.insertId;
+            const sql2 = `INSERT INTO ${PlayerResources.table} (player_id, coins, house, food, caress) VALUES (?, ?, ?, ?, ?);`
+            const args2 = [id, 0, 0, 0, 0];
+            const response2 = await this.query(sql2, args2, conn);
+            conn.commit();
+            return id
+
         } catch (error) {
+            conn.rollback();
             return false
         } finally {
-            this.closeDB();
+            conn.release();
         }
+
     }
     async registerMetamask() {
+        const conn = await this.getConnection();
         try {
-            this.getDB();
-            const sql = `INSERT INTO ${this.table} (metamask_address, ip) VALUES (?, ?);`
-            const args = [this.metamask_address, this.ip];
-            const response = await this.db.queryAsync(sql, args);
+            conn.beginTransaction()
+            const sql = `INSERT INTO ${this.table} (metamask_address) VALUES (?);`
+            const args = [this.metamask_address];
+            const response = await this.query(sql, args, conn);
             this.id = response.insertId;
+            const sql2 = `INSERT INTO ${PlayerResources.table} (player_id, coins, house, food, caress) VALUES (?, ?, ?, ?, ?);`
+            const args2 = [this.id, 0, 0, 0, 0];
+            const response2 = await this.query(sql2, args2, conn);
+            conn.commit();
             return true;
         } catch (error) {
+            conn.rollback();
             return false
         } finally {
-            this.closeDB();
+            conn.release();
         }
     }
 
     async existUsername() {
         try {
-            this.getDB();
             const sql = `SELECT username FROM ${this.table} WHERE LOWER(username) = LOWER(?);`
             const args = [this.username];
-            const response = await this.db.queryAsync(sql, args);
+            const response = await this.query(sql, args);
             return response;
         } catch (error) {
             return false
-        } finally {
-            this.closeDB();
         }
     }
     async existEmail() {
         try {
-            this.getDB();
             const sql = `SELECT email FROM ${this.table} WHERE LOWER(email) = LOWER(?);`
             const args = [this.email];
-            const response = await this.db.queryAsync(sql, args);
+            const response = await this.query(sql, args);
             return response;
         } catch (error) {
             return false
-        } finally {
-            this.closeDB();
         }
     }
 
     async login() {
         try {
-            this.getDB();
             const sql = `SELECT * FROM ${this.table} WHERE email = ? LIMIT 1;`
             const args = [this.email];
-            const response = await this.db.queryAsync(sql, args);
+            const response = await this.query(sql, args);
             if (response.length == 0) return false;
             else return response[0];
         } catch (error) {
             return false
-        } finally {
-            this.closeDB();
         }
     }
 
     async loginMetamask() {
         try {
-            this.getDB();
             const sql = `SELECT * FROM ${this.table} WHERE metamask_address = ? LIMIT 1;`
             const args = [this.metamask_address];
-            const response = await this.db.queryAsync(sql, args);
+            const response = await this.query(sql, args);
             if (response.length == 0) return { ok: true, user: false };
             else return { ok: true, user: response[0] };
         } catch (error) {
             return { ok: false }
-        } finally {
-            this.closeDB();
         }
     }
 
-    async updateLogin() {
+    async updateLogin(ip) {
         try {
-            this.getDB();
             const sql = `UPDATE ${this.table} SET login_at = NOW() WHERE id = ?;`
             const args = [this.id];
-            const response = await this.db.queryAsync(sql, args);
-            if (response) return true;
+            const response = await this.query(sql, args);
+            const sql2 = `INSERT INTO ${this.tables.player_ip} (player_id, ip) VALUES (?, ?);`
+            const args2 = [this.id, ip];
+            const response2 = await this.query(sql2, args2);
+            if (response && response2) return true;
             else return false;
         } catch (error) {
             return false
-        } finally {
-            this.closeDB();
         }
     }
 
     async get() {
         try {
-            this.getDB();
             const sql = `SELECT username, metamask_address FROM ${this.table} WHERE id = ? LIMIT 1;`
             const args = [this.id];
-            const response = await this.db.queryAsync(sql, args);
+            const response = await this.query(sql, args);
             if (response && response.length > 0) return response[0];
             else return false;
         } catch (error) {
             return false
-        } finally {
-            this.closeDB();
         }
     }
 
