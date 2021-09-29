@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@oruga-ui/oruga@0.4.4/dist/oruga-full.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/fontawesome-pro.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #11131b;
+        }
+    </style>
+</head>
+<body>
+  <nav class="navbar is-transparent">  
+    <div class="navbar-menu" style="display: block;">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://petsvsmachine.com/">
+          <img src="images/logo.png">
+        </a>
+    
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <i style="font-size: 26px;margin-top: 15px;" class="fal fa-times"></i>
+        </a>
+      </div>
+      <div class="navbar-start">
+        <a href="index.html" class="navbar-item">
+          <i class="left fal fa-paw"></i> Dashboard
+        </a>
+        <a class="navbar-item">
+          <i class="left fal fa-store"></i> Marketplace
+        </a>
+        <a href="feed.html" class="navbar-item">
+          <i class="left fal fa-bone"></i> Feed
+        </a>
+        <a class="navbar-item">
+          <i class="left fal fa-megaphone"></i> New Offering
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <i class="left fal fa-user-circle"></i> My account
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a href="settings.html" class="navbar-item">
+              Settings
+            </a>
+            <a class="navbar-item">
+              Wallet address:<br>0x17ee...99110a97ba18e
+            </a>
+            <a class="navbar-item">
+              Logout
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <i class="left fal fa-globe"></i> Language
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item">
+              English
+            </a>
+            <a class="navbar-item">
+              Spanish
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a href="login.html" class="button is-primary">
+                <strong>Log in</strong>
+              </a>
+              <a href="register.html" class="button is-light">
+                Sign up
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</body>
+</html>
