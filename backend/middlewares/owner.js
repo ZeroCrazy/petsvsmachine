@@ -12,7 +12,7 @@ const ownerFarm = async (req = request, res = response, next) => {
         farm.id = id;
         const response = await farm.isOwner(uid)
         if (response.length > 0) next()
-        else return resp(res, 404, { msg: "Not authoritzed" })
+        else return resp(res, 401, { msg: "Not authoritzed" })
     } catch {
         return resp(res, 500, { msg: "Server error" })
     }

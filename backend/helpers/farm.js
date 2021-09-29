@@ -12,6 +12,7 @@ const createFarmData = (data) => {
             id: element.id,
             land_id: element.land_id,
             land_rarity: element.land_rarity,
+            pets_max: element.pets_max,
             pet_id: element.pet_id,
             pet_rarity: element.pet_rarity,
             pet_image: element.pet_image,

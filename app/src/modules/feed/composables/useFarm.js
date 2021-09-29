@@ -24,8 +24,8 @@ const useFarm = () => {
         return resp
     }
 
-    const cressPet = async (id) => {
-        const resp = await store.dispatch('feed/cressPet', id)
+    const caressPet = async (id) => {
+        const resp = await store.dispatch('feed/caressPet', id)
         return resp
     }
 
@@ -34,7 +34,7 @@ const useFarm = () => {
         getFarmByUser,
         feedPet,
         putHouse,
-        cressPet,
+        caressPet,
         farm: computed(() => store.getters['feed/farm']),
     }
 }

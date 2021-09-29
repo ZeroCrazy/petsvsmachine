@@ -1,8 +1,10 @@
+import isAuthenticatedGuard from '../guards';
 
 export default [
 
     {
         path: '/feed',
+        beforeEnter: [ isAuthenticatedGuard ],
         name: 'feed',
         redirect: { name: 'feedMain' },
         component: () => import('../layouts/Feed.vue'),

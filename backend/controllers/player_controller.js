@@ -17,11 +17,6 @@ const getResources = async (req, res = response) => {
 
 
     return resp(res, 200, response );
-
-
-
-
-
 }
 
 

@@ -22,7 +22,7 @@ class Player extends Model {
             const args = [this.username, this.email, this.password];
             const response = await this.query(sql, args, conn);
             const id = response.insertId;
-            const sql2 = `INSERT INTO ${PlayerResources.table} (player_id, coins, house, food, cress) VALUES (?, ?, ?, ?, ?);`
+            const sql2 = `INSERT INTO ${PlayerResources.table} (player_id, coins, house, food, caress) VALUES (?, ?, ?, ?, ?);`
             const args2 = [id, 0, 0, 0, 0];
             const response2 = await this.query(sql2, args2, conn);
             conn.commit();
@@ -44,7 +44,7 @@ class Player extends Model {
             const args = [this.metamask_address];
             const response = await this.query(sql, args, conn);
             this.id = response.insertId;
-            const sql2 = `INSERT INTO ${PlayerResources.table} (player_id, coins, house, food, cress) VALUES (?, ?, ?, ?, ?);`
+            const sql2 = `INSERT INTO ${PlayerResources.table} (player_id, coins, house, food, caress) VALUES (?, ?, ?, ?, ?);`
             const args2 = [this.id, 0, 0, 0, 0];
             const response2 = await this.query(sql2, args2, conn);
             conn.commit();
