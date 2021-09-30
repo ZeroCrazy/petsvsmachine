@@ -9,12 +9,12 @@ class PlayerResources extends Model {
     coins;
     house;
     food;
-    cress;
+    caress;
 
 
     async get() {
         try {
-            const sql = `SELECT coins, house, food, cress FROM ${PlayerResources.table} WHERE player_id = ?;`
+            const sql = `SELECT coins, house, food, caress FROM ${PlayerResources.table} WHERE player_id = ?;`
             const args = [this.player_id];
             const response = await this.query(sql, args);
             return response[0];
@@ -75,11 +75,11 @@ class PlayerResources extends Model {
         }
     }
 
-    async useCress(farm_id) {
+    async useCaress(farm_id) {
         const conn = await this.getConnection();
         try {
             conn.beginTransaction()
-            const sql = `UPDATE ${PlayerResources.table} SET cress = cress - 1 WHERE player_id = ?;`
+            const sql = `UPDATE ${PlayerResources.table} SET caress = caress - 1 WHERE player_id = ?;`
             const args = [this.player_id];
             const response = await this.query(sql, args, conn);
             const sql2 = `UPDATE farm_events SET finish_at = CURRENT_TIMESTAMP() 
@@ -97,6 +97,42 @@ class PlayerResources extends Model {
             conn.release();
         }
     }
+
+
+    async buyShop(action) {
+        try {
+            const cost = `SELECT cost FROM shop_list WHERE action = '${action}'`;
+            const usages = `SELECT usages FROM shop_list WHERE action =  '${action}'`;
+            const sql = `UPDATE ${PlayerResources.table} 
+            SET coins = coins - (${cost}), ${action} = ${action} + (${usages}) 
+            WHERE player_id = ?;`
+            const args = [this.player_id];
+            const response = await this.query(sql, args);
+            return true;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+      
+    }
+
+    async haveCE(action) {
+        try {
+            const sql = `SELECT t1.coins, t2.cost  
+            FROM ${PlayerResources.table} t1
+            JOIN shop_list t2
+            WHERE t2.action = '${action}' AND t1.player_id = ?;`
+            const args = [this.player_id];
+            const response = await this.query(sql, args);
+            return response[0];
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+      
+    }
+
+
 
 
 

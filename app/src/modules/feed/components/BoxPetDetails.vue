@@ -1,37 +1,9 @@
 <template>
   <div class="card">
     <div class="card-content">
-      <div class="content" v-if="empty">
-        <div class="land add-pet ">
-          <a href="inventory.html">
-            <div>
-              <i class="fal fa-plus-circle"></i>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="content" v-else>
-        <div class="pet-options">
-          <button class="mb-0 box" @click="feed('house')">
-            <i class="fal fa-home-alt"></i>
-          </button>
-          <button class="mb-0 box" @click="feed('food')">
-            <i class="fal fa-bone"></i>
-          </button>
-          <button class="mb-0 box" @click="feed('caress')">
-            <i class="fal fa-hand-paper"></i>
-          </button>
-          <button
-            @click="
-              $router.push({ name: 'feedDetails', params: { id: id } })
-            "
-            class="mb-0 box"
-          >
-            <i class="fal fa-eye"></i>
-          </button>
-          <button class="mb-0 box"><i class="fal fa-trash-alt"></i></button>
-        </div>
-        <div class="land ">
+      <div class="content">
+       
+        <div class="land view-pet">
           <div class="time">{{ timer }}</div>
           <div class="production">CE: {{ pet_ce }}/{{ pet_time }}h</div>
 
@@ -44,13 +16,13 @@
           <!-- Rareza de la land -->
           <div :class="['coordinate', land_rarity]">{{ land_rarity }}</div>
           <div class="resources">
-            <div v-if="isAfraid" class="coordinate have-light flashit">
+            <div v-if="isAfraid" class="coordinate btn have-light flashit">
               <i class="fal fa-bolt"></i>
             </div>
-            <div v-if="haveHouse" class="coordinate have-house">
+            <div v-if="haveHouse" class="coordinate btn have-house">
               <i class="fal fa-home-alt"></i>
             </div>
-            <div v-if="bones == 2" class="coordinate have-food">
+            <div v-if="bones == 2" class="coordinate btn have-food">
               <i class="fal fa-bone"></i>
             </div>
             <!-- <div class="coordinate have-caress">
@@ -68,10 +40,6 @@
 <script>
 import { ref, computed } from "vue";
 import { propsBoxPet } from "../interfaces/boxPet";
-import { notification } from "ant-design-vue";
-import i18n from "@/i18n/i18n";
-import useFarm from "../composables/useFarm";
-import useFeed from "../composables/useFeed";
 
 export default {
   name: "BoxPet",
@@ -79,52 +47,11 @@ export default {
   props: propsBoxPet,
 
   setup(props) {
-    const { feedPet, putHouse, caressPet } = useFarm();
-    const { resources } = useFeed();
-
-    const feed = async (resource) => {
-      if (resources.value[resource] < 1) {
-        // Mostrar notificacion
-        notification.error({
-          message: i18n.t("farm.noResources"),
-          duration: 3,
-        });
-        return;
-      }
-      if (resource === "food") {
-        if (props.bones >= 2) {
-          // Mostrar notificacion
-          notification.info({
-            message: i18n.t("farm.maxFood"),
-            duration: 3,
-          });
-          return;
-        }
-
-        const resp = await feedPet(props.id);
-        if (resp.ok) return true;
-      } else if (resource === "house") {
-        if (props.haveHouse) {
-          // Mostrar notificacion
-          notification.info({
-            message: i18n.t("farm.maxHouse"),
-            duration: 3,
-          });
-          return;
-        }
-        const resp = await putHouse(props.id);
-        if (resp.ok) return true;
-      } else if (resource === "caress") {
-        const resp = await caressPet(props.id);
-        if (resp.ok) return true;
-      }
-    };
-
-    const calcTime = ref(false);
+ 
+    const calcTime = ref('00:00');
     calcTime.value = props.minsToComplete + props.extraTime;
 
     return {
-      feed,
       timer: computed(() => {
         let hours = Math.floor(calcTime.value / 60);
         if (hours < 10) hours = "0" + hours;
@@ -204,12 +131,12 @@ export default {
 }
 .land .have-house {
   background-color: rgb(0 255 67 / 50%);
-  margin-left: 80px;
+ margin-left: 112px;
   // margin-left: 50px;
 }
 .land .have-food {
   background-color: rgb(223 123 0 / 50%);
-  margin-left: 111px;
+  margin-left: 80px;
   // margin-left: 80px;
 }
 // .land .have-caress {
@@ -218,7 +145,7 @@ export default {
 // }
 .land .have-light {
   background-color: rgb(239 255 0 / 63%);
-  margin-left: 50px;
+    margin-left: 54px;
   // margin-left: 25px;
 }
 
@@ -235,15 +162,6 @@ export default {
   padding: 1px 7px;
   width: fit-content;
 }
-.shop-options,
-.pet-options {
-  display: flex;
-  flex-direction: column;
-  float: right;
-  height: 201px;
-  justify-content: space-between;
-  width: 19%;
-}
 .shop-options .box,
 .pet-options .box {
   background: rgb(255 255 255 / 5%);
@@ -255,26 +173,6 @@ export default {
   padding: 5px 0px;
   text-align: center;
   width: 100%;
-}
-.shop-options .box:hover,
-.pet-options .box:hover {
-  background: rgb(255 255 255 / 15%);
-  cursor: pointer;
-}
-
-.pet-attr-number {
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  line-height: 18px;
-  background: #238636;
-  margin-top: -18px;
-  margin-right: -9px;
-  float: right;
-  text-align: center;
-  font-weight: bold;
-  /*font-size: 12px;*/
-  color: #fff;
 }
 
 .coordinate.common,
@@ -292,22 +190,6 @@ export default {
 .coordinate.mythic,
 .pet.mythic {
   filter: drop-shadow($mythic 0px 0px 5px);
-}
-
-.add-pet {
-  width: 100%;
-}
-.add-pet div {
-  width: max-content;
-  height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 24ch;
-}
-.add-pet i {
-  color: #fff;
-  text-align: center;
-  font-size: 40px;
 }
 
 .rain {
@@ -330,5 +212,71 @@ export default {
   animation: flash ease-out 10s infinite;
   animation-delay: 2s;
 }
+
+
+.view-pet {
+  width: 100%;
+  height: 420px;
+}
+.view-pet .pet {
+  width: 37%;
+  height: 37%;
+  top: 64px;
+}
+.view-pet .floor {
+  width: 229px;
+  height: 142px;
+}
+.view-pet .coordinate,
+.view-pet .production,
+.view-pet .time {
+  padding: 11px 27px;
+  font-size: small;
+}
+.view-pet .resources {
+  margin-right: calc(14ch - -59px);
+}
+.view-pet .resources .coordinate.btn {
+  padding: 11px 18px;
+}
+.view-pet .resources .have-house {
+  margin-left: 124px;
+}
+.view-pet .resources .have-food {
+  margin-left: 64px;
+}
+.view-pet .resources .have-light {
+  margin-left: 12px;
+}
+.pet-tools {
+  float: none;
+  width: 100%;
+  height: min-content;
+}
+.pet-tools .item {
+  display: -webkit-box;
+  line-height: 35px;
+  font-size: x-small;
+}
+.pet-tools .item .box {
+  width: 50px;
+  margin-left: 0px;
+  margin-right: 10px;
+}
+.land-about-rarity {
+  border-radius: 3px;
+  border: 2px solid rgb(0 0 0 / 15%);
+  background-color: rgb(0 0 0 / 50%);
+  width: fit-content;
+  font-size: small;
+  color: #fff;
+  text-transform: capitalize;
+  line-height: 17px;
+  padding: 4px 10px;
+  margin: 6px 6px 6px 0px;
+  width: 100%;
+  text-align: center;
+}
+
 
 </style>

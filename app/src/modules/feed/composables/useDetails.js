@@ -1,8 +1,6 @@
-// import { computed } from 'vue'
-// import { useStore } from 'vuex'
 import { ref } from "vue";
 
-import { getPet } from '../services'
+import { getFarmDetails } from '../services/farm'
 import { useRoute } from "vue-router";
 
 
@@ -15,7 +13,7 @@ const useDetails = () => {
     const route = useRoute();
 
     const getDetails = async (id) => {
-        return await getPet(id);
+        return await getFarmDetails(id);
     }
 
 

@@ -24,6 +24,11 @@ export const usageResource = (state, resource) => {
     state.resources[resource] = state.resources[resource] - 1;
 }
 
+
+export const updateResource = (state, {resource, quantity}) => {
+    state.resources[resource] = state.resources[resource] + quantity;
+}
+
 export const petUpdate = (state, data) => {
 
     for (let i in state.farm) {
@@ -32,7 +37,7 @@ export const petUpdate = (state, data) => {
                 state.farm[i].bones++;
             } else if (data.action === 'house') {
                 state.farm[i].haveHouse = true;
-            } else if (data.action === 'cress') {
+            } else if (data.action === 'caress') {
                 state.farm[i].isAfraid = false;
             }
             break;

@@ -1,4 +1,8 @@
-import { getPetsByUser, getShopProducts, getResourcesUser, getAllLands, getFarmByUser, feedPetUser, housePetUser, cressPetUser } from '../services'
+import { getFarmByUser, caressPetUser, feedPetUser, housePetUser } from '../services/farm'
+import { getAllLands } from '../services/lands'
+import { getPetsByUser } from '../services/pets'
+import { getResourcesUser } from '../services/player'
+import { buyCaress, buyFood, buyHouse, getShopProducts } from '../services/shop'
 
 
 export const getPetsUser = async ({ commit }) => {
@@ -42,7 +46,7 @@ export const feedPet = async ({ commit }, id) => {
     const response = await feedPetUser(id);
     if (!response) return { ok: false }
     commit('usageResource', 'food');
-    commit('petUpdate', {action:'food', id});
+    commit('petUpdate', { action: 'food', id });
     return { ok: true }
 }
 
@@ -51,16 +55,34 @@ export const housePet = async ({ commit }, id) => {
     const response = await housePetUser(id);
     if (!response) return { ok: false }
     commit('usageResource', 'house');
-    commit('petUpdate', {action:'house', id});
+    commit('petUpdate', { action: 'house', id });
     return { ok: true }
 }
 
-export const cressPet = async ({ commit }, id) => {
+export const caressPet = async ({ commit }, id) => {
 
-    const response = await cressPetUser(id);
+    const response = await caressPetUser(id);
     if (!response) return { ok: false }
-    commit('usageResource', 'cress');
-    commit('petUpdate', {action:'cress', id});
+    commit('usageResource', 'caress');
+    commit('petUpdate', { action: 'caress', id });
+    return { ok: true }
+}
+
+export const buyResource = async ({ commit }, { resource, cost, usage }) => {
+
+    if (resource === 'house') {
+        const response = await buyHouse();
+        if (!response) return { ok: false }
+    } else if (resource === 'food') {
+        const response = await buyFood();
+        if (!response) return { ok: false }
+    } else if (resource === 'caress') {
+        const response = await buyCaress();
+        if (!response) return { ok: false }
+
+    }
+    commit('updateResource', { resource: 'coins', quantity: -cost });
+    commit('updateResource', { resource, quantity: usage });
     return { ok: true }
 }
 

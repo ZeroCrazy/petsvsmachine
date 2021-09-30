@@ -8,7 +8,6 @@ const init = async (req, res = response) => {
 
     // Obtener productos de la tienda
     const land = new Land();
-    land.pets_max = 4;
     land.floor = 12;
     const uncommon = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100,
         110, 111, 112, 113, 116, 119, 120, 121, 122,

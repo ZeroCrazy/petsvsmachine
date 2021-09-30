@@ -7,7 +7,6 @@
             class="object"
             :style="`background: url(${require('@/assets/icons/' + image)})`"
           ></div>
-         
         </div>
         <p class="title is-size-4 has-text-white">
           <b>{{ title }}</b>
@@ -24,13 +23,22 @@
           <div class="is-clearfix"></div>
         </div>
         <p class="description">{{ description }}</p>
-        <button class="button shop-button is-fullwidth">{{ cost }} CE</button>
+        <button @click="buy()" class="button shop-button is-fullwidth">
+          {{ cost }} CE
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { notification } from "ant-design-vue";
+import i18n from "@/i18n/i18n";
+
+import useShop from "../composables/useShop";
+import useFeed from "../composables/useFeed";
+// import propsBoxShop from "../interfaces/boxShop";
+
 export default {
   name: "BoxPet",
   components: {},
@@ -65,8 +73,50 @@ export default {
     },
   },
 
-  setup() {
-    return {};
+  setup(props) {
+    const { buyResource } = useShop();
+    const { resources } = useFeed();
+
+    const buy = async () => {
+      if (props.cost > resources.value.coins) {
+        // Mostrar notificacion
+        notification.error({
+          message: i18n.t("farm.noResources"),
+          duration: 3,
+        });
+        return;
+      }
+      if (props.action === "house") {
+        console.log(resources);
+        const resp = await buyResource("house", props.cost, props.usages);
+        if (!resp.ok)
+          notification.error({
+            message: i18n.t("farm.noResources"),
+            duration: 3,
+          });
+        return;
+      } else if (props.action === "food") {
+        const resp = await buyResource("food", props.cost, props.usages);
+        if (!resp.ok)
+          notification.error({
+            message: i18n.t("farm.noResources"),
+            duration: 3,
+          });
+        return;
+      } else if (props.action === "caress") {
+        const resp = await buyResource("caress", props.cost, props.usages);
+        if (!resp.ok)
+          notification.error({
+            message: i18n.t("farm.noResources"),
+            duration: 3,
+          });
+        return;
+      }
+    };
+
+    return {
+      buy,
+    };
   },
 };
 </script>

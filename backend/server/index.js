@@ -73,9 +73,6 @@ class Server {
     }
 
     cronjobs() {
-        // this.cron.schedule('* * * * *', () => {
-        //     console.log('running a task every minute');
-        //   });
         this.cron.schedule('*/20 * * * *', () => {
             console.log('running a task every 20minute');
             weatherEvent();

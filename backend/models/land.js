@@ -12,7 +12,7 @@ class Land extends Model {
 
     async get() {
         try {
-            const sql = `SELECT t1.id, t2.name AS rarity, t1.floor, t1.pets_max 
+            const sql = `SELECT t1.id, t2.name AS rarity, t1.floor 
             FROM ${Land.table} t1
             LEFT JOIN land_rarity t2 ON t1.rarity_id = t2.id
              ;`
@@ -26,8 +26,8 @@ class Land extends Model {
 
     async create() {
         try {
-            const sql = `INSERT INTO ${Land.table} (floor, pets_max, rarity_id) VALUES (?, ?, ?);`
-            const args = [this.floor, this.pets_max, this.rarity_id];
+            const sql = `INSERT INTO ${Land.table} (floor, rarity_id) VALUES (?,  ?);`
+            const args = [this.floor,  this.rarity_id];
             const response = await this.query(sql, args);
             return response;
         } catch (error) {

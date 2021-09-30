@@ -16,6 +16,7 @@ router.get('',
     validateJWT,
     getByPlayer);
 
+    
 router.get('/:id',
     validateJWT,
     getDetails);

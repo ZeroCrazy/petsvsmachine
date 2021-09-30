@@ -28,12 +28,12 @@ const useFeed = () => {
             text: false,
             value: computed(() => store.getters['feed/resources'].food),
         },
-        cress: {
+        caress: {
             id:4,
             icon: "fal fa-hand-paper",
             name: 'caress',
             text: false,
-            value: computed(() => store.getters['feed/resources'].cress),
+            value: computed(() => store.getters['feed/resources'].caress),
         }
     })
 
