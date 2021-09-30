@@ -22,7 +22,6 @@ export const autoLogin = async ({ commit }, { user }) => {
     return { ok: true }
 }
 
-
 export const createUser = async ({ commit }, user) => {
 
     const resp = await register(user);
@@ -36,7 +35,6 @@ export const createUser = async ({ commit }, user) => {
 
 }
 
-
 export const checkAuthentication = async ({ commit }) => {
 
     const idToken = localStorage.getItem('idToken')
@@ -47,6 +45,5 @@ export const checkAuthentication = async ({ commit }) => {
     }
 
     return { ok: true }
-
 
 }
