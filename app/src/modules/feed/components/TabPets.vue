@@ -1,12 +1,12 @@
 <template>
   <div class="columns is-multiline">
     <!-- mascota de shop -->
-    <div class="column is-4" v-if="resources.pets > 0">
+    <div class="column is-4" v-if="resources.pet > 0">
       <div class="card">
         <div class="card-content">
           <div class="content">
             <div class="land inventory-view-land">
-              <div class="time quantity">{{ resources.pets }}</div>
+              <div class="time quantity">{{ resources.pet }}</div>
               <div
                 class="pet"
                 style="

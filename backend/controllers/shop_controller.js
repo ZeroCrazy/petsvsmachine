@@ -15,14 +15,17 @@ const get = async (req, res = response) => {
     return resp(res, 200, products)
 }
 
-//TODO: implementar compra de la pet
 const buyPet = async (req, res = response) => {
-    const shop = new Shop();
-    const products = await shop.get();
+    const { uid } = req;
 
-    if (!products) return resp(res, 404, { msg: "Can't get shop " })
+    const player = new PlayerResources();
+    player.player_id = uid;
+    // Restar la ce y sumar houses
+    const response = await player.buyShop('pet');
+    if (!response) return resp(res, 500, { msg: 'Server error' });
 
-    return resp(res, 200, products)
+    return resp(res, 200, { msg: 'Success' });
+
 }
 
 const buyHouse = async (req, res = response) => {
@@ -63,6 +66,7 @@ const buyCaress = async (req, res = response) => {
     return resp(res, 200, { msg: 'Success' });
 
 }
+
 
 
 module.exports = {

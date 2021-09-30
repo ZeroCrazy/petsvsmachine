@@ -2,7 +2,7 @@ import { getFarmByUser, caressPetUser, feedPetUser, housePetUser } from '../serv
 import { getAllLands } from '../services/lands'
 import { getPetsByUser } from '../services/pets'
 import { getResourcesUser } from '../services/player'
-import { buyCaress, buyFood, buyHouse, getShopProducts } from '../services/shop'
+import { buyCaress, buyFood, buyHouse, buyPet, getShopProducts } from '../services/shop'
 
 
 export const getPetsUser = async ({ commit }) => {
@@ -78,6 +78,9 @@ export const buyResource = async ({ commit }, { resource, cost, usage }) => {
         if (!response) return { ok: false }
     } else if (resource === 'caress') {
         const response = await buyCaress();
+        if (!response) return { ok: false }
+    } else if (resource === 'pet') {
+        const response = await buyPet();
         if (!response) return { ok: false }
 
     }

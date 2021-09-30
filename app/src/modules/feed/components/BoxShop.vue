@@ -111,6 +111,14 @@ export default {
             duration: 3,
           });
         return;
+      } else if (props.action === "pet") {
+        const resp = await buyResource("pet", props.cost, props.usages);
+        if (!resp.ok)
+          notification.error({
+            message: i18n.t("farm.noResources"),
+            duration: 3,
+          });
+        return;
       }
     };
 

@@ -12,6 +12,15 @@ export const getShopProducts = async () => {
 }
 
 
+export const buyPet = async () => {
+    try {
+        const { data } = await request('post', `shop/buy/pet`)
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
 export const buyHouse = async () => {
     try {
         const { data } = await request('post', `shop/buy/house`)

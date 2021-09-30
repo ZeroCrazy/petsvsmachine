@@ -1,10 +1,10 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { get, buyHouse, buyFood, buyCaress } = require('../controllers/shop_controller');
+const { get, buyPet, buyHouse, buyFood, buyCaress } = require('../controllers/shop_controller');
 
 // const { validator } = require('../middlewares/validator')
 const { validateJWT } = require('../middlewares/validatorJWT')
-const { houseCE, foodCE, caressCE } = require('../middlewares/shop')
+const { petCE, houseCE, foodCE, caressCE } = require('../middlewares/shop')
 
 const router = Router();
 
@@ -14,6 +14,11 @@ router.get('',
     validateJWT,
     get);
 
+
+router.post('/buy/pet',
+    validateJWT,
+    petCE,
+    buyPet);
 
 router.post('/buy/house',
     validateJWT,
