@@ -168,7 +168,7 @@
                   </ul>
                 </div>
                 
-                <div id="lands" class="inventorycontent" style="display: block;">
+                <div id="lands" class="inventorycontent">
                   <div class="columns">
                     <div class="column is-6">
                       <div class="card">
@@ -205,9 +205,43 @@
                   </div>
                 </div>
                 
-                <div id="pets" class="inventorycontent">
-                  <h3>Paris</h3>
-                  <p>Paris is the capital of France.</p>
+                <div id="pets" class="inventorycontent" style="display: block;">
+                  <div class="columns">
+                    <!-- mascota de shop -->
+                    <div class="column is-4">
+                      <div class="card">
+                        <div class="card-content">
+                          <div class="content">
+                            <div class="land inventory-view-land">
+                              <div class="time quantity">100</div>
+                              <div class="pet" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png');"></div>
+                              <div class="coordinate capacity">CE: 300 / 96 hours</div>
+                              <!--div class="resources">
+                                <div class="coordinate have-house"><button class="button shop-button is-small">Select</button></div>
+                              </div-->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- mascota de huevo/marketplace -->
+                    <div class="column is-4">
+                      <div class="card">
+                        <div class="card-content">
+                          <div class="content">
+                            <div class="land inventory-view-land">
+                              <div class="time rare">1231251</div>
+                              <div class="pet rare" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png');"></div>
+                              <div class="coordinate capacity">CE: 7182 / 480 hours</div>
+                              <div class="resources">
+                                <div class="coordinate have-light">Farming</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 
                 <div id="tools" class="inventorycontent">
@@ -223,10 +257,10 @@
                     }
                     tablinks = document.getElementsByClassName("inventorycontent");
                     for (i = 0; i < tablinks.length; i++) {
-                      tablinks[i].className = tablinks[i].className.replace(" active", "");
+                      tablinks[i].className = tablinks[i].className.replace(" is-active", "");
                     }
                     document.getElementById(cityName).style.display = "block";
-                    evt.currentTarget.className += " active";
+                    evt.currentTarget.className += " is-active";
                   }
                   </script>
               </div>
