@@ -45,11 +45,9 @@ const useFeed = () => {
 
 
     return {
-        // getPetsByUser,
         getResourcesUser,
         resourcesUser,
         resources: computed(() => store.getters['feed/resources']),
-        // pets: computed(() => store.getters['feed/pets']),
     }
 }
 

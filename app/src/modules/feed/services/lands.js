@@ -11,3 +11,14 @@ export const getAllLands = async () => {
 
 }
 
+export const getUserLands = async () => {
+
+    try {
+        const { data } = await request('get', 'lands/user')
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+
