@@ -141,11 +141,94 @@
       </div>
       <!-- Final del Subnavbar -->
       <div class="columns">
-        <div class="column is-full">
-          <div class="card has-background-black">
+        <div class="column is-12">
+          <div class="card shop-card has-text-white">
             <div class="card-content">
               <div class="content">
-                Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+                <div class="tabs is-fullwidth">
+                  <ul>
+                    <li class="tablinks" onclick="openCity(event, 'lands')">
+                      <a class="has-text-white">
+                        <span class="icon"><i class="fal fa-mountain"></i></span>
+                        <span>Land</span>
+                      </a>
+                    </li>
+                    <li class="tablinks" onclick="openCity(event, 'pets')">
+                      <a class="has-text-white">
+                        <span class="icon"><i class="fal fa-paw"></i></span>
+                        <span>Pets</span>
+                      </a>
+                    </li>
+                    <li class="tablinks" onclick="openCity(event, 'tools')">
+                      <a class="has-text-white">
+                        <span class="icon"><i class="fal fa-sack"></i></span>
+                        <span>Tools</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div id="lands" class="inventorycontent" style="display: block;">
+                  <div class="columns">
+                    <div class="column is-6">
+                      <div class="card">
+                        <div class="card-content">
+                          <div class="content">
+                            <div class="land inventory-view-land">
+                              <div class="time">Default</div>
+                              <div class="coordinate capacity"><i class="fal fa-paw"></i> 1/6</div>
+                              <div class="resources">
+                                <div class="coordinate have-house"><button class="button shop-button is-small">Select</button></div>
+                              </div>
+                              <div class="floor"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="column is-6">
+                      <div class="card">
+                        <div class="card-content">
+                          <div class="content">
+                            <div class="land inventory-view-land">
+                              <div class="time rare">Rare</div>
+                              <div class="coordinate capacity"><i class="fal fa-paw"></i> 1/6</div>
+                              <div class="resources">
+                                <div class="coordinate have-house"><button class="button shop-button is-small disabled">Selected</button></div>
+                              </div>
+                              <div class="floor"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div id="pets" class="inventorycontent">
+                  <h3>Paris</h3>
+                  <p>Paris is the capital of France.</p>
+                </div>
+                
+                <div id="tools" class="inventorycontent">
+                  <h3>Tokyo</h3>
+                  <p>Tokyo is the capital of Japan.</p>
+                </div>
+                <script>
+                  function openCity(evt, cityName) {
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("inventorycontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                      tabcontent[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("inventorycontent");
+                    for (i = 0; i < tablinks.length; i++) {
+                      tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+                    document.getElementById(cityName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                  }
+                  </script>
               </div>
             </div>
           </div>
