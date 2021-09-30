@@ -34,9 +34,10 @@ class Pet extends Model {
 
     async getByPlayer() {
         try {
-            const sql = `SELECT t1.id, t1.image, t2.name AS rarity, t1.production, t1.days 
+            const sql = `SELECT t1.id, t1.image, t2.name AS rarity, t1.production, t1.hours, t3.id AS isFarming  
             FROM ${this.table} t1
             LEFT JOIN ${this.tables.rarity} t2 ON t1.rarity_id = t2.id
+            LEFT JOIN farm_list t3 on t1.id = t3.pet_id
             WHERE t1.player_id = ?;`
             const args = [this.player_id];
             const response = await this.query(sql, args);

@@ -59,10 +59,8 @@ const getByPlayer = async (req, res = response) => {
     if (!data) return resp(res, 404, { msg: "Can't get pets" })
 
     const pets = data.map((row) => {
-        return {
-            ...row,
-            hours: row.days * 7
-        }
+        row.isFarming = row.isFarming ? true : false
+        return row
     })
 
     return resp(res, 200, pets)
@@ -91,7 +89,7 @@ const getDetails = async (req, res = response) => {
             hours: row.days * 7
         }
     })
-   
+
 
     return resp(res, 200, ...pets)
 

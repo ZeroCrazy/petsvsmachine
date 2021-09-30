@@ -42,23 +42,26 @@ const init = async (req, res = response) => {
 
 const get = async (req, res = response) => {
 
-    // Obtener productos de la tienda
     const land = new Land();
-
     const lands = await land.get()
-
     if (!lands) return resp(res, 404, { msg: "Cant't get lands" })
-
-
-
     return resp(res, 200, lands)
+}
 
+const getPlayerLands = async (req, res = response) => {
+
+    const { uid } = req;
+    const land = new Land();
+    const lands = await land.getUser(uid)
+    if (!lands) return resp(res, 404, { msg: "Cant't get lands" })
+    return resp(res, 200, lands)
 }
 
 
 module.exports = {
     init,
-    get
+    get,
+    getPlayerLands
 
 }
 
