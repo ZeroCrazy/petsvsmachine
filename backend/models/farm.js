@@ -218,11 +218,12 @@ class Farm extends Model {
             SELECT t1.pet_id 
             FROM farm_list t1
             INNER JOIN farm_events t2 ON t1.id = t2.farm_id
-            WHERE t1.isCompleted = 0 AND t2.event_id = 3 AND t2.finish_at IS NULL
+            WHERE t1.isCompleted = 0 AND ((t2.event_id = 3 AND t2.finish_at IS NULL) OR (t2.event_id=1 AND t2.finish_at<CURRENT_TIMESTAMP() ))
             )b
             ON a.pet_id = b.pet_id
             WHERE b.pet_id IS NULL AND random > 0.8;
             `;
+            // WHERE t1.isCompleted = 0 AND t2.event_id = 3 AND t2.finish_at IS NULL
 
             const args = [];
             const response = await this.query(sql, args);
