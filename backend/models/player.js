@@ -25,10 +25,16 @@ class Player extends Model {
             const sql2 = `INSERT INTO ${PlayerResources.table} (player_id, coins, house, food, caress) VALUES (?, ?, ?, ?, ?);`
             const args2 = [id, 0, 0, 0, 0];
             const response2 = await this.query(sql2, args2, conn);
+            const sql3 = `INSERT INTO land_player (land_id, player_id, isActive) VALUES (
+           ( SELECT  t1.id FROM land_list t1 
+            INNER JOIN land_rarity t2 ON t1.rarity_id = t2.id WHERE t2.id = 1 LIMIT 1), ?, 1);`
+            const args3 = [id, 0, 0, 0, 0];
+            const response3 = await this.query(sql3, args3, conn);
             conn.commit();
             return id
 
         } catch (error) {
+            console.log(error)
             conn.rollback();
             return false
         } finally {
