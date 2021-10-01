@@ -22,3 +22,15 @@ export const getUserLands = async () => {
 
 }
 
+export const floorLandActive = async () => {
+
+    try {
+        const { data } = await request('get', 'lands/floor')
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+
+

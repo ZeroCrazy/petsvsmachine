@@ -57,11 +57,21 @@ const getPlayerLands = async (req, res = response) => {
     return resp(res, 200, lands)
 }
 
+const floorLandActive = async (req, res = response) => {
+
+    const { uid } = req;
+    const land = new Land();
+    const lands = await land.floorLandActive(uid)
+    if (!lands) return resp(res, 404, { msg: "Cant't get lands" })
+    return resp(res, 200, lands)
+}
+
 
 module.exports = {
     init,
     get,
-    getPlayerLands
+    getPlayerLands,
+    floorLandActive
 
 }
 

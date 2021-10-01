@@ -23,29 +23,62 @@
           :empty="false"
         />
       </div>
-      <div class="column is-4">
-        <BoxPet empty />
+      <div class="column is-4" v-if="farm.length < floor">
+        <BoxPet @click="modal2Visible = true" empty />
       </div>
     </div>
+
+    <!-- <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <TabTools />
+        </section>
+      </div>
+    </div> -->
+    <a-modal
+      :visible="modal2Visible"
+      title="Select pet to farm"
+      width="80vw"
+      centered
+      closable
+      destroyOnClose
+      :footer="null"
+      @cancel="modal2Visible = false"
+    >
+      <PetSelect @onClick="clickPet" />
+    </a-modal>
   </div>
 </template>
 
 <script>
 import { defineAsyncComponent, onMounted, onUnmounted, ref } from "vue";
 import useFarm from "../composables/useFarm";
+import { floorLandActive } from "../services/lands";
 // import { createEgg } from "../services";
+
+//TODO: impedir que se alimente si no hay casa
 
 export default {
   name: "Farm",
   components: {
     BoxPet: defineAsyncComponent(() => import("../components/BoxPet.vue")),
+    PetSelect: defineAsyncComponent(() =>
+      import("../components/PetSelect.vue")
+    ),
   },
   setup() {
-    const { getFarmByUser, farm } = useFarm();
+    const { getFarmByUser, farm, selectPet } = useFarm();
     const transition = ref({
       enter: true,
       leave: false,
     });
+
+    const floor = ref(0);
 
     const refresh = setInterval(async () => {
       await getFarmByUser();
@@ -53,6 +86,9 @@ export default {
 
     onMounted(async () => {
       const resp = await getFarmByUser();
+      const resp2 = await floorLandActive();
+      floor.value = resp2.floor;
+      console.log(floor.value)
       if (!resp.ok) alert("error");
       refresh;
     });
@@ -60,6 +96,14 @@ export default {
     onUnmounted(() => {
       clearInterval(refresh);
     });
+
+    const modal2Visible = ref(false);
+
+    const clickPet = async ({ isShop, id }) => {
+      const resp = await selectPet(isShop, id);
+      if (resp) await getFarmByUser();
+      modal2Visible.value = false;
+    };
 
     // const a = async () => {
     //   const resp = await createEgg();
@@ -69,14 +113,40 @@ export default {
 
     return {
       farm,
+      floor,
       transition,
+      modal2Visible,
+      clickPet,
     };
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "@/css/colors.scss";
 
+.ant-modal-content {
+  background-color: rgba(#40c0ff, 1);
+  height: 80vh;
+  overflow: hidden;
+}
+
+.ant-modal-body {
+  height: calc(100% - 55px);
+  overflow-y: auto;
+}
+
+.ant-modal-header {
+  background-color: rgba(#40c0ff, 1);
+  border-bottom: 1px solid #40c0ff;
+}
+
+.ant-modal-title {
+  color: #fff !important;
+}
+
+.anticon {
+  color: #fff;
+}
 </style>
 

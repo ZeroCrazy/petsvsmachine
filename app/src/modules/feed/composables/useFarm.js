@@ -29,12 +29,18 @@ const useFarm = () => {
         return resp
     }
 
+    const selectPet = async ( isShop, id ) => {
+            const resp = await store.dispatch('feed/petFarm', {isShop, id})
+            return resp;
+    };
+
 
     return {
         getFarmByUser,
         feedPet,
         putHouse,
         caressPet,
+        selectPet,
         farm: computed(() => store.getters['feed/farm']),
     }
 }

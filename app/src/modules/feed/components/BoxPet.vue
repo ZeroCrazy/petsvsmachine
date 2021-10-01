@@ -1,13 +1,11 @@
 <template>
   <div class="card">
     <div class="card-content">
-      <div class="content" v-if="empty">
-        <div class="land add-pet ">
-          <a href="inventory.html">
-            <div>
-              <i class="fal fa-plus-circle"></i>
-            </div>
-          </a>
+      <div class="content is-clickable" v-if="empty">
+        <div class="land add-pet">
+          <div>
+            <i class="fal fa-plus-circle"></i>
+          </div>
         </div>
       </div>
       <div class="content" v-else>
@@ -22,16 +20,14 @@
             <i class="fal fa-hand-paper"></i>
           </button>
           <button
-            @click="
-              $router.push({ name: 'feedDetails', params: { id: id } })
-            "
+            @click="$router.push({ name: 'feedDetails', params: { id: id } })"
             class="mb-0 box"
           >
             <i class="fal fa-eye"></i>
           </button>
           <button class="mb-0 box"><i class="fal fa-trash-alt"></i></button>
         </div>
-        <div class="land ">
+        <div class="land">
           <div class="time">{{ timer }}</div>
           <div class="production">CE: {{ pet_ce }}/{{ pet_time }}h</div>
 
@@ -92,6 +88,14 @@ export default {
         return;
       }
       if (resource === "food") {
+        if (!props.haveHouse) {
+          notification.info({
+            // message: i18n.t("farm.maxFood"),
+            message: "Necesitas una casa",
+            duration: 3,
+          });
+          return;
+        }
         if (props.bones >= 2) {
           // Mostrar notificacion
           notification.info({
@@ -324,11 +328,10 @@ export default {
   z-index: -1;
 }
 
-.flashit{
+.flashit {
   -webkit-animation: flash ease-out 10s infinite;
   -moz-animation: flash ease-out 10s infinite;
   animation: flash ease-out 10s infinite;
   animation-delay: 2s;
 }
-
 </style>

@@ -7,7 +7,7 @@ class Farm extends Model {
     static table = 'farm_list';
     land_id;
     pet_id;
-    haveBone;
+    isCompleted;
 
     async getByUser(player_id) {
         try {
@@ -72,6 +72,23 @@ class Farm extends Model {
         ;`
             const args = [player_id, this.id];
             const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
+
+    async create(player_id, conn = false) {
+        try {
+            const sqlLand = `(SELECT land_id FROM land_player WHERE player_id = ? AND isActive = 1)`
+            const sqlPet = `(SELECT hours FROM pet_list WHERE id = ?)`
+            const sql = `INSERT INTO ${Farm.table} 
+            (land_id, pet_id, isCompleted, start_at, completed_at )
+            VALUES (${sqlLand}, ?, 0, CURRENT_TIMESTAMP(), ADDDATE(CURRENT_TIMESTAMP(), INTERVAL (${sqlPet}) hour));`
+            const args = [player_id, this.pet_id, this.pet_id];
+            const response = await this.query(sql, args, conn);
             return response;
         } catch (error) {
             console.log(error)

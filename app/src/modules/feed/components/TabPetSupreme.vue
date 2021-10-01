@@ -1,33 +1,30 @@
 <template>
-  <div class="columns">
+  <div class="columns is-multiline">
+    <!-- mascota de huevo/marketplace -->
     <div
-      class="column is-6"
-      v-for="{ id, rarity, pets, floor, isActive } in lands"
+      class="column is-4"
+      v-for="{ id, production, hours, rarity, isFarming } in pets"
       :key="id"
     >
       <div class="card">
         <div class="card-content">
           <div class="content">
             <div class="land inventory-view-land">
-              <div :class="['time', rarity]">{{ rarity }}</div>
+              <div :class="['time', rarity]">{{ id }}</div>
+              <div
+                :class="['pet', rarity]"
+                :style="`
+                  background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png');
+                `"
+              ></div>
               <div class="coordinate capacity">
-                <i class="fal fa-paw"></i> {{ pets }}/{{ floor }}
+                CE: {{ production }} / {{ hours }} hours
               </div>
               <div class="resources">
-                <div class="coordinate have-house">
-                  <button
-                    v-if="isActive"
-                    class="button shop-button is-small disabled"
-                  >
-                    Selected
-                  </button>
-                  <button v-else class="button shop-button is-small">
-                    Select
-                  </button>
+                <div v-if="isFarming" class="coordinate have-light">
+                  Farming
                 </div>
               </div>
-
-              <div class="floor"></div>
             </div>
           </div>
         </div>
@@ -41,20 +38,20 @@ import { onMounted } from "vue";
 import useInventory from "../composables/useInventory";
 
 export default {
-  name: "TabLand",
+  name: "TabPetSupreme",
   components: {},
   props: {},
 
   setup() {
-    const { lands, getLandsUser } = useInventory();
+    const { pets, getPets } = useInventory();
 
     onMounted(async () => {
-      const resp = await getLandsUser();
-      if (resp) lands.value = resp;
+      const resp = await getPets();
+      if (resp) pets.value = resp;
     });
 
     return {
-      lands,
+      pets,
     };
   },
 };

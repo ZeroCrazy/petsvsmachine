@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { get, getPlayerLands, init } = require('../controllers/land_controller');
+const { get, getPlayerLands, floorLandActive, init } = require('../controllers/land_controller');
 
 // const { validator } = require('../middlewares/validator')
 const { validateJWT } = require('../middlewares/validatorJWT')
@@ -17,7 +17,12 @@ router.get('/user',
     validateJWT,
     getPlayerLands);
 
-// TODO: BORRAR
+router.get('/floor',
+    validateJWT,
+    floorLandActive);
+
+
+//! TODO: BORRAR
 router.get('/create',
     init);
 

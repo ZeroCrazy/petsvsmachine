@@ -22,7 +22,7 @@
                   >
                     <a class="has-text-white">
                       <span class="icon"><i class="fal fa-paw"></i></span>
-                      <span>Pets</span>
+                      <span>Pet shop</span>
                     </a>
                   </li>
                   <li
@@ -31,7 +31,7 @@
                   >
                     <a class="has-text-white">
                       <span class="icon"><i class="fal fa-sack"></i></span>
-                      <span>Tools</span>
+                      <span>Pet supreme</span>
                     </a>
                   </li>
                 </ul>
@@ -47,13 +47,13 @@
                 v-if="activeTab === 2"
                 class="inventorycontent animate__animated animate__fadeIn"
               >
-                <TabPets />
+                <TabPetShop />
               </div>
               <div
                 v-if="activeTab === 3"
                 class="inventorycontent animate__animated animate__fadeIn"
               >
-                <TabTools />
+                <TabSupreme />
               </div>
             </div>
           </div>
@@ -66,11 +66,11 @@
 <script>
 import { ref } from "vue";
 import TabLand from "../components/TabLand.vue";
-import TabPets from "../components/TabPets.vue";
-import TabTools from "../components/TabTools.vue";
+import TabPetShop from "../components/TabPetShop.vue";
+import TabSupreme from "../components/TabPetSupreme.vue";
 export default {
   name: "Inventory",
-  components: { TabLand, TabPets, TabTools },
+  components: { TabLand, TabPetShop, TabSupreme },
   setup() {
     return {
       activeTab: ref(1),

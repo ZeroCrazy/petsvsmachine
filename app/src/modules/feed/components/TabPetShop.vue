@@ -19,54 +19,22 @@
         </div>
       </div>
     </div>
-
-    <!-- mascota de huevo/marketplace -->
-    <div class="column is-4" v-for="{id, production, hours, rarity, isFarming} in pets" :key="id">
-      <div class="card">
-        <div class="card-content">
-          <div class="content">
-            <div class="land inventory-view-land">
-              <div :class="['time', rarity]">{{id}}</div>
-              <div
-                :class="['pet', rarity]"
-                :style="`
-                  background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png');
-                `"
-              ></div>
-              <div class="coordinate capacity">CE: {{production}} / {{hours}} hours</div>
-              <div class="resources">
-                <div v-if="isFarming" class="coordinate have-light">Farming</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import { onMounted } from 'vue';
 import useFeed from "../composables/useFeed";
-import useInventory from "../composables/useInventory";
 
 export default {
-  name: "TabPets",
+  name: "TabPetShop",
   components: {},
   props: {},
 
   setup() {
     const { resources } = useFeed();
-    const { pets, getPets } = useInventory();
-
-    onMounted(async ()=>{
-      const resp = await getPets();
-      if (resp) pets.value = resp;
-    })
 
     return {
       resources,
-      pets
     };
   },
 };
