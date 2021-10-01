@@ -24,6 +24,21 @@ const get = async (req, res = response) => {
 
 }
 
+const deleteFarm = async (req, res = response) => {
+
+    const { uid } = req;
+    const { id } = req.params;
+
+    // Obtener farm
+    const farm = new Farm();
+    farm.id = id;
+    const data = await farm.deleteFarm(uid)
+    if (!data) return resp(res, 404, { msg: "Can't delete farm" });
+
+    return resp(res, 200, {msg:'Farm deleted'});
+
+}
+
 const putFarm = async (req, res = response) => {
 
     const { uid } = req;
@@ -157,7 +172,8 @@ module.exports = {
     putFarm,
     useHome,
     useFood,
-    useCaress
+    useCaress,
+    deleteFarm
 
 }
 

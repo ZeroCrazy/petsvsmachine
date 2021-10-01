@@ -53,6 +53,18 @@ class Farm extends Model {
         }
     }
 
+    async deleteFarm() {
+        try {
+            const sql = `UPDATE farm_list SET isCompleted = 1 WHERE id = ?;`
+            const args = [this.id];
+            const response = await this.query(sql, args);
+            return true;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
     async getDetails(player_id) {
         try {
             const sql = `SELECT t1.id, t1.land_id, t1.pet_id, t1.bones, t3.name AS land_rarity, t3.pets_max, t7.name AS event, t6.start_at, t6.finish_at, t1.start_at AS startFarm_at, t1.completed_at AS completedFarm_at, current_timestamp() AS stamp,

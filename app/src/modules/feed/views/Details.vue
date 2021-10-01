@@ -34,7 +34,7 @@
               <div class="columns is-multiline">
                 <div class="column is-12">
                   <div class="pet-options pet-tools">
-                    <div class="columns is-vcentered p-0 m-0">
+                    <div class="columns is-vcentered p-0 m-0" v-if="pet.haveHouse">
                       <div class="column is-narrow p-0 m-0">
                         <button
                           class="box no-cursor pl-3 pr-3 pt-1 pb-1"
@@ -50,8 +50,8 @@
                         You need a small house to start digging.
                       </div>
                     </div>
-
-                    <div class="columns is-vcentered p-0 m-0">
+ 
+                    <div class="columns is-vcentered p-0 m-0" v-if="pet.bones > 1">
                       <div class="column is-narrow p-0 m-0">
                         <button
                           class="box no-cursor pl-3 pr-3 pt-1 pb-1"

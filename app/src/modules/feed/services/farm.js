@@ -55,6 +55,16 @@ export const caressPetUser = async (id) => {
 
 }
 
+export const deleteFarm = async (id) => {
+    try {
+        const { data } = await request('post', `farm/delete/${id}`)
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+
 export const putFarm = async (pet_id, isShop) => {
 
     try {

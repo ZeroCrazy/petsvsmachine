@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { ownerFarm, ownerPet } = require('../middlewares/owner');
 const { validateJWT } = require('../middlewares/validatorJWT');
 
-const { get, getDetails, putFarm, useHome, useFood, useCaress } = require('../controllers/farm_controller');
+const { get, getDetails, putFarm, useHome, useFood, useCaress,deleteFarm } = require('../controllers/farm_controller');
 
 
 const router = Router();
@@ -15,6 +15,11 @@ router.get('/:id',
     validateJWT,
     ownerFarm,
     getDetails);
+
+router.post('/delete/:id',
+    validateJWT,
+    ownerFarm,
+    deleteFarm);
 
 router.post('/start',
     validateJWT,

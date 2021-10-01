@@ -4,7 +4,7 @@
       <div class="content">
        
         <div class="land view-pet">
-          <div class="time">{{ timer }}</div>
+          <div v-if="haveHouse" class="time">{{ timer }}</div>
           <div class="production">CE: {{ pet_ce }}/{{ pet_time }}h</div>
 
           <div
@@ -47,10 +47,8 @@ export default {
   props: propsBoxPet,
 
   setup(props) {
- 
     const calcTime = ref('00:00');
     calcTime.value = props.minsToComplete + props.extraTime;
-
     return {
       timer: computed(() => {
         let hours = Math.floor(calcTime.value / 60);

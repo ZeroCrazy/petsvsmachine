@@ -25,10 +25,15 @@
           >
             <i class="fal fa-eye"></i>
           </button>
-          <button class="mb-0 box"><i class="fal fa-trash-alt"></i></button>
+          <!-- borrar -->
+          <a-popconfirm title="Are you sure？" ok-text="Yes" cancel-text="No" @confirm="deleteFarm(id)">
+            <button class="mb-0 box">
+              <i class="fal fa-trash-alt"></i>
+            </button>
+          </a-popconfirm>
         </div>
         <div class="land">
-          <div class="time">{{ timer }}</div>
+          <div class="time" v-if="haveHouse">{{ timer }}</div>
           <div class="production">CE: {{ pet_ce }}/{{ pet_time }}h</div>
 
           <div
@@ -75,7 +80,7 @@ export default {
   props: propsBoxPet,
 
   setup(props) {
-    const { feedPet, putHouse, caressPet } = useFarm();
+    const { feedPet, putHouse, caressPet, deletePet } = useFarm();
     const { resources } = useFeed();
 
     const feed = async (resource) => {
@@ -127,8 +132,14 @@ export default {
     const calcTime = ref(false);
     calcTime.value = props.minsToComplete + props.extraTime;
 
+    const deleteFarm = async (id) => {
+      const resp = await deletePet(id);
+      console.log(resp);
+    };
+
     return {
       feed,
+      deleteFarm,
       timer: computed(() => {
         let hours = Math.floor(calcTime.value / 60);
         if (hours < 10) hours = "0" + hours;
