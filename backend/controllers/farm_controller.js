@@ -133,7 +133,7 @@ const useFood = async (req, res = response) => {
     const farm = new Farm();
     const haveHome = await farm.haveHome(id);
     if (!haveHome) return resp(res, 500, { msg: 'Server error' });
-    if (haveHome.length > 0) return resp(res, 404, { msg: "Already a house" });
+    if (haveHome.length === 0) return resp(res, 404, { msg: "Dont'have a house" });
 
     // comprobar cuanta comida la ha dado en el dia
     const haveFood = await farm.haveFood(id);

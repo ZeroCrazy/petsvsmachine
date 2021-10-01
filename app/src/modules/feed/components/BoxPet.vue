@@ -109,7 +109,6 @@ export default {
           });
           return;
         }
-
         const resp = await feedPet(props.id);
         if (resp.ok) return true;
       } else if (resource === "house") {
