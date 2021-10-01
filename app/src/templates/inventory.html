@@ -141,25 +141,25 @@
       </div>
       <!-- Final del Subnavbar -->
       <div class="columns">
-        <div class="column is-12">
+        <div class="column is-fullwidth">
           <div class="card shop-card has-text-white">
             <div class="card-content">
               <div class="content">
                 <div class="tabs is-fullwidth">
-                  <ul>
-                    <li class="tablinks is-active" onclick="openCity(event, 'lands')">
+                  <ul class="columns" style="margin: auto;border: none;">
+                    <li class="tablinks column is-4 is-active" onclick="openCity(event, 'lands')">
                       <a class="has-text-white">
                         <span class="icon"><i class="fal fa-mountain"></i></span>
                         <span>Land</span>
                       </a>
                     </li>
-                    <li class="tablinks" onclick="openCity(event, 'petshop')">
+                    <li class="tablinks column is-4" onclick="openCity(event, 'petshop')">
                       <a class="has-text-white">
                         <span class="icon"><i class="fal fa-paw"></i></span>
                         <span>Pet shop</span>
                       </a>
                     </li>
-                    <li class="tablinks" onclick="openCity(event, 'petmarketplace')">
+                    <li class="tablinks column is-4" onclick="openCity(event, 'petmarketplace')">
                       <a class="has-text-white">
                         <span class="icon"><i class="fal fa-sack"></i></span>
                         <span>Pet supreme</span>
@@ -178,7 +178,7 @@
                               <div class="time">Default</div>
                               <div class="coordinate capacity"><i class="fal fa-paw"></i> 1/6</div>
                               <div class="resources">
-                                <div class="coordinate have-house"><button class="button shop-button is-small">Select</button></div>
+                                <div class="item have-house"><button class="button shop-button is-small">Select</button></div>
                               </div>
                               <div class="floor"></div>
                             </div>
@@ -194,7 +194,7 @@
                               <div class="time rare">Rare</div>
                               <div class="coordinate capacity"><i class="fal fa-paw"></i> 1/25</div>
                               <div class="resources">
-                                <div class="coordinate have-house"><button class="button shop-button is-small disabled">Selected</button></div>
+                                <div class="item have-house"><button class="button shop-button is-small disabled">Selected</button></div>
                               </div>
                               <div class="floor"></div>
                             </div>
@@ -238,8 +238,8 @@
                               <div class="time rare">1231251</div>
                               <div class="pet rare" style="background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/150.png');"></div>
                               <div class="coordinate capacity">CE: 7182 / 480 hours</div>
-                              <div class="resources">
-                                <div class="coordinate have-light">Farming</div>
+                              <div class="resources farm">
+                                <div class="item have-light">Farming</div>
                               </div>
                             </div>
                           </div>
