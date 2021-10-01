@@ -211,23 +211,36 @@ nav {
   text-transform: capitalize;
 }
 .land .resources {
+  /*float: right;
+  margin-right: calc(10ch - -59px);*/
+  display: flex;
   float: right;
-  margin-right: calc(10ch - -59px);
+  /* margin-right: calc(10ch - -59px); */
+  margin-top: 60px;
+  margin-top: 90px;
+  margin-right: 8px;
 }
-.land .have-house {
-  margin-left: 112px;
+.land .resources .item {
+  border-radius: 3px;
+  border: 2px solid rgb(0 0 0 / 15%);
+  background-color: rgb(0 0 0 / 50%);
+  width: fit-content;
+  padding: 1px 7px;
+  font-size: x-small;
+  color: #fff;
+  text-transform: capitalize;
+  margin: 0px 2px;
+}
+.land .resources .item.have-house {
   background-color: rgb(0 255 67 / 50%);
 }
-.land .have-food {
-  margin-left: 80px;
+.land .resources .item.have-food {
   background-color: rgb(223 123 0 / 50%);
 }
-.land .have-caress {
-  margin-left: 111px;
+.land .resources .item.have-caress {
   background-color: rgb(221 221 221 / 50%);
 }
-.land .have-light {
-  margin-left: 54px;
+.land .resources .item.have-light {
   background-color: rgb(239 255 0 / 63%);
 }
 .land .time {
@@ -586,19 +599,11 @@ nav {
   font-size: small;
 }
 .view-pet .resources {
-  margin-right: calc(14ch - -59px);
+  /*margin-right: calc(14ch - -59px);*/
+  margin-top: 212px;
 }
-.view-pet .resources .coordinate.btn {
+.view-pet .resources .item.btn {
   padding: 11px 18px;
-}
-.view-pet .resources .have-house {
-  margin-left: 124px;
-}
-.view-pet .resources .have-food {
-  margin-left: 64px;
-}
-.view-pet .resources .have-light {
-  margin-left: 12px;
 }
 .pet-tools {
   float: none;
