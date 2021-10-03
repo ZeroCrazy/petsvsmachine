@@ -23,9 +23,31 @@
           <div class="is-clearfix"></div>
         </div>
         <p class="description">{{ description }}</p>
-        <button @click="buy()" class="button shop-button is-fullwidth">
+        <div class="columns is-mobile">
+          <div class="column is-2">
+            <button @click="substract" class="button shop-button is-fullwidth">-</button>
+          </div>
+          <div class="column is-2">
+            <button
+              class="button shop-button is-fullwidth"
+              style="background: rgb(0 0 0 / 40%) !important"
+            >
+              {{ quantity }}
+            </button>
+          </div>
+          <div class="column is-2">
+            <button @click="add" class="button shop-button is-fullwidth">+</button>
+          </div>
+          <div class="column is-6">
+            <button @click="buy()" class="button shop-button is-fullwidth">
+              {{ cost * quantity }} CE
+            </button>
+          </div>
+        </div>
+
+        <!-- <button @click="buy()" class="button shop-button is-fullwidth">
           {{ cost }} CE
-        </button>
+        </button> -->
       </div>
     </div>
   </div>
@@ -37,6 +59,7 @@ import i18n from "@/i18n/i18n";
 
 import useShop from "../composables/useShop";
 import useFeed from "../composables/useFeed";
+import { ref } from "vue";
 // import propsBoxShop from "../interfaces/boxShop";
 
 export default {
@@ -77,8 +100,10 @@ export default {
     const { buyResource } = useShop();
     const { resources } = useFeed();
 
+    const quantity = ref(1);
+
     const buy = async () => {
-      if (props.cost > resources.value.coins) {
+      if (props.cost * quantity.value > resources.value.coins) {
         // Mostrar notificacion
         notification.error({
           message: i18n.t("farm.noResources"),
@@ -88,7 +113,12 @@ export default {
       }
       if (props.action === "house") {
         console.log(resources);
-        const resp = await buyResource("house", props.cost, props.usages);
+        const resp = await buyResource(
+          "house",
+          props.cost,
+          props.usages,
+          quantity.value
+        );
         if (!resp.ok)
           notification.error({
             message: i18n.t("farm.noResources"),
@@ -96,7 +126,12 @@ export default {
           });
         return;
       } else if (props.action === "food") {
-        const resp = await buyResource("food", props.cost, props.usages);
+        const resp = await buyResource(
+          "food",
+          props.cost,
+          props.usages,
+          quantity.value
+        );
         if (!resp.ok)
           notification.error({
             message: i18n.t("farm.noResources"),
@@ -104,7 +139,12 @@ export default {
           });
         return;
       } else if (props.action === "caress") {
-        const resp = await buyResource("caress", props.cost, props.usages);
+        const resp = await buyResource(
+          "caress",
+          props.cost,
+          props.usages,
+          quantity.value
+        );
         if (!resp.ok)
           notification.error({
             message: i18n.t("farm.noResources"),
@@ -112,7 +152,12 @@ export default {
           });
         return;
       } else if (props.action === "pet") {
-        const resp = await buyResource("pet", props.cost, props.usages);
+        const resp = await buyResource(
+          "pet",
+          props.cost,
+          props.usages,
+          quantity.value
+        );
         if (!resp.ok)
           notification.error({
             message: i18n.t("farm.noResources"),
@@ -124,6 +169,14 @@ export default {
 
     return {
       buy,
+      quantity,
+      add() {
+        quantity.value++;
+      },
+      substract() {
+        quantity.value--;
+        if (quantity.value < 1) quantity.value = 1;
+      },
     };
   },
 };

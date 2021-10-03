@@ -77,24 +77,24 @@ export const petFarm = async ({ commit }, { isShop, id }) => {
     return { ok: true }
 }
 
-export const buyResource = async ({ commit }, { resource, cost, usage }) => {
+export const buyResource = async ({ commit }, { resource, cost, usage, quantity }) => {
 
     if (resource === 'house') {
-        const response = await buyHouse();
+        const response = await buyHouse(quantity);
         if (!response) return { ok: false }
     } else if (resource === 'food') {
-        const response = await buyFood();
+        const response = await buyFood(quantity);
         if (!response) return { ok: false }
     } else if (resource === 'caress') {
-        const response = await buyCaress();
+        const response = await buyCaress(quantity);
         if (!response) return { ok: false }
     } else if (resource === 'pet') {
-        const response = await buyPet();
+        const response = await buyPet(quantity);
         if (!response) return { ok: false }
 
     }
-    commit('updateResource', { resource: 'coins', quantity: -cost });
-    commit('updateResource', { resource, quantity: usage });
+    commit('updateResource', { resource: 'coins', quantity: -cost*quantity });
+    commit('updateResource', { resource, quantity: usage*quantity });
     return { ok: true }
 }
 

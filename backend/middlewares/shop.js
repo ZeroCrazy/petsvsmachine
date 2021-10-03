@@ -2,14 +2,14 @@ const { response, request } = require('express');
 const { resp } = require('../helpers/response');
 const PlayerResources = require('../models/playerResources');
 
-const haveCE = async (uid, resource) => {
+const haveCE = async (uid, resource, quantity) => {
     try {
         const player = new PlayerResources();
         player.player_id = uid;
         const resources = await player.haveCE(resource);
 
         if (!resources) return false;
-        if (resources.coins < resources.cost) return false;
+        if (resources.coins < resources.cost * quantity) return false;
         return true;
     } catch {
         return false
@@ -19,8 +19,9 @@ const haveCE = async (uid, resource) => {
 const petCE = async (req = request, res = response, next) => {
     try {
         const { uid } = req;
+        const { quantity } = req.body;
         // comprobar que el usuario tiene suficiente ce
-        const response = await haveCE(uid, 'pet')
+        const response = await haveCE(uid, 'pet', quantity)
         if (!response) return resp(res, 404, { msg: "Insuficient ce" });
         next()
     } catch {
@@ -31,8 +32,10 @@ const petCE = async (req = request, res = response, next) => {
 const houseCE = async (req = request, res = response, next) => {
     try {
         const { uid } = req;
+        const { quantity } = req.body;
+
         // comprobar que el usuario tiene suficiente ce
-        const response = await haveCE(uid, 'house')
+        const response = await haveCE(uid, 'house', quantity)
         if (!response) return resp(res, 404, { msg: "Insuficient ce" });
         next()
     } catch {
@@ -43,8 +46,10 @@ const houseCE = async (req = request, res = response, next) => {
 const foodCE = async (req = request, res = response, next) => {
     try {
         const { uid } = req;
+        const { quantity } = req.body;
+
         // comprobar que el usuario tiene suficiente ce
-        const response = await haveCE(uid, 'food')
+        const response = await haveCE(uid, 'food', quantity)
         if (!response) return resp(res, 404, { msg: "Insuficient ce" });
         next()
     } catch {
@@ -55,8 +60,10 @@ const foodCE = async (req = request, res = response, next) => {
 const caressCE = async (req = request, res = response, next) => {
     try {
         const { uid } = req;
+        const { quantity } = req.body;
+
         // comprobar que el usuario tiene suficiente ce
-        const response = await haveCE(uid, 'caress')
+        const response = await haveCE(uid, 'caress', quantity)
         if (!response) return resp(res, 404, { msg: "Insuficient ce" });
         next()
     } catch {

@@ -12,36 +12,36 @@ export const getShopProducts = async () => {
 }
 
 
-export const buyPet = async () => {
+export const buyPet = async (quantity) => {
     try {
-        const { data } = await request('post', `shop/buy/pet`)
+        const { data } = await request('post', `shop/buy/pet`, {quantity})
         return data;
     } catch (error) {
         return false;
     }
 
 }
-export const buyHouse = async () => {
+export const buyHouse = async (quantity) => {
     try {
-        const { data } = await request('post', `shop/buy/house`)
+        const { data } = await request('post', `shop/buy/house`, {quantity})
         return data;
     } catch (error) {
         return false;
     }
 
 }
-export const buyFood = async () => {
+export const buyFood = async (quantity) => {
     try {
-        const { data } = await request('post', `shop/buy/food`)
+        const { data } = await request('post', `shop/buy/food`, {quantity})
         return data;
     } catch (error) {
         return false;
     }
 
 }
-export const buyCaress = async () => {
+export const buyCaress = async (quantity) => {
     try {
-        const { data } = await request('post', `shop/buy/caress`)
+        const { data } = await request('post', `shop/buy/caress`, {quantity})
         return data;
     } catch (error) {
         return false;

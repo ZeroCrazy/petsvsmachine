@@ -10,9 +10,9 @@ const useShop = () => {
         return resp;
     }
 
-    const buyResource = async (resource, cost, usage) => {
+    const buyResource = async (resource, cost, usage, quantity) => {
 
-        const resp = await store.dispatch('feed/buyResource', { resource, cost, usage });
+        const resp = await store.dispatch('feed/buyResource', { resource, cost, usage, quantity });
         return resp;
     }
 
