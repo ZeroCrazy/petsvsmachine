@@ -99,12 +99,12 @@ class PlayerResources extends Model {
     }
 
 
-    async buyShop(action) {
+    async buyShop(action, quantity) {
         try {
             const cost = `SELECT cost FROM shop_list WHERE action = '${action}'`;
             const usages = `SELECT usages FROM shop_list WHERE action =  '${action}'`;
             const sql = `UPDATE ${PlayerResources.table} 
-            SET coins = coins - (${cost}), ${action} = ${action} + (${usages}) 
+            SET coins = coins - (${cost})*${quantity}, ${action} = ${action} + (${usages})*${quantity} 
             WHERE player_id = ?;`
             const args = [this.player_id];
             const response = await this.query(sql, args);
