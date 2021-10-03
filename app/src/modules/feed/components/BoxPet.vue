@@ -50,16 +50,23 @@
           <!-- Rareza de la land -->
           <div :class="['coordinate', land_rarity]">{{ land_rarity }}</div>
           <div class="resources">
-            <div v-if="isAfraid" class="item have-light flashit">
+            <div
+              v-if="isAfraid && minsToComplete > 0"
+              class="item have-light flashit"
+            >
               <i class="fal fa-bolt"></i>
             </div>
-            <div v-if="bones == 2" class="item have-food">
+            <div v-if="bones == 2 && minsToComplete > 0" class="item have-food">
               <i class="fal fa-bone"></i>
             </div>
-            <div v-if="haveHouse" class="item have-house">
+            <div v-if="haveHouse && minsToComplete > 0" class="item have-house">
               <i class="fal fa-home-alt"></i>
             </div>
+            <div v-if="minsToComplete === 0" class="item have-finish">
+              <button class="button shop-button is-small">Harvest</button>
+            </div>
           </div>
+          <div v-if="minsToComplete === 0" class="pet-finish"></div>
           <div class="floor"></div>
         </div>
         <div v-if="isAfraid" class="rain"></div>
@@ -156,5 +163,4 @@ export default {
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
 @import "@/css/animations.scss";
-
 </style>

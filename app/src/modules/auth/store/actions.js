@@ -38,7 +38,6 @@ export const createUser = async ({ commit }, user) => {
 export const checkAuthentication = async ({ commit }) => {
 
     const idToken = localStorage.getItem('idToken')
-
     if (!idToken) {
         commit('logout')
         return { ok: false, message: 'No hay token' }

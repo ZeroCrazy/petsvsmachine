@@ -239,6 +239,8 @@ nav {
   margin-top: 60px;
   margin-top: 90px;
   margin-right: 8px;
+  z-index: 10;
+  position: sticky;
 }
 .land .resources .item {
   border-radius: 3px;
@@ -290,7 +292,7 @@ nav {
   border-radius: 3px;
   background: rgb(255 255 255 / 5%);
   border: 1px solid rgb(255 255 255 / 20%);
-  padding: 8.7px 0px;
+  padding:5.2px 0px;
   text-align: center;
   color: #fff;
   margin-bottom: 5px;
@@ -387,6 +389,26 @@ nav {
   text-align: center;
   font-size: 40px;
 }
+
+.pet-finish {
+  background: rgb(0 0 0 / 50%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  border-radius: .25rem;
+  left: 0px;
+}
+
+.resources .item.have-finish {
+  filter: none;
+  background-color: transparent !important;
+  border: none;
+  margin-top: -6px;
+  margin-right: -9px;
+}
+
 
 /*
   Página shop.html

@@ -55,10 +55,10 @@ const useAuth = () => {
     const autoLogin = async () => {
 
         const idToken = localStorage.getItem("idToken");
-        if (!idToken) return true
+        if (!idToken) return false
 
         const user = await identity();
-        if (!user) return true
+        if (!user) return false
 
         await store.dispatch('auth/autoLogin', { user: { idToken, ...user } })
 
