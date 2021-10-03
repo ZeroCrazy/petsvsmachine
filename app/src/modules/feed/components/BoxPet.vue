@@ -10,18 +10,18 @@
       </div>
       <div class="content" v-else>
         <div class="pet-options">
-          <button class="mb-0 box" @click="feed('house')">
+          <button class="box" @click="feed('house')">
             <i class="fal fa-home-alt"></i>
           </button>
-          <button class="mb-0 box" @click="feed('food')">
+          <button class="box" @click="feed('food')">
             <i class="fal fa-bone"></i>
           </button>
-          <button class="mb-0 box" @click="feed('caress')">
+          <button class="box" @click="feed('caress')">
             <i class="fal fa-hand-paper"></i>
           </button>
           <button
             @click="$router.push({ name: 'feedDetails', params: { id: id } })"
-            class="mb-0 box"
+            class="box"
           >
             <i class="fal fa-eye"></i>
           </button>
@@ -32,7 +32,7 @@
             cancel-text="No"
             @confirm="deleteFarm(id)"
           >
-            <button class="mb-0 box">
+            <button class="box">
               <i class="fal fa-trash-alt"></i>
             </button>
           </a-popconfirm>
