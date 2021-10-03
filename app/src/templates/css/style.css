@@ -2,8 +2,8 @@ html, body {
   margin: 0px;
   font-family: 'Roboto', sans-serif;
   /*background-color: #11131b;*/
-  background-color: #40c0ff !important;
-  overflow: hidden;
+  background-color: #00a5d7 !important;
+  /*overflow: hidden;*/
 }
 
 html {
@@ -750,6 +750,18 @@ nav {
 .ant-modal-body::-webkit-scrollbar-thumb:hover {
   filter: brightness(2);
   cursor: pointer;
+}
+/*
+  Scrollbar
+*/
+::-webkit-scrollbar-track {
+  background: rgb(255 255 255 / 30%);
+}
+::-webkit-scrollbar-thumb {
+  background: #000 !important;
+}
+::-webkit-scrollbar {
+  width: 4px;
 }
 
 /*
