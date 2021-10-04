@@ -171,7 +171,7 @@ export default {
         if (resp.ok) {
           // Mostrar notificacion
           notification.info({
-            message: `props.pet_ce CE recived`,
+            message: `${props.pet_ce} CE recived`,
             duration: 3,
           });
         }
