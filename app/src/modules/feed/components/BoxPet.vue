@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { propsBoxPet } from "../interfaces/boxPet";
 import { notification } from "ant-design-vue";
 import i18n from "@/i18n/i18n";
@@ -139,8 +139,8 @@ export default {
       }
     };
 
-    const calcTime = ref(false);
-    calcTime.value = props.minsToComplete + props.extraTime;
+    // const calcTime = ref(false);
+    // calcTime.value = props.minsToComplete + props.extraTime;
 
     const deleteFarm = async (id) => {
       const resp = await deletePet(id);
@@ -155,9 +155,9 @@ export default {
         console.log(resp.ok);
       },
       timer: computed(() => {
-        let hours = Math.floor(calcTime.value / 60);
+        let hours = Math.floor(props.minsToComplete / 60);
         if (hours < 10) hours = "0" + hours;
-        let mins = calcTime.value % 60;
+        let mins = props.minsToComplete % 60;
         if (mins < 10) mins = "0" + mins;
         return `${hours}:${mins}`;
       }),
