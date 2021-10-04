@@ -63,7 +63,9 @@
               <i class="fal fa-home-alt"></i>
             </div>
             <div v-if="minsToComplete === 0" class="item have-finish">
-              <button class="button shop-button is-small">Harvest</button>
+              <button @click="finishFarm()" class="button shop-button is-small">
+                Harvest
+              </button>
             </div>
           </div>
           <div v-if="minsToComplete === 0" class="pet-finish"></div>
@@ -89,7 +91,7 @@ export default {
   props: propsBoxPet,
 
   setup(props) {
-    const { feedPet, putHouse, caressPet, deletePet } = useFarm();
+    const { feedPet, putHouse, caressPet, deletePet, finish } = useFarm();
     const { resources } = useFeed();
 
     const feed = async (resource) => {
@@ -148,6 +150,10 @@ export default {
     return {
       feed,
       deleteFarm,
+      async finishFarm() {
+        const resp = await finish(props.id, props.pet_ce);
+        console.log(resp.ok);
+      },
       timer: computed(() => {
         let hours = Math.floor(calcTime.value / 60);
         if (hours < 10) hours = "0" + hours;

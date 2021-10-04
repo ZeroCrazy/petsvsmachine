@@ -1,4 +1,5 @@
 const Model = require("./model");
+const PlayerResources = require("./playerResources");
 
 
 
@@ -27,6 +28,32 @@ class Farm extends Model {
             WHERE t4.player_id = ? AND t1.isCompleted = 0
         ;`
             const args = [player_id];
+            const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
+    async getById(player_id, id) {
+        try {
+            const sql = `SELECT t1.id, t1.land_id, t1.pet_id, t1.bones, t3.name AS land_rarity, t7.name AS event, t6.start_at, t6.finish_at, t1.start_at AS startFarm_at, t1.completed_at AS completedFarm_at, current_timestamp() AS stamp,
+            t8.name AS pet_rarity, t4.image AS pet_image, t4.production, t4.hours
+            FROM ${Farm.table} t1
+        
+            LEFT JOIN land_list t2 ON t1.land_id = t2.id
+            LEFT JOIN land_rarity t3 ON t2.rarity_id = t3.id
+            LEFT JOIN pet_list t4 ON t1.pet_id = t4.id
+            LEFT JOIN pet_rarity t8 ON t4.rarity_id = t8.id
+            LEFT JOIN player_list t5 ON t4.player_id = t5.id
+        
+            LEFT JOIN farm_events t6 ON t1.id = t6.farm_id
+            LEFT JOIN event_list t7 ON t7.id = t6.event_id
+        
+            WHERE t4.player_id = ? AND t1.isCompleted = 0 AND t1.id = ?
+        ;`
+            const args = [player_id, id];
             const response = await this.query(sql, args);
             return response;
         } catch (error) {
@@ -181,6 +208,7 @@ class Farm extends Model {
     async useCaress(farm_id) {
         const conn = await this.getConnection();
         try {
+            conn.beginTransaction()
             const sql = `UPDATE farm_events SET finish_at = CURRENT_TIMESTAMP() WHERE farm_id = ? AND event_id = 3 AND finish_at IS NULL`
             const args = [farm_id];
             const response = await this.query(sql, args, conn);
@@ -233,6 +261,32 @@ class Farm extends Model {
         }
     }
 
+
+    async finish(farm_id, uid) {
+        const conn = await this.getConnection();
+        try {
+            conn.beginTransaction()
+            const sql = `UPDATE farm_list SET isCompleted = 1 WHERE id = ?`
+            const args = [farm_id];
+            const response = await this.query(sql, args, conn);
+
+            const join = `SELECT t2.production 
+            FROM farm_list t1
+            INNER JOIN pet_list t2 ON t1.pet_id = t2.id
+            WHERE t1.id = ?`;
+            const sql2 = `UPDATE ${PlayerResources.table} SET coins = coins + (${join}) WHERE player_id = ?;`
+            const args2 = [farm_id, uid];
+            const response2 = await this.query(sql2, args2, conn);
+            conn.commit();
+            return response;
+        } catch (error) {
+            console.log(error)
+            conn.rollback();
+            return false
+        } finally {
+            conn.release();
+        }
+    }
 
 
 

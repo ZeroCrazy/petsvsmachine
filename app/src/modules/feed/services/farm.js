@@ -65,6 +65,16 @@ export const deleteFarm = async (id) => {
 
 }
 
+export const finish = async (id) => {
+    try {
+        const { data } = await request('post', `farm/finish/${id}`)
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+
 export const putFarm = async (pet_id, isShop) => {
 
     try {

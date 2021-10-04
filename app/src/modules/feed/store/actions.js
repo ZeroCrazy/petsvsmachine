@@ -1,4 +1,4 @@
-import { getFarmByUser, caressPetUser, feedPetUser, housePetUser, putFarm, deleteFarm } from '../services/farm'
+import { getFarmByUser, caressPetUser, feedPetUser, housePetUser, putFarm, deleteFarm, finish } from '../services/farm'
 import { getAllLands } from '../services/lands'
 import { getPetsByUser } from '../services/pets'
 import { getResourcesUser } from '../services/player'
@@ -113,6 +113,18 @@ export const deletePet = async ({ commit }, id) => {
     if (!resp) return { ok: false }
     const farm = await getFarmByUser();
     if (!farm) return { ok: false }
+    commit('setFarm', farm);
+    return { ok: true }
+
+}
+
+export const finishFarm = async ({ commit }, {id, quantity}) => {
+
+    const resp = await finish(id);
+    if (!resp) return { ok: false }
+    const farm = await getFarmByUser();
+    if (!farm) return { ok: false }
+    commit('updateResource', { resource: 'coins', quantity });
     commit('setFarm', farm);
     return { ok: true }
 

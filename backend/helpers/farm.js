@@ -6,7 +6,8 @@ const createFarmData = (data) => {
         // calcular el tiempo que falta para completar el farm
         const startDate = new Date(element.stamp);
         const endDate = new Date(element.completedFarm_at);
-        const minsToComplete = Math.round((endDate.getTime() - startDate.getTime()) / 1000 / 60);
+        let minsToComplete = Math.round((endDate.getTime() - startDate.getTime()) / 1000 / 60);
+        if (minsToComplete < 0) minsToComplete = 0;
 
         const template = {
             id: element.id,
@@ -114,7 +115,7 @@ const getEventsFarm = (farmRow) => {
                 const start1 = row.events.bones[i].start_at;
                 const start2 = row.events.bones[i - 1].start_at;
 
-                if (isSameDay(start1, start2)) daysFeed++;
+                if (isSameDay(start1, start2)) { daysFeed++ };
 
             }
         }
@@ -123,7 +124,9 @@ const getEventsFarm = (farmRow) => {
         // Total de dias hasta hoy
         const dif = date.getTime() - row.startFarm_at.getTime()
         const totalDays = Math.round(dif / 1000 / 3600 / 24);
-        row.extraTime += (totalDays - daysFeed) * 24 * 60
+        const difDays = (totalDays - daysFeed) >= 0 ? (totalDays - daysFeed) : 0;
+        row.extraTime += difDays * 24 * 60;
+        row.minsToComplete += difDays * 24 * 60
 
         farmData = [...farmData, row]
     }
