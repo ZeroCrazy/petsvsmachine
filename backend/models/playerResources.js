@@ -92,28 +92,38 @@ class PlayerResources extends Model {
             console.log(error)
             conn.rollback();
             return false
-        }
-        finally {
+        } finally {
             conn.release();
         }
     }
 
 
     async buyShop(action, quantity) {
+        const conn = await this.getConnection();
         try {
+            conn.beginTransaction()
             const cost = `SELECT cost FROM shop_list WHERE action = '${action}'`;
             const usages = `SELECT usages FROM shop_list WHERE action =  '${action}'`;
             const sql = `UPDATE ${PlayerResources.table} 
             SET coins = coins - (${cost})*${quantity}, ${action} = ${action} + (${usages})*${quantity} 
             WHERE player_id = ?;`
             const args = [this.player_id];
-            const response = await this.query(sql, args);
+            const response = await this.query(sql, args, conn);
+
+            const idshop = `SELECT id FROM shop_list WHERE action = ?`;
+            const sql2 = `INSERT INTO shop_buys (player_id, shop_id, quantity) VALUES (?,(${idshop}),?) ;`
+            const args2 = [this.player_id, action, quantity];
+            const response2 = await this.query(sql2, args2, conn);
+            conn.commit()
             return true;
         } catch (error) {
+            conn.rollback();
             console.log(error)
             return false
+        } finally {
+            conn.release();
         }
-      
+
     }
 
     async haveCE(action) {
@@ -129,7 +139,7 @@ class PlayerResources extends Model {
             console.log(error)
             return false
         }
-      
+
     }
 
 

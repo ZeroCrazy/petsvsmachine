@@ -73,7 +73,8 @@ export const petFarm = async ({ commit }, { isShop, id }) => {
     const response = await putFarm(id, isShop);
     if (!response) return { ok: false }
     await getFarmByUser();
-    commit('updateResource', { resource: 'pets', quantity: 0 });
+    console.log(123)
+    commit('updateResource', { resource: 'pet', quantity: -1 });
     return { ok: true }
 }
 

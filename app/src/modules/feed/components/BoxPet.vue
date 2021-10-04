@@ -26,16 +26,17 @@
             <i class="fal fa-eye"></i>
           </button>
           <!-- borrar -->
-          <a-popconfirm
-            title="Are you sure？"
+          <!-- <a-popconfirm
+            title="Are you sure？Si la eliminas no recibiras CE"
+            body="fsdf"
             ok-text="Yes"
             cancel-text="No"
             @confirm="deleteFarm(id)"
-          >
-            <button class="box">
-              <i class="fal fa-trash-alt"></i>
-            </button>
-          </a-popconfirm>
+          > -->
+          <button @click="showConfirm(id)" class="box">
+            <i class="fal fa-trash-alt"></i>
+          </button>
+          <!-- </a-popconfirm> -->
         </div>
         <div class="land">
           <div class="time" v-if="haveHouse">{{ timer }}</div>
@@ -81,6 +82,7 @@
 import { computed } from "vue";
 import { propsBoxPet } from "../interfaces/boxPet";
 import { notification } from "ant-design-vue";
+import { Modal } from "ant-design-vue";
 import i18n from "@/i18n/i18n";
 import useFarm from "../composables/useFarm";
 import useFeed from "../composables/useFeed";
@@ -142,6 +144,19 @@ export default {
     // const calcTime = ref(false);
     // calcTime.value = props.minsToComplete + props.extraTime;
 
+    const showConfirm = (id) => {
+      Modal.confirm({
+        title: () => "Do you want to delete this pet?",
+        content: () => "No recibiras ningun CE y no podras recuperar la pet",
+        centered: true,
+        destroyOnClose: true,
+        okType: "primary",
+        onOk() {
+          deleteFarm(id);
+        },
+      });
+    };
+
     const deleteFarm = async (id) => {
       const resp = await deletePet(id);
       console.log(resp);
@@ -150,9 +165,16 @@ export default {
     return {
       feed,
       deleteFarm,
+      showConfirm,
       async finishFarm() {
         const resp = await finish(props.id, props.pet_ce);
-        console.log(resp.ok);
+        if (resp.ok) {
+          // Mostrar notificacion
+          notification.info({
+            message: `props.pet_ce CE recived`,
+            duration: 3,
+          });
+        }
       },
       timer: computed(() => {
         let hours = Math.floor(props.minsToComplete / 60);

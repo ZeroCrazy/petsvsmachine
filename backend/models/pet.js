@@ -86,7 +86,7 @@ class Pet extends Model {
             FROM ${this.table} t1
             LEFT JOIN ${this.tables.rarity} t2 ON t1.rarity_id = t2.id
             LEFT JOIN farm_list t3 on t1.id = t3.pet_id
-            WHERE t1.player_id = ?;`
+            WHERE t1.player_id = ? AND t1.is_shop = 0;`
             const args = [this.player_id];
             const response = await this.query(sql, args);
             return response;

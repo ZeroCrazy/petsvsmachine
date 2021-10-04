@@ -41,6 +41,7 @@
       </div>
     </div> -->
     <a-modal
+      class="full"
       :visible="modal2Visible"
       title="Select pet to farm"
       width="80vw"
@@ -88,7 +89,7 @@ export default {
       const resp = await getFarmByUser();
       const resp2 = await floorLandActive();
       floor.value = resp2.floor;
-      console.log(floor.value)
+      console.log(floor.value);
       if (!resp.ok) alert("error");
       refresh;
     });
@@ -122,11 +123,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 @import "@/css/colors.scss";
 
-.ant-modal-content {
-  background-color: rgba(#40c0ff, 1);
+.ant-modal.full > .ant-modal-content {
   height: 80vh;
   overflow: hidden;
 }
@@ -149,11 +149,14 @@ export default {
   color: #fff;
 }
 
-
-
 /*
   Modal
 */
+.ant-modal-confirm-title,
+.ant-modal-confirm-content {
+  color: #fff !important;
+}
+
 .ant-modal-centered {
   background: rgb(0 0 0 / 90%);
 }
@@ -167,10 +170,22 @@ export default {
   border-bottom: 1px solid rgb(0 0 0 / 60%);
 }
 .ant-modal-body {
-  background: rgb(166,90,8);
-  background: -moz-linear-gradient(180deg, rgba(166,90,8,1) 0%, rgba(30,30,30,1) 60%);
-  background: -webkit-linear-gradient(180deg, rgba(166,90,8,1) 0%, rgba(30,30,30,1) 60%);
-  background: linear-gradient(180deg, rgba(166,90,8,1) 0%, rgba(30,30,30,1) 60%);
+  background: rgb(166, 90, 8);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(166, 90, 8, 1) 0%,
+    rgba(30, 30, 30, 1) 60%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(166, 90, 8, 1) 0%,
+    rgba(30, 30, 30, 1) 60%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(166, 90, 8, 1) 0%,
+    rgba(30, 30, 30, 1) 60%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#a65a08",endColorstr="#1e1e1e",GradientType=1);
 }
 .ant-modal-body .card {
@@ -180,7 +195,7 @@ export default {
   backdrop-filter: blur(35px);
 }
 .ant-modal-title {
-  font-family: "Poppins",sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -198,6 +213,5 @@ export default {
   filter: brightness(2);
   cursor: pointer;
 }
-
 </style>
 
