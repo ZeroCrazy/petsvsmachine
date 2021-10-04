@@ -213,5 +213,29 @@ export default {
   filter: brightness(2);
   cursor: pointer;
 }
+
+.ant-modal-confirm .ant-modal-body {
+  border-radius: 15px;
+}
+.ant-modal-confirm .ant-modal-confirm-btns {
+  float: unset;
+  justify-content: center;
+  text-align: center;
+}
+.ant-modal-confirm .ant-modal-confirm-btns .ant-btn {
+  width: 45%;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 1px 5px 0 rgb(0 0 0 / 12%);
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  color: #fff;
+  background: #1eb73b !important;
+}
+.ant-modal-confirm .ant-modal-confirm-btns .ant-btn.ant-btn-primary {
+  color: #fff;
+  background: #b71e1e !important;
+}
 </style>
 

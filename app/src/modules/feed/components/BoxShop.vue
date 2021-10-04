@@ -25,7 +25,9 @@
         <p class="description">{{ description }}</p>
         <div class="columns is-mobile">
           <div class="column is-2">
-            <button @click="substract" class="button shop-button is-fullwidth">-</button>
+            <button @click="substract" class="button shop-button is-fullwidth">
+              -
+            </button>
           </div>
           <div class="column is-2">
             <button
@@ -36,7 +38,9 @@
             </button>
           </div>
           <div class="column is-2">
-            <button @click="add" class="button shop-button is-fullwidth">+</button>
+            <button @click="add" class="button shop-button is-fullwidth">
+              +
+            </button>
           </div>
           <div class="column is-6">
             <button @click="buy()" class="button shop-button is-fullwidth">
@@ -112,7 +116,6 @@ export default {
         return;
       }
       if (props.action === "house") {
-        console.log(resources);
         const resp = await buyResource(
           "house",
           props.cost,
@@ -124,6 +127,12 @@ export default {
             message: i18n.t("farm.noResources"),
             duration: 3,
           });
+        else {
+          notification.success({
+            message: "Success",
+            duration: 3,
+          });
+        }
         return;
       } else if (props.action === "food") {
         const resp = await buyResource(
@@ -137,6 +146,12 @@ export default {
             message: i18n.t("farm.noResources"),
             duration: 3,
           });
+        else {
+          notification.success({
+            message: "Success",
+            duration: 3,
+          });
+        }
         return;
       } else if (props.action === "caress") {
         const resp = await buyResource(
@@ -150,6 +165,12 @@ export default {
             message: i18n.t("farm.noResources"),
             duration: 3,
           });
+        else {
+          notification.success({
+            message: "Success",
+            duration: 3,
+          });
+        }
         return;
       } else if (props.action === "pet") {
         const resp = await buyResource(
@@ -163,6 +184,12 @@ export default {
             message: i18n.t("farm.noResources"),
             duration: 3,
           });
+        else {
+          notification.success({
+            message: "Success",
+            duration: 3,
+          });
+        }
         return;
       }
     };
