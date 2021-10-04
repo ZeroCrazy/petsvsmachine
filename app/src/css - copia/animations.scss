@@ -1,0 +1,94 @@
+@keyframes float {
+	0% {
+    filter: drop-shadow(#000 0px 5px 15px 0px);
+		transform: translatey(0px);
+	}
+	50% {
+    filter: drop-shadow(#000 0px 25px 15px 0px);
+		transform: translatey(-3px);
+	}
+	100% {
+    filter: drop-shadow(#000 0px 5px 15px 0px);
+		transform: translatey(0px);
+	}
+}
+@-webkit-keyframes rainbow-in-out {
+  0% {
+    -webkit-transform: rotate(180deg);
+ }
+  33% {
+    -webkit-transform: rotate(360deg);
+ }
+  66% {
+    -webkit-transform: rotate(360deg);
+ }
+  100% {
+    -webkit-transform: rotate(540deg);
+ }
+}
+@-webkit-keyframes shadow-in-out {
+  0% {
+    opacity: 0;
+    width: 0;
+ }
+  33% {
+    opacity: 1;
+    width: 60px;
+ }
+  66% {
+    opacity: 1;
+    width: 60px;
+ }
+  100% {
+    opacity: 0;
+    width: 0;
+ }
+}
+@-webkit-keyframes clouds-in-out {
+  0% {
+    right: 0%;
+ }
+  100% {
+    right: 105%;
+ }
+}
+@-webkit-keyframes flash {
+  0% { opacity: 1; } 
+  2% { opacity: 0; }
+  3% { opacity: 0.6; }
+  4% { opacity: 0.2; }
+  6% { opacity: 0.9; } 
+  100% { opacity: 1; }
+}
+@keyframes flash {
+  0% { opacity: 1; } 
+  2% { opacity: 0; }
+  3% { opacity: 0.6; }
+  4% { opacity: 0.2; }
+  6% { opacity: .9; } 
+  100% { opacity: 1; }
+}
+@keyframes rain {
+  0% {
+      background-position: 0 0;
+      opacity: 1;
+  }
+
+  100% {
+      background-position: 8% 80%;
+      opacity: 1;
+  }
+}
+/* applying filter at different angle
+on diffrent interval using keyframe*/
+@keyframes color-change {
+  0% {
+      filter: hue-rotate(0deg);
+  }
+  50% {
+      filter: hue-rotate(0deg);
+  }
+  100% {
+      filter: hue-rotate(360deg);
+  }
+}

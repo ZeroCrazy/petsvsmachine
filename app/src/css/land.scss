@@ -1,0 +1,28 @@
+.land-map {
+  max-width: 575px;
+  display: flow-root;
+}
+.land-map .land-view {
+  width: calc(100% / 21) !important;
+  border: 1px solid;
+  height: 25px;
+  background: green;
+  color: #fff;
+  float: left;
+  font-size: xx-small;
+  text-align: center;
+  line-height: 25px;
+}
+.land-map .land-view:hover {
+  filter: brightness(var(--value, 2));
+  cursor: pointer;
+}
+.land-map .land-view.busy {
+  background: #9f9f9f;
+}
+.land-map .land-view.onsale {
+  background: yellowgreen;
+}
+.land-map .land-view.red {
+  background: red;
+}

@@ -5,6 +5,7 @@ $primary: #a65a08;
 $text-nav: #6a748e;
 $text: #fff;
 $danger: #f14668;
+$success: #1eb73b;
 $common: #00ffdd;
 $uncommon: #001eff;
 $rare: #ff0026;
@@ -17,11 +18,35 @@ $input-placeholder-color:rgb(170, 170, 170);
     background-color: $primary;
     transition: 300ms;
 }
-
 .button.is-primary:hover {
     background-color: #c47f00;
 }
-
 .button.is-primary:active, .button.is-primary.is-active {
     background-color: #8b5b00;
+}
+.btn-resources {
+  background: rgba(26,29,40,.3);
+  font-family: "Poppins",sans-serif;
+  color: #fff !important;
+  text-shadow: 0px 0px 15px rgb(21 24 33 / 70%);
+  font-weight: bold;
+  mix-blend-mode: normal;
+  -webkit-backdrop-filter: blur(35px);
+  backdrop-filter: blur(35px);
+  border: 1px solid rgb(255 255 255 / 40%);
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px 0px;
+}
+.btn-resources.production {
+  background: rgba(0,255,243,.3);
+}
+.btn-resources.house {
+  background: rgba(0,255,67,.3);
+}
+.btn-resources.food {
+  background: rgba(223,123,0,.3);
+}
+.btn-resources.caress {
+  background: rgba(221,221,221,.3);
 }

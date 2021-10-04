@@ -1,0 +1,277 @@
+// transition: transform 0.5s ease-in
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+.slice-enter {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+.slice-enter-to {
+  transition: all 0.5s ease;
+  transform: scaleX(1);
+}
+.slice-leave {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.slice-leave-to {
+  transition: all 0.5s ease;
+  transform: scaleX(0);
+}
+
+.slice-lr-enter {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+.slice-lr-enter-to {
+  transition: all 0.5s ease-in;
+  transform: scaleX(1);
+}
+.slice-lr-leave {
+  transform: scaleX(1);
+  transform-origin: bottom right;
+}
+.slice-lr-leave-to {
+  transition: all 0.5s ease-out;
+  transform: scaleX(0);
+}
+
+.slice-bt-enter {
+  transform: scaleY(0);
+  transform-origin: bottom right;
+}
+.slice-bt-enter-to {
+  transition: all 0.5s ease;
+  transform: scaleY(1);
+}
+.slice-bt-leave {
+  transform: scaleY(1);
+  transform-origin: bottom left;
+}
+.slice-bt-leave-to {
+  transition: all 0.5s ease;
+  transform: scaleY(0);
+}
+
+.pop-enter-active,
+.pop-leave-active {
+  transition: transform 0.4s cubic-bezier(0.5, 0, 0.5, 1), opacity 0.4s linear;
+}
+.pop-enter,
+.pop-leave-to {
+  opacity: 0;
+  transform: scale(0.3) translateY(-50%);
+}
+.top-left-enter-active {
+  animation: top-left 1s ease reverse;
+}
+.top-left-leave-active {
+  animation: top-left 1s ease;
+}
+@keyframes top-left {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: skew(30deg, 20deg) translate(-100%, 20%);
+    border-top-right-radius: 60%;
+    border-bottom-right-radius: 60%;
+  }
+}
+.swipe-down-enter-active,
+.swipe-down-leave-active {
+  transition: 0.4s;
+}
+.swipe-down-enter {
+  opacity: 0;
+  transform: translateY(100vh);
+}
+.swipe-down-enter-to {
+  opacity: 1;
+}
+.swipe-down-leave-to {
+  transform: translateY(100vw);
+}
+.swipe-left-enter-active,
+.swipe-left-leave-active {
+  transition: 0.4s;
+}
+.swipe-left-enter {
+  transform: translateX(-100vw);
+}
+.swipe-left-enter-to {
+  opacity: 1;
+}
+.swipe-left-leave-to {
+  transform: translateX(-200vw);
+}
+.blink-enter {
+  transform: scaleY(0);
+}
+.blink-enter-to {
+  transition: transform 0.5s ease;
+  transform: scaleY(1);
+}
+.blink-leave {
+  transform: scaleY(1);
+}
+.blink-leave-to {
+  transition: transform 0.5s ease;
+  transform: scaleY(0);
+}
+.reptil-enter {
+  transform: scaleX(0);
+}
+.reptil-enter-to {
+  transition: transform 0.5s ease;
+  transform: scaleX(1);
+}
+.reptil-leave {
+  transform: scaleX(1);
+}
+.reptil-leave-to {
+  transition: transform 0.5s ease;
+  transform: scaleX(0);
+}
+.round-enter {
+  transform: rotateY(180deg);
+}
+.round-enter-to {
+  transition: all 0.5s;
+  transform: rotateY(360deg);
+}
+.round-leave {
+  transform: rotateY(360deg);
+  opacity: 1;
+}
+.round-leave-to {
+  transition: all 0.5s;
+  transform: rotateY(180deg);
+  opacity: 0;
+}
+.classic-enter {
+  transform: translateX(100vw);
+}
+.classic-enter-to {
+  transition: all 0.5s;
+  transform: translateX(0vw);
+}
+.classic-leave {
+  transform: translateX(0vw);
+}
+.classic-leave-to {
+  transition: all 0.5s;
+  transform: translateX(-100vw);
+}
+.elastic-enter-active {
+  animation: elastic 0.5s;
+}
+.elastic-leave-active {
+  animation: elastic 0.5s reverse;
+}
+
+@keyframes elastic {
+  0% {
+    transform-origin: top bottom;
+    transform: scale(0.8, 0);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: top bottom;
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+.gumball-v2-enter {
+  transform: scale(0);
+  opacity: 0;
+}
+.gumball-v2-enter-to {
+  transform: scale(1);
+  opacity: 1;
+  transition: all 0.5s ease-in;
+}
+.gumball-v2-leave {
+  transform: scale(1);
+  opacity: 1;
+}
+.gumball-v2-leave-to {
+  transform: scale(10);
+  opacity: 0;
+  transition: all 0.5s ease-in;
+}
+.gumball-enter-active {
+  animation: gumball 0.5s;
+}
+.gumball-leave-active {
+  animation: gumball 0.5s reverse;
+}
+@keyframes gumball {
+  0% {
+    transform: scale(10);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes openbox {
+  0% {
+    height: 0px;
+    width: 0px;
+  }
+  100% {
+    height: 300px;
+    width: 250px;
+  }
+}
+
+
+@keyframes closebox {
+  0% {
+    height: 300px;
+    width: 250px;
+  }
+  100% {
+    height: 0px;
+    width: 0px;
+  }
+}
+

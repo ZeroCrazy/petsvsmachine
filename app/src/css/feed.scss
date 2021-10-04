@@ -1,0 +1,238 @@
+.land {
+  animation: rain 0.4s linear infinite;
+  /*background: url('../images/land.svg');
+  background-repeat: no-repeat;
+  background-position: center bottom;*/
+  width: 80%;
+  border-radius: 3px;
+  height: 201px;
+  background-color: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 20%);
+  overflow: hidden;
+}
+.land .floor {
+  background: url('../assets/images/land_floor.png') no-repeat;
+  background-size: cover;
+  width: 129px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.land .production {
+  border-radius: 3px;
+  border: 2px solid rgb(0 0 0 / 15%);
+  /*background-color: rgb(0 0 0 / 50%);*/
+  background-color: rgb(0 255 243 / 50%);
+  width: fit-content;
+  padding: 1px 7px;
+  float: right;
+  margin: 10px 10px 0px 0px;
+  font-size: x-small;
+  color: #fff;
+}
+.land .pet {
+  /*background: url('images/pets/dog.png');*/
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  width: 40%;
+  height: 40%;
+  margin-left: 30%;
+  margin-right: 30%;
+  position: relative;
+  top: 44px;
+  transform: translatey(0px);
+    animation: float 3s ease-in-out infinite;
+  /*animation: float 3s cubic-bezier(0.76, 0.83, 0.9, 0.55) infinite;*/
+}
+.land .coordinate {
+  border-radius: 3px;
+  border: 2px solid rgb(0 0 0 / 15%);
+  background-color: rgb(0 0 0 / 50%);
+  width: fit-content;
+  padding: 1px 7px;
+  bottom: 24px;
+  margin: 0px 0px 10px 10px;
+  font-size: x-small;
+  color: #fff;
+  position: absolute;
+  text-transform: capitalize;
+}
+.land .resources {
+  /*float: right;
+  margin-right: calc(10ch - -59px);*/
+  display: flex;
+  float: right;
+  /* margin-right: calc(10ch - -59px); */
+  margin-top: 60px;
+  margin-top: 90px;
+  margin-right: 8px;
+  z-index: 10;
+  position: sticky;
+}
+.land .resources .item {
+  border-radius: 3px;
+  border: 2px solid rgb(0 0 0 / 15%);
+  background-color: rgb(0 0 0 / 50%);
+  width: fit-content;
+  padding: 1px 7px;
+  font-size: x-small;
+  color: #fff;
+  text-transform: capitalize;
+  margin: 0px 2px;
+}
+.land .resources .item.have-house {
+  background-color: rgb(0 255 67 / 50%);
+}
+.land .resources .item.have-food {
+  background-color: rgb(223 123 0 / 50%);
+}
+.land .resources .item.have-caress {
+  background-color: rgb(221 221 221 / 50%);
+}
+.land .resources .item.have-light {
+  background-color: rgb(239 255 0 / 63%);
+}
+.land .time {
+  border-radius: 3px;
+  border: 2px solid rgb(0 0 0 / 15%);
+  width: fit-content;
+  padding: 1px 7px;
+  margin: 10px 0px 1px 10px;
+  color: #9a9fad;
+  font-weight: bold;
+  font-size: x-small;
+  float: left;
+  background: #151821;
+  font-family: "Poppins",sans-serif;
+}
+.shop-options, .pet-options {
+  width: 19%;
+  height: 201px;
+  float: right;
+}
+.shop-options .box, .pet-options .box {
+  /*width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;*/
+  width: 100%;
+  margin-left: 5px;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 5%);
+  border: 1px solid rgb(255 255 255 / 20%);
+  padding:5.2px 0px;
+  text-align: center;
+  color: #fff;
+  margin-bottom: 5px;
+}
+.shop-options .box:hover, .pet-options .box:hover {
+  background: rgb(255 255 255 / 15%);
+  cursor: pointer;
+}
+.land-about-rarity.common, .coordinate.common, .pet.common, .time.common {
+  filter: drop-shadow(#00ffdd 0px 0px 5px);
+}
+.land-about-rarity.uncommon, .coordinate.uncommon, .pet.uncommon, .time.uncommon {
+  filter: drop-shadow(#001eff 0px 0px 5px);
+}
+.land-about-rarity.rare, .coordinate.rare, .pet.rare, .time.rare {
+  filter: drop-shadow(#ff0026 0px 0px 5px);
+}
+.land-about-rarity.mythic, .coordinate.mythic, .pet.mythic, .time.mythic {
+  filter: drop-shadow(#6f00ff 0px 0px 5px);
+}
+
+.land-map .land-view.common {
+  background-color: #00ffdd;
+}
+.land-map .land-view.uncommon {
+  background-color: #001eff;
+}
+.land-map .land-view.rare {
+  background-color: #ff0026;
+}
+.land-map .land-view.mythic {
+  background-color: #6f00ff;
+}
+.land-map .land-view.center {
+  background-color: #d9ff00;
+}
+.navbar-btn-feed-left {
+  float: left;
+  width: 23%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+.pet-attr-number {
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  background: #238636;
+  margin-top: -18px;
+  margin-right: -9px;
+  float: right;
+  text-align: center;
+  font-weight: bold;
+  /*font-size: 12px;*/
+  color: #fff;
+}
+.pet-number-attr {
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  margin-left: -15px;
+  background: rgb(0 0 0 / 10%);
+  text-align: center;
+  font-weight: bold;
+  font-size: 10px;
+  color: #fff;
+  border-left: 1px solid rgb(255 255 255 / 20%);
+  margin-top: -10px;
+  margin-bottom: -9px;
+  top: 17px;
+  float: right;
+  right: 14px;
+  height: 36px;
+  line-height: 37px;
+  width: 13px;
+}
+.no-cursor {
+  cursor: auto !important;
+}
+.no-padding {
+  padding: 0px !important;
+}
+.add-pet {
+  width: 100%;
+}
+.add-pet div {
+  width: max-content;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 24ch;
+}
+.add-pet i {
+  color: #fff;
+  text-align: center;
+  font-size: 40px;
+}
+
+.pet-finish {
+  background: rgb(0 0 0 / 50%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  border-radius: .25rem;
+  left: 0px;
+}
+
+.resources .item.have-finish {
+  filter: none;
+  background-color: transparent !important;
+  border: none;
+  margin-top: -6px;
+  margin-right: -9px;
+}
