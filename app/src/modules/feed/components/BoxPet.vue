@@ -10,32 +10,33 @@
       </div>
       <div class="content" v-else>
         <div class="pet-options">
-          <button class="mb-0 box" @click="feed('house')">
+          <button class="box" @click="feed('house')">
             <i class="fal fa-home-alt"></i>
           </button>
-          <button class="mb-0 box" @click="feed('food')">
+          <button class="box" @click="feed('food')">
             <i class="fal fa-bone"></i>
           </button>
-          <button class="mb-0 box" @click="feed('caress')">
+          <button class="box" @click="feed('caress')">
             <i class="fal fa-hand-paper"></i>
           </button>
           <button
             @click="$router.push({ name: 'feedDetails', params: { id: id } })"
-            class="mb-0 box"
+            class="box"
           >
             <i class="fal fa-eye"></i>
           </button>
           <!-- borrar -->
-          <a-popconfirm
-            title="Are you sure？"
+          <!-- <a-popconfirm
+            title="Are you sure？Si la eliminas no recibiras CE"
+            body="fsdf"
             ok-text="Yes"
             cancel-text="No"
             @confirm="deleteFarm(id)"
-          >
-            <button class="mb-0 box">
-              <i class="fal fa-trash-alt"></i>
-            </button>
-          </a-popconfirm>
+          > -->
+          <button @click="showConfirm(id)" class="box">
+            <i class="fal fa-trash-alt"></i>
+          </button>
+          <!-- </a-popconfirm> -->
         </div>
         <div class="land">
           <div class="time" v-if="haveHouse">{{ timer }}</div>
@@ -50,16 +51,25 @@
           <!-- Rareza de la land -->
           <div :class="['coordinate', land_rarity]">{{ land_rarity }}</div>
           <div class="resources">
-            <div v-if="isAfraid" class="item have-light flashit">
+            <div
+              v-if="isAfraid && minsToComplete > 0"
+              class="item have-light flashit"
+            >
               <i class="fal fa-bolt"></i>
             </div>
-            <div v-if="bones == 2" class="item have-food">
+            <div v-if="bones == 2 && minsToComplete > 0" class="item have-food">
               <i class="fal fa-bone"></i>
             </div>
-            <div v-if="haveHouse" class="item have-house">
+            <div v-if="haveHouse && minsToComplete > 0" class="item have-house">
               <i class="fal fa-home-alt"></i>
             </div>
+            <div v-if="minsToComplete === 0" class="item have-finish">
+              <button @click="finishFarm()" class="button shop-button is-small">
+                Harvest
+              </button>
+            </div>
           </div>
+          <div v-if="minsToComplete === 0" class="pet-finish"></div>
           <div class="floor"></div>
         </div>
         <div v-if="isAfraid" class="rain"></div>
@@ -69,9 +79,10 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { propsBoxPet } from "../interfaces/boxPet";
 import { notification } from "ant-design-vue";
+import { Modal } from "ant-design-vue";
 import i18n from "@/i18n/i18n";
 import useFarm from "../composables/useFarm";
 import useFeed from "../composables/useFeed";
@@ -82,7 +93,7 @@ export default {
   props: propsBoxPet,
 
   setup(props) {
-    const { feedPet, putHouse, caressPet, deletePet } = useFarm();
+    const { feedPet, putHouse, caressPet, deletePet, finish } = useFarm();
     const { resources } = useFeed();
 
     const feed = async (resource) => {
@@ -130,8 +141,21 @@ export default {
       }
     };
 
-    const calcTime = ref(false);
-    calcTime.value = props.minsToComplete + props.extraTime;
+    // const calcTime = ref(false);
+    // calcTime.value = props.minsToComplete + props.extraTime;
+
+    const showConfirm = (id) => {
+      Modal.confirm({
+        title: () => "Do you want to delete this pet?",
+        content: () => "No recibiras ningun CE y no podras recuperar la pet",
+        centered: true,
+        destroyOnClose: true,
+        okType: "primary",
+        onOk() {
+          deleteFarm(id);
+        },
+      });
+    };
 
     const deleteFarm = async (id) => {
       const resp = await deletePet(id);
@@ -141,10 +165,21 @@ export default {
     return {
       feed,
       deleteFarm,
+      showConfirm,
+      async finishFarm() {
+        const resp = await finish(props.id, props.pet_ce);
+        if (resp.ok) {
+          // Mostrar notificacion
+          notification.info({
+            message: `props.pet_ce CE recived`,
+            duration: 3,
+          });
+        }
+      },
       timer: computed(() => {
-        let hours = Math.floor(calcTime.value / 60);
+        let hours = Math.floor(props.minsToComplete / 60);
         if (hours < 10) hours = "0" + hours;
-        let mins = calcTime.value % 60;
+        let mins = props.minsToComplete % 60;
         if (mins < 10) mins = "0" + mins;
         return `${hours}:${mins}`;
       }),
@@ -156,5 +191,4 @@ export default {
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
 @import "@/css/animations.scss";
-
 </style>

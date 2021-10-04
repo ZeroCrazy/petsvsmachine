@@ -32,7 +32,7 @@ class Land extends Model {
             LEFT JOIN petsvsmachine.farm_list t2 ON t1.id = t2.land_id
             LEFT JOIN petsvsmachine.land_rarity t3 ON t1.rarity_id = t3.id
             LEFT JOIN petsvsmachine.land_player t4 ON t1.id = t4.land_id
-            WHERE (t4.player_id = 56 AND t2.isCompleted = 0 )  
+            WHERE (t4.player_id = ? AND COALESCE(t2.isCompleted, 0) = 0 )  
             GROUP BY t2.land_id;`
             const args = [uid];
             const response = await this.query(sql, args);

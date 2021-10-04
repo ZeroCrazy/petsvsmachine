@@ -16,15 +16,18 @@ import NavBar from "./modules/shared/components/NavBar.vue";
 
 import useAuth from "@/modules/auth/composables/useAuth";
 import { onMounted } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   name: "App",
   components: { NavBar },
   setup() {
     const { autoLogin } = useAuth();
+    const  router  = useRouter();
 
-    onMounted(() => {
-      autoLogin();
+    onMounted(async () => {
+      const resp = await autoLogin();
+      if (!resp) router.push({ name: "login" });
     });
     return {};
   },

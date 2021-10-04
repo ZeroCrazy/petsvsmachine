@@ -166,6 +166,33 @@ const useCaress = async (req, res = response) => {
     return resp(res, 200, { msg: 'Success' });
 }
 
+
+const finishFarm = async (req, res = response) => {
+
+    const { uid } = req;
+    // Obtener id
+    const { id } = req.params;
+
+    // comprobar que tiene suficiente farm
+    const farm = new Farm();
+    const data = await farm.getById(uid, id)
+
+    if (!data) return resp(res, 404, { msg: "Can't get farms" });
+
+    // Crear objeto con datos y eventos
+    const farmData = createFarmData(data)
+
+    if(farmData[0].minsToComplete > 0) return resp(res, 404, { msg: "Farm don't finish" });
+
+    const response = await farm.finish(id, uid )
+
+    if (!response) return resp(res, 500, { msg: "Server error" });
+
+    return resp(res, 200, { msg: "Farm completed" });
+
+}
+
+
 module.exports = {
     get,
     getDetails,
@@ -173,7 +200,8 @@ module.exports = {
     useHome,
     useFood,
     useCaress,
-    deleteFarm
+    deleteFarm,
+    finishFarm
 
 }
 
