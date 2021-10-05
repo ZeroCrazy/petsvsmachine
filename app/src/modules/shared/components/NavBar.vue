@@ -119,15 +119,85 @@
     </nav>
 
     <!-- SIDEBAR -->
-    <!-- <o-sidebar fullheight overlay mobile="fullwidth" :open="open">
-      <o-button icon-left="times" label="Close" @click="open = false" />
-      <img
-        width="128"
-        src="https://avatars2.githubusercontent.com/u/66300512?s=200&v=4"
-        alt="Lightweight UI components for Vue.js"
-      />
-      <h3>Example</h3>
-    </o-sidebar> -->
+    <a-drawer
+      class="p-0"
+      placement="left"
+      :closable="false"
+      :visible="open"
+      @close="open = false"
+    >
+      <nav class="navbar is-transparent" style="height: 100vh">
+        <div class="navbar-menu" style="display: block">
+          <div class="navbar-brand">
+            <a class="navbar-item" href="https://petsvsmachine.com/">
+              <img :src="require('@/assets/images/logo.png')" />
+            </a>
+
+            <!-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <i style="font-size: 26px;margin-top: 15px;" class="fal fa-times"></i>
+        </a> -->
+          </div>
+          <div class="navbar-start">
+            <a
+              v-for="({ name, icon, route: routeName }, index) in sections"
+              :key="index"
+              @click="
+                {
+                  open = false;
+                  $router.push({ name: routeName });
+                }
+              "
+              :class="{
+                'navbar-item': true,
+              }"
+            >
+              <i :class="['left', 'fal', icon]"></i> {{ $t(name) }}
+            </a>
+
+            <div
+              v-if="authStatus"
+              class="navbar-item has-dropdown is-hoverable"
+            >
+              <a class="navbar-link">
+                <i class="left fal fa-user-circle"></i> My account
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a href="settings.html" class="navbar-item"> Settings </a>
+                <a class="navbar-item">
+                  {{ $t("section.wallet") }}:<br />{{ metamask }}
+                </a>
+                <a class="navbar-item"> Logout </a>
+              </div>
+            </div>
+            <div
+              v-if="authStatus"
+              class="navbar-item has-dropdown is-hoverable"
+            >
+              <a class="navbar-link">
+                <i class="left fal fa-globe"></i> Language
+              </a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item"> English </a>
+                <a class="navbar-item"> Spanish </a>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="!authStatus" class="navbar-end">
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a href="login.html" class="button is-primary">
+                    <strong>Log in</strong>
+                  </a>
+                  <a href="register.html" class="button is-light"> Sign up </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </a-drawer>
   </div>
 </template>
 
@@ -209,6 +279,10 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
+
+.ant-drawer-body {
+  padding: 0px !important;
+}
 
 .navbar {
   height: 56px;
