@@ -35,7 +35,7 @@ const deleteFarm = async (req, res = response) => {
     const data = await farm.deleteFarm(uid)
     if (!data) return resp(res, 404, { msg: "Can't delete farm" });
 
-    return resp(res, 200, {msg:'Farm deleted'});
+    return resp(res, 200, { msg: 'Farm deleted' });
 
 }
 
@@ -182,13 +182,27 @@ const finishFarm = async (req, res = response) => {
     // Crear objeto con datos y eventos
     const farmData = createFarmData(data)
 
-    if(farmData[0].minsToComplete > 0) return resp(res, 404, { msg: "Farm don't finish" });
+    if (farmData[0].minsToComplete > 0) return resp(res, 404, { msg: "Farm don't finish" });
 
-    const response = await farm.finish(id, uid )
+    const response = await farm.finish(id, uid)
 
     if (!response) return resp(res, 500, { msg: "Server error" });
 
     return resp(res, 200, { msg: "Farm completed" });
+
+}
+
+const canEggRecive = async (req, res = response) => {
+
+    const { uid } = req;
+    // comprobar que tiene suficiente farm
+    const farm = new Farm();
+    const data = await farm.canEggRecive(uid)
+    if (!data) return resp(res, 500, { msg: "Server error" });
+    if (data[0].total % 100 === 0) {
+        return resp(res, 200, { canRecived: true });
+    }
+    else return resp(res, 200, { canRecived: false });
 
 }
 
@@ -201,7 +215,8 @@ module.exports = {
     useFood,
     useCaress,
     deleteFarm,
-    finishFarm
+    finishFarm,
+    canEggRecive
 
 }
 

@@ -15,4 +15,11 @@ const router = createRouter({
   routes
 })
 
+const defaultTitle = 'home'; 
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title ? to.meta.title : defaultTitle;
+  next();
+});
+
+
 export default router

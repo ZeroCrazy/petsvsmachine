@@ -25,7 +25,7 @@ class Farm extends Model {
             LEFT JOIN farm_events t6 ON t1.id = t6.farm_id
             LEFT JOIN event_list t7 ON t7.id = t6.event_id
         
-            WHERE t4.player_id = ? AND t1.isCompleted = 0
+            WHERE t4.player_id = ? AND t1.isCompleted = 0 AND t1.deleted_at IS NULL
         ;`
             const args = [player_id];
             const response = await this.query(sql, args);
@@ -51,7 +51,7 @@ class Farm extends Model {
             LEFT JOIN farm_events t6 ON t1.id = t6.farm_id
             LEFT JOIN event_list t7 ON t7.id = t6.event_id
         
-            WHERE t4.player_id = ? AND t1.isCompleted = 0 AND t1.id = ?
+            WHERE t4.player_id = ? AND t1.isCompleted = 0 AND t1.id = ? AND t1.deleted_at IS NULL
         ;`
             const args = [player_id, id];
             const response = await this.query(sql, args);
@@ -69,7 +69,7 @@ class Farm extends Model {
             LEFT JOIN pet_list t2 ON t1.pet_id = t2.id
             LEFT JOIN pet_rarity t3 ON t2.rarity_id = t3.id
             LEFT JOIN player_list t4 ON t2.player_id = t4.id
-            WHERE t2.player_id = ? AND t1.isCompleted = 0
+            WHERE t2.player_id = ? AND t1.isCompleted = 0 AND t1.deleted_at IS NULL
         ;`
             const args = [player_id];
             const response = await this.query(sql, args);
@@ -82,7 +82,7 @@ class Farm extends Model {
 
     async deleteFarm() {
         try {
-            const sql = `UPDATE farm_list SET isCompleted = 1 WHERE id = ?;`
+            const sql = `UPDATE farm_list SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?;`
             const args = [this.id];
             const response = await this.query(sql, args);
             return true;
@@ -237,7 +237,7 @@ class Farm extends Model {
             SELECT t1.pet_id, rand() AS random, t1.id AS farm_id  
             FROM farm_list t1
             LEFT JOIN farm_events t2 ON t1.id = t2.farm_id
-            WHERE t1.isCompleted = 0 
+            WHERE t1.isCompleted = 0 AND t1.deleted_at IS NULL
             GROUP BY t1.pet_id
             ) a
             LEFT JOIN
@@ -246,7 +246,7 @@ class Farm extends Model {
             SELECT t1.pet_id 
             FROM farm_list t1
             INNER JOIN farm_events t2 ON t1.id = t2.farm_id
-            WHERE t1.isCompleted = 0 AND ((t2.event_id = 3 AND t2.finish_at IS NULL) OR (t2.event_id=1 AND t2.finish_at<CURRENT_TIMESTAMP() ))
+            WHERE t1.isCompleted = 0 AND t1.deleted_at IS NULL AND ((t2.event_id = 3 AND t2.finish_at IS NULL) OR (t2.event_id=1 AND t2.finish_at<CURRENT_TIMESTAMP() ))
             )b
             ON a.pet_id = b.pet_id
             WHERE b.pet_id IS NULL AND random > 0.8;
@@ -288,6 +288,21 @@ class Farm extends Model {
         }
     }
 
+
+    async canEggRecive(uid) {
+        try {
+            const sql = `SELECT COUNT(id) AS total
+            FROM farm_list  t1
+            INNER JOIN land_player t2 ON t1.land_id = t2.land_id
+            WHERE t1.isCompleted = 1 AND t1.deleted_at IS NULL AND t2.player_id = ?;`
+            const args = [uid];
+            const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
 
 
 

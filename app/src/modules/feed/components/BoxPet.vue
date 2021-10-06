@@ -86,6 +86,8 @@ import { Modal } from "ant-design-vue";
 import i18n from "@/i18n/i18n";
 import useFarm from "../composables/useFarm";
 import useFeed from "../composables/useFeed";
+import { canEggRecive } from "../services/farm";
+import EggRecived from "../components/EggRecived.vue";
 
 export default {
   name: "BoxPet",
@@ -95,6 +97,7 @@ export default {
   setup(props) {
     const { feedPet, putHouse, caressPet, deletePet, finish } = useFarm();
     const { resources } = useFeed();
+    
 
     const feed = async (resource) => {
       if (resources.value[resource] < 1) {
@@ -136,6 +139,14 @@ export default {
         const resp = await putHouse(props.id);
         if (resp.ok) return true;
       } else if (resource === "caress") {
+        if (!props.isAfraid) {
+          notification.info({
+            // message: i18n.t("farm.maxFood"),
+            message: "La pet no esta asustada",
+            duration: 3,
+          });
+          return;
+        }
         const resp = await caressPet(props.id);
         if (resp.ok) return true;
       }
@@ -174,6 +185,18 @@ export default {
             message: `${props.pet_ce} CE recived`,
             duration: 3,
           });
+
+          // TODO Comporovar si recibe un huevo
+          const egg = await canEggRecive();
+          if (egg && egg.canRecived)
+            Modal.info({
+              content: () => <EggRecived />,
+              centered: true,
+              destroyOnClose: true,
+              okType: "primary",
+              footer: "",
+              onOk() {},
+            });
         }
       },
       timer: computed(() => {

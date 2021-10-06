@@ -53,6 +53,23 @@
     >
       <PetSelect @onClick="clickPet" />
     </a-modal>
+
+    <!-- <a-modal
+      class="full"
+      :visible="true"
+      title="Select pet to farm"
+      width="80vw"
+      centered
+      closable
+      destroyOnClose
+      :footer="null"
+      @cancel="modal2Visible = false"
+    >
+      <div style="text-align-last: center">
+        <a-image :width="200" src="https://i.redd.it/mrdaphf9qph51.png" />
+        <div style="color: #fff; font-size:40px">Has recibido un huevo</div>
+      </div>
+    </a-modal> -->
   </div>
 </template>
 

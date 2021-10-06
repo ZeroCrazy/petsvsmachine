@@ -86,3 +86,14 @@ export const putFarm = async (pet_id, isShop) => {
 
 }
 
+export const canEggRecive = async () => {
+
+    try {
+        const { data } = await request('get', 'farm/egg')
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
+
