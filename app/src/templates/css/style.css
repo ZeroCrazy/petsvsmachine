@@ -92,6 +92,8 @@ nav {
 
 .background-transparent {
   background-color: transparent !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
 }
 
 .input-loginregister {
@@ -353,6 +355,12 @@ nav {
 }
 .no-padding {
   padding: 0px !important;
+}
+.no-box-shadow {
+  box-shadow: none !important;
+}
+.no-text-shadow {
+  text-shadow: none !important;
 }
 .add-pet {
   width: 100%;
