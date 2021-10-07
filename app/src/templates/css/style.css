@@ -795,6 +795,34 @@ nav {
 
 
 /*
+  Egg
+*/
+.egg-incubation {
+  border: none;
+  background: none;
+}
+.egg-incubation .pet {
+  height: 60%;
+  margin-top: -30px;
+}
+.egg-incubation .resources.farm {
+  margin-top: -70px;
+}
+.egg-incubation .coordinate.btn-egg {
+  width: 100%;
+  margin: 0px;
+  bottom: 20px;
+  right: 0px;
+  text-align: center;
+  background: none;
+  border: none;
+}
+.egg-incubation .coordinate.btn-egg .item button {
+  width: 60%;
+}
+
+
+/*
   Scrollbar
 */
 ::-webkit-scrollbar-track {
