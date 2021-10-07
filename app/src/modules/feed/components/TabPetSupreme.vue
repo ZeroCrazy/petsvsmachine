@@ -47,6 +47,7 @@ export default {
 
     onMounted(async () => {
       const resp = await getPets();
+      console.log(resp)
       if (resp) pets.value = resp;
     });
 

@@ -1,7 +1,7 @@
 <template>
   <div style="text-align-last: center">
     <div>Has recivido un huevo</div>
-    <img src="https://i.redd.it/mrdaphf9qph51.png" alt="" />
+    <img src="LEFT JOIN land_list t2 ON t1.land_id = t2.id" alt="" />
   </div>
 </template>
 

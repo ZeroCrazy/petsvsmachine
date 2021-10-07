@@ -142,6 +142,19 @@ class PlayerResources extends Model {
 
     }
 
+    async getEggs() {
+        try {
+            const sql = `SELECT egg FROM ${PlayerResources.table} WHERE player_id = ?;`
+            const args = [this.player_id];
+            const response = await this.query(sql, args);
+            console.log(response)
+            return response[0];
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
 
 
 

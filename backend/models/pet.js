@@ -11,7 +11,7 @@ class Pet extends Model {
     role_id;
     image;
     production;
-    days;
+    hours;
     type;
     hp;
     attack;
@@ -23,14 +23,25 @@ class Pet extends Model {
 
 
     async create() {
+        const conn = await this.getConnection();
         try {
-            const sql = `INSERT INTO ${this.table} (player_id, rarity_id, role_id, hp, attack, armor, speed, production, days) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`
-            const args = [this.player_id, this.rarity_id, this.role_id, this.hp, this.attack, this.armor, this.speed, this.production, this.days];
-            const response = await this.query(sql, args);
+            const sql = `INSERT INTO ${this.table} (player_id, rarity_id, role_id, hp, attack, armor, speed, production, hours, open_at) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ADDDATE(CURRENT_TIMESTAMP(), INTERVAL 24 hour));`
+            const args = [this.player_id, this.rarity_id, this.role_id, this.hp, this.attack, this.armor, this.speed, this.production, this.hours];
+            const response = await this.query(sql, args, conn);
+
+            const sql2 = `UPDATE ${PlayerResources.table} SET egg = egg - 1 WHERE player_id = ?;`
+            const args2 = [this.player_id];
+            const response2 = await this.query(sql2, args2, conn);
+
+            conn.commit();
             return response.insertId;;
         } catch (error) {
+            conn.rollback();
             console.log(error)
             return false
+        } finally {
+            conn.release();
         }
     }
 
@@ -86,7 +97,7 @@ class Pet extends Model {
             FROM ${this.table} t1
             LEFT JOIN ${this.tables.rarity} t2 ON t1.rarity_id = t2.id
             LEFT JOIN farm_list t3 on t1.id = t3.pet_id
-            WHERE t1.player_id = ? AND t1.is_shop = 0;`
+            WHERE t1.player_id = ? AND t1.is_shop = 0 AND t1.is_open = 1;`
             const args = [this.player_id];
             const response = await this.query(sql, args);
             return response;
@@ -98,7 +109,7 @@ class Pet extends Model {
 
     async get() {
         try {
-            const sql = `SELECT t1.id, t1.player_id, t1.image, t2.name AS rarity, t1.production, t1.days,
+            const sql = `SELECT t1.id, t1.player_id, t1.image, t2.name AS rarity, t1.production, t1.hours,
             t1.hp, t1.attack, t1.armor, t1.speed, t1.is_shop, t1.is_open, t1.open_at 
             FROM ${this.table} t1
             LEFT JOIN ${this.tables.rarity} t2 ON t1.rarity_id = t2.id
@@ -111,6 +122,45 @@ class Pet extends Model {
             return false
         }
     }
+
+    async getEggs() {
+        try {
+            const sql = `SELECT id, open_at, created_at
+            FROM ${this.table} WHERE player_id = ? AND is_open = 0 AND is_shop = 0;`
+            const args = [this.player_id];
+            const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
+    async getEgg() {
+        try {
+            const sql = `SELECT id, open_at, created_at
+            FROM ${this.table} WHERE player_id = ? AND id = ?;`
+            const args = [this.player_id, this.id];
+            const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
+    async openEgg() {
+        try {
+            const sql = `UPDATE ${this.table} SET is_open = 1 WHERE id = ?;`
+            const args = [this.id];
+            const response = await this.query(sql, args);
+            return response;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
 
 
 
