@@ -3,6 +3,7 @@ import { useStore } from 'vuex'
 import { ref } from 'vue';
 
 import { getPetsByUser } from '../services/pets'
+import { getEggsByUser, createEgg, openEgg } from '../services/eggs'
 import { getUserLands } from '../services/lands'
 
 const useInventory = () => {
@@ -26,6 +27,12 @@ const useInventory = () => {
         return pets;
     }
 
+    const eggs = ref([]);
+
+    const getEggs = async () => {
+        const eggs = await getEggsByUser();
+        return eggs;
+    }
 
     const lands = ref([]);
 
@@ -34,7 +41,15 @@ const useInventory = () => {
         return lands
     }
 
+    const generateEgg = async () => {
+        const egg = await createEgg();
+        return egg
+    }
 
+    const open = async (id) => {
+        const egg = await openEgg(id);
+        return egg
+    }
 
     return {
         getShop,
@@ -43,6 +58,10 @@ const useInventory = () => {
         getPets,
         lands,
         getLandsUser,
+        eggs,
+        getEggs,
+        generateEgg,
+        open,
         shop: computed(() => store.getters['feed/shop']),
     }
 }

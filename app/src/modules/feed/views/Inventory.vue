@@ -34,6 +34,15 @@
                       <span>Pet supreme</span>
                     </a>
                   </li>
+                  <li
+                    @click="activeTab = 4"
+                    :class="{ tablinks: true, 'is-active': activeTab === 4 }"
+                  >
+                    <a class="has-text-white">
+                      <span class="icon"><i class="fal fa-egg"></i></span>
+                      <span>Incubation</span>
+                    </a>
+                  </li>
                 </ul>
               </div>
 
@@ -55,6 +64,12 @@
               >
                 <TabSupreme />
               </div>
+              <div
+                v-if="activeTab === 4"
+                class="inventorycontent animate__animated animate__fadeIn"
+              >
+                <TabIncubation/>
+              </div>
             </div>
           </div>
         </div>
@@ -68,9 +83,10 @@ import { ref } from "vue";
 import TabLand from "../components/TabLand.vue";
 import TabPetShop from "../components/TabPetShop.vue";
 import TabSupreme from "../components/TabPetSupreme.vue";
+import TabIncubation from '../components/TabIncubation.vue';
 export default {
   name: "Inventory",
-  components: { TabLand, TabPetShop, TabSupreme },
+  components: { TabLand, TabPetShop, TabSupreme, TabIncubation },
   setup() {
     return {
       activeTab: ref(1),

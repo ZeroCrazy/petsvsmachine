@@ -86,8 +86,8 @@ import { Modal } from "ant-design-vue";
 import i18n from "@/i18n/i18n";
 import useFarm from "../composables/useFarm";
 import useFeed from "../composables/useFeed";
-import { canEggRecive } from "../services/farm";
-import EggRecived from "../components/EggRecived.vue";
+// import { canEggRecive } from "../services/farm";
+// import EggRecived from "../components/EggRecived.vue";
 
 export default {
   name: "BoxPet",
@@ -187,16 +187,16 @@ export default {
           });
 
           // TODO Comporovar si recibe un huevo
-          const egg = await canEggRecive();
-          if (egg && egg.canRecived)
-            Modal.info({
-              content: () => <EggRecived />,
-              centered: true,
-              destroyOnClose: true,
-              okType: "primary",
-              footer: "",
-              onOk() {},
-            });
+          // const egg = await canEggRecive();
+          // if (egg && egg.canRecived)
+          //   Modal.info({
+          //     content: () => <EggRecived />,
+          //     centered: true,
+          //     destroyOnClose: true,
+          //     okType: "primary",
+          //     footer: "",
+          //     onOk() {},
+          //   });
         }
       },
       timer: computed(() => {
