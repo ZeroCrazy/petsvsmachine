@@ -147,7 +147,7 @@
               <div class="content">
                 <div class="tabs is-fullwidth">
                   <ul class="columns" style="margin: auto;border: none;">
-                    <li class="tablinks column is-3 is-active" onclick="openCity(event, 'lands')">
+                    <li class="tablinks column is-3" onclick="openCity(event, 'lands')">
                       <a class="has-text-white">
                         <span class="icon"><i class="fal fa-mountain"></i></span>
                         <span>Land</span>
@@ -165,7 +165,7 @@
                         <span>Pet supreme</span>
                       </a>
                     </li>
-                    <li class="tablinks column is-3" onclick="openCity(event, 'eggincubation')">
+                    <li class="tablinks column is-3 is-active" onclick="openCity(event, 'eggincubation')">
                       <a class="has-text-white">
                         <span class="icon"><i class="fal fa-egg"></i></span>
                         <span>Incubation</span>
@@ -174,7 +174,7 @@
                   </ul>
                 </div>
                 
-                <div id="lands" class="inventorycontent" style="display: block;">
+                <div id="lands" class="inventorycontent">
                   <div class="columns">
                     <div class="column is-6">
                       <div class="card">
@@ -255,14 +255,54 @@
                   </div>
                 </div>
 
-                <div id="eggincubation" class="inventorycontent">
+                <div id="eggincubation" class="inventorycontent" style="display: block;">
                   <div class="columns">
-                    <!-- mascota de huevo/marketplace -->
+                    <!-- huevo que ya ha solicitado abrirlo y está en proceso de abrirse -->
                     <div class="column is-4">
                       <div class="card">
                         <div class="card-content">
                           <div class="content">
-                            huevo
+                            <div class="egg-incubation land inventory-view-land">
+                              <div class="pet" style="background: url('./images/egg.png');"></div>
+                              <div class="coordinate btn-egg">
+                                <div class="item"><button class="button shop-button is-small disabled">Claim</button></div>
+                              </div>
+                              <div class="resources farm">
+                                <div class="item have-light">23:56:01</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- huevo que se ha pagado para abrirlo, pero aún no lo ha solicitado abrirlo -->
+                    <div class="column is-4">
+                      <div class="card">
+                        <div class="card-content">
+                          <div class="content">
+                            <div class="egg-incubation land inventory-view-land">
+                              <div class="pet" style="background: url('./images/egg.png');"></div>
+                              <div class="coordinate btn-egg">
+                                <div class="item"><button class="button shop-button is-small">Open</button></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- huevo que has de pagar 5 PVM para abrirlo -->
+                    <div class="column is-4">
+                      <div class="card">
+                        <div class="card-content">
+                          <div class="content">
+                            <div class="egg-incubation land inventory-view-land">
+                              <div class="pet" style="background: url('./images/egg.png');filter: grayscale(1);"></div>
+                              <div class="coordinate btn-egg">
+                                <div class="item"><button class="button shop-button is-small">5 PVM</button></div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
