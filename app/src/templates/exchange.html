@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@oruga-ui/oruga@0.4.4/dist/oruga-full.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/fontawesome-pro.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #11131b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Inicio del navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="images/logo.png">
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a href="index.html" class="navbar-item">
+                <i class="left fal fa-paw"></i> Dashboard
+            </a>
+      
+            <a class="navbar-item">
+                <i class="left fal fa-store"></i> Marketplace
+            </a>
+
+            <a href="feed.html" class="navbar-item">
+                <i class="left fal fa-bone"></i> Feed
+            </a>
+
+            <a class="navbar-item">
+                <i class="left fal fa-megaphone"></i> New Offering
+            </a>
+          </div>
+      
+          <div class="navbar-end">
+            <a href="exchange.html" class="navbar-item is-active">
+              <i class="left fal fa-dice-d20"></i> Exchange
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <i class="left fal fa-user-circle"></i> My account
+              </a>
+        
+              <div class="navbar-dropdown">
+                <a href="settings.html" class="navbar-item">
+                  Settings
+                </a>
+                <a class="navbar-item">
+                  Wallet address:<br>0x17ee...99110a97ba18e
+                </a>
+              </div>
+            </div>
+
+            <div class="navbar-item">
+              <div class="buttons">
+                <a href="login.html" class="button is-primary">
+                  <strong>Login</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Final del navbar -->
+    <!-- Inicio del Subnavbar -->
+    <div class="container">
+      
+      <!-- Final del Subnavbar -->
+      <div class="columns">
+        <div class="column is-fullwidth">
+          <div class="card shop-card has-text-white">
+            <div class="card-content">
+              <div class="content">
+                <div class="tabs is-fullwidth">
+                  <ul class="columns" style="margin: auto;border: none;">
+                    <li class="tablinks column is-4 is-active" onclick="openCity(event, 'page_pvmtoce')">
+                      <a class="has-text-white">
+                        <span>PVM <i class="fal fa-angle-right"></i> CE</span>
+                      </a>
+                    </li>
+                    <li class="tablinks column is-4" onclick="openCity(event, 'page_cetopvm')">
+                      <a class="has-text-white">
+                        <span>CE <i class="fal fa-angle-right"></i> PVM</span>
+                      </a>
+                    </li>
+                    <li class="tablinks column is-4" onclick="openCity(event, 'page_petstoegg')">
+                      <a class="has-text-white">
+                        <span>Pet <i class="fal fa-angle-right"></i> Egg</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div id="page_pvmtoce" class="inventorycontent" style="display: block;">
+                  <div class="columns is-centered is-vcentered">
+                    <div class="column is-6">
+                      <div class="card background-transparent no-box-shadow">
+                        <div class="card-content">
+                          <div class="content">
+
+                            <form onchange="exchangePVMtoCE();">
+                              <div class="field">
+                                <div class="field-body">
+                                  <div class="field is-expanded">
+                                    <div class="field has-addons">
+                                      <p class="control">
+                                        <a class="button is-static is-large">
+                                          PVM
+                                        </a>
+                                      </p>
+                                      <p class="control is-expanded">
+                                        <input id="page_pvmtoce_pvm" class="input is-large" type="number" step="1" min="1" value="1" required>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="field" style="margin-bottom: 30px;">
+                                <div class="field has-text-centered">
+                                  <i class="fal fa-repeat has-text-white"></i>
+                                </div>
+                              </div>
+                              <div class="field">
+                                <div class="field-body">
+                                  <div class="field is-expanded">
+                                    <div class="field has-addons">
+                                      <p class="control">
+                                        <a class="button is-static is-large">
+                                          CE
+                                        </a>
+                                      </p>
+                                      <p class="control is-expanded">
+                                        <input disabled id="page_pvmtoce_ce" class="input is-large" type="number" step="70" min="70" value="70" required>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="field is-horizontal">
+                                <div class="field-body">
+                                  <div class="field">
+                                    <div class="control">
+                                      <center>
+                                        <button class="button shop-button">
+                                          Confirm
+                                        </button>
+                                      </center>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="page_cetopvm" class="inventorycontent">
+                  <div class="columns is-centered is-vcentered">
+                    <div class="column is-6">
+                      <div class="card background-transparent no-box-shadow">
+                        <div class="card-content">
+                          <div class="content">
+
+                            <form onchange="exchangeCEtoPVM();">
+                              <div class="field">
+                                <div class="field-body">
+                                  <div class="field is-expanded">
+                                    <div class="field has-addons">
+                                      <p class="control">
+                                        <a class="button is-static is-large">
+                                          CE
+                                        </a>
+                                      </p>
+                                      <p class="control is-expanded">
+                                        <input id="page_cetopvm_ce" class="input is-large" type="number" step="70" min="70" value="70" required>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="field" style="margin-bottom: 30px;">
+                                <div class="field has-text-centered">
+                                  <i class="fal fa-repeat has-text-white"></i>
+                                </div>
+                              </div>
+                              <div class="field">
+                                <div class="field-body">
+                                  <div class="field is-expanded">
+                                    <div class="field has-addons">
+                                      <p class="control">
+                                        <a class="button is-static is-large">
+                                          PVM
+                                        </a>
+                                      </p>
+                                      <p class="control is-expanded">
+                                        <input disabled id="page_cetopvm_pvm" class="input is-large" type="number" step="70" min="1" value="1" required>
+                                      </p>
+                                    </div>
+                                    <p class="help has-text-white">5% Tax yet calculated</p>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="field is-horizontal">
+                                <div class="field-body">
+                                  <div class="field">
+                                    <div class="control">
+                                      <center>
+                                        <button class="button shop-button">
+                                          Confirm
+                                        </button>
+                                      </center>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="page_petstoegg" class="inventorycontent">
+                  <div class="columns is-centered is-vcentered">
+                    <div class="column is-6">
+                      <div class="card background-transparent no-box-shadow">
+                        <div class="card-content">
+                          <div class="content">
+
+                            <form onchange="exchangePETtoEGG();">
+                              <div class="field">
+                                <div class="field-body">
+                                  <div class="field is-expanded">
+                                    <div class="field has-addons">
+                                      <p class="control">
+                                        <a class="button is-static is-large">
+                                          PET
+                                        </a>
+                                      </p>
+                                      <p class="control is-expanded">
+                                        <input id="page_petstoegg_pet" class="input is-large" type="number" step="100" min="100" value="100" required>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="field" style="margin-bottom: 30px;">
+                                <div class="field has-text-centered">
+                                  <i class="fal fa-repeat has-text-white"></i>
+                                </div>
+                              </div>
+                              <div class="field">
+                                <div class="field-body">
+                                  <div class="field is-expanded">
+                                    <div class="field has-addons">
+                                      <p class="control">
+                                        <a class="button is-static is-large">
+                                          EGG
+                                        </a>
+                                      </p>
+                                      <p class="control is-expanded">
+                                        <input disabled id="page_petstoegg_egg" class="input is-large" type="number" step="1" min="1" value="1" required>
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="field is-horizontal">
+                                <div class="field-body">
+                                  <div class="field">
+                                    <div class="control">
+                                      <center>
+                                        <button class="button shop-button">
+                                          Confirm
+                                        </button>
+                                      </center>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+
+                
+                <script>
+
+                  const PVMtoCE = 70; // recibe 70 CE a cambio de 1 PVM
+                  const CEtoPVM = 130; // recibe 1 PVM a cambio de 130 CE
+                  const PETSHtoPETSU = 100; // número de mascotas de la tienda que necesita para convertir a una mascota suprema
+                  const WithdrawPVMtax = 5; // porcentage de comisión al querer retirar PVM
+
+                  function exchangePVMtoCE() {
+                    const exchange_player_receive_pvm = document.getElementById("page_pvmtoce_pvm").value;
+                    const exchange_player_receive_ce = document.getElementById("page_pvmtoce_ce");
+                    exchange_player_receive_ce.value = Math.round(exchange_player_receive_pvm*PVMtoCE);
+                  }
+                  function exchangeCEtoPVM() {
+                    const page_cetopvm_ce = document.getElementById("page_cetopvm_ce").value;
+                    const page_cetopvm_pvm = document.getElementById("page_cetopvm_pvm");
+                    const totalpvm = Math.round(page_cetopvm_ce / PVMtoCE);
+                    const comission = parseInt(totalpvm)*(WithdrawPVMtax/100);
+                    page_cetopvm_pvm.value = parseInt(totalpvm)-comission;
+                  }
+                  function exchangePETtoEGG() {
+                    const page_petstoegg_pet = document.getElementById("page_petstoegg_pet").value;
+                    const page_petstoegg_egg = document.getElementById("page_petstoegg_egg");
+                    const totalpvm = Math.round(page_petstoegg_pet/PETSHtoPETSU);
+                    page_petstoegg_egg.value = parseInt(totalpvm);
+                  }
+                  function openCity(evt, cityName) {
+                    var i, tabcontent, tablinks;
+                    tabcontent = document.getElementsByClassName("inventorycontent");
+                    for (i = 0; i < tabcontent.length; i++) {
+                      tabcontent[i].style.display = "none";
+                    }
+                    tablinks = document.getElementsByClassName("inventorycontent");
+                    for (i = 0; i < tablinks.length; i++) {
+                      tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+                    }
+                    document.getElementById(cityName).style.display = "block";
+                    evt.currentTarget.className += " is-active";
+                  }
+                  </script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+</body>
+</html>
