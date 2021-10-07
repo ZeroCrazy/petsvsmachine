@@ -98,6 +98,14 @@ export default {
     const { feedPet, putHouse, caressPet, deletePet, finish } = useFarm();
     const { resources } = useFeed();
     
+     Modal.info({
+              content: () => <EggRecived />,
+              centered: true,
+              destroyOnClose: true,
+              okType: "primary",
+              footer: "",
+              onOk() {},
+            });
 
     const feed = async (resource) => {
       if (resources.value[resource] < 1) {
