@@ -63,6 +63,7 @@ const getByPlayer = async (req, res = response) => {
     if (!data) return resp(res, 500, { msg: "Server error" })
 
     data.map(egg => {
+        egg.date = new Date();
         const date1 = new Date();
         const date2 = new Date(egg.open_at);
         const milliseconds = (date2 - date1); // milliseconds between 

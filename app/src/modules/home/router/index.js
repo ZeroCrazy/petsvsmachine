@@ -16,6 +16,12 @@ export default [
         name: 'newOffering',
         component: () => import('../views/NewOffering.vue')
     },
+    {
+        path: '/exchange',
+        name: 'exchange',
+        meta: { title: 'Exchange - PVM' },
+        component: () => import('../views/Exchange.vue')
+    },
 
 
 ]

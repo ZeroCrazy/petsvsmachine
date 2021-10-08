@@ -72,6 +72,15 @@
               </a-dropdown>
             </div>
 
+            <router-link
+              v-if="authStatus"
+              :to="{ name: 'exchange' }"
+              class="navbar-item"
+              :class="{ 'is-active': $route.name === 'exchange' }"
+            >
+              <i class="left fal fa-dice-d20"></i> Exchange
+            </router-link>
+
             <div
               v-if="authStatus"
               class="navbar-item has-dropdown is-hoverable"

@@ -3,7 +3,7 @@
     <!-- <button class="button mb-4 is-primary" @click="a">HUEVO(DEVEL)</button> -->
 
     <div class="columns is-multiline">
-      <div v-for="data in farm" :key="data.minsToComplete" class="column is-4">
+      <div v-for="data in farm" :key="data.id" class="column is-4">
         <BoxPet
           :id="data.id"
           :land_id="data.land_id"
