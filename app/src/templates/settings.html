@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@oruga-ui/oruga@0.4.4/dist/oruga-full.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/fontawesome-pro.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background-color: #11131b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Inicio del navbar -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="https://bulma.io">
+            <img src="images/logo.png">
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a href="index.html" class="navbar-item is-active">
+                <i class="left fal fa-paw"></i> Dashboard
+            </a>
+      
+            <a class="navbar-item">
+                <i class="left fal fa-store"></i> Marketplace
+            </a>
+
+            <a href="feed.html" class="navbar-item">
+                <i class="left fal fa-bone"></i> Feed
+            </a>
+
+            <a class="navbar-item">
+                <i class="left fal fa-megaphone"></i> New Offering
+            </a>
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <i class="left fal fa-user-circle"></i> My account
+              </a>
+        
+              <div class="navbar-dropdown">
+                <a href="settings.html" class="navbar-item">
+                  Settings
+                </a>
+                <a class="navbar-item">
+                  Wallet address:<br>0x17ee...99110a97ba18e
+                </a>
+              </div>
+            </div>
+
+            <div class="navbar-item">
+              <div class="buttons">
+                <a href="login.html" class="button is-primary">
+                  <strong>Login</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Final del navbar -->
+
+
+    <div class="container">
+        <div class="columns is-multiline">
+          <div class="column is-4">
+            <div class="card shop-card has-text-white">
+              <div class="card-content">
+                <div class="content">
+                  
+                  <aside class="menu">
+                    <p class="menu-label has-text-white">
+                      General
+                    </p>
+                    <ul class="menu-list">
+                      <li><a class="has-text-white"><i class="fal fa-cog"></i> Account settings</a></li> <!-- cambio de username, password y mail -->
+                      <li><a class="has-text-white"><i class="fal fa-address-card"></i> Wallets</a></li> <!-- vincular cuenta de metamask -->
+                    </ul>
+                  </aside>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-8">
+            <div class="card shop-card has-text-white">
+              <div class="card-content">
+                <div class="content">
+                  <p class="title has-text-white">Account settings</p>
+                  
+                  <div class="columns is-multiline is-mobile">
+                    <div class="column is-8">
+                      <div class="field">
+                        <label class="label has-text-white">Username</label>
+                        <div class="control has-icons-left has-icons-right">
+                          <input class="input" type="text" placeholder="Text input" value="bulma">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                          </span>
+                          <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="column is-4">
+                      <div class="field">
+                        <label class="label" style="color: transparent !important;">btn</label>
+                        <div class="control">
+                          <!-- si detecta que el user ha cambiado algo del input, se quite la class disabled -->
+                          <button class="button shop-button disabled" style="width: 100%;">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="columns is-multiline is-mobile">
+                    <div class="column is-8">
+                      <div class="field">
+                        <label class="label has-text-white">Email</label>
+                        <div class="control has-icons-left has-icons-right">
+                          <input class="input" type="email" placeholder="Email input" value="hello@">
+                          <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                          <span class="icon is-small is-right">
+                            <i class="fas fa-exclamation-triangle"></i>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="column is-4">
+                      <div class="field">
+                        <label class="label" style="color: transparent !important;">btn</label>
+                        <div class="control">
+                          <!-- si detecta que el user ha cambiado algo del input, se quite la class disabled -->
+                          <button class="button shop-button disabled" style="width: 100%;">Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field is-grouped">
+                    <div class="control">
+                      <button class="button is-primary">Change password</button> <!-- cuando hagas clic, salga un modal con un contenido similar a este https://prnt.sc/1vh598b -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

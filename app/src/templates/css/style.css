@@ -829,6 +829,13 @@ nav {
   width: 60%;
 }
 
+.content ul {
+  margin-left: 0rem;
+}
+.content ul li {
+  display: block;
+}
+
 
 /*
   Scrollbar
