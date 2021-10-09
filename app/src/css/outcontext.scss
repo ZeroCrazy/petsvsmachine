@@ -149,3 +149,12 @@
   background: transparent !important;
   backdrop-filter: none !important;
 }
+.content ul {
+  margin-left: 0rem;
+}
+.content ul li {
+  display: block;
+}
+.menu-list a:hover {
+  background: rgba(26,29,40,.3);
+}
