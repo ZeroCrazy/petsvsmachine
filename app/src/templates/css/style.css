@@ -835,6 +835,9 @@ nav {
 .content ul li {
   display: block;
 }
+.menu-list a:hover {
+  background: rgba(26,29,40,.3);
+}
 
 
 /*
