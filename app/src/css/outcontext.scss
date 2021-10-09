@@ -92,12 +92,6 @@
 /*
     Estilo para inputs de login y register
 */
-.no-border {
-  border: none !important;
-}
-.background-transparent {
-  background-color: transparent !important;
-}
 .input-loginregister {
   background: #2f323e;
   color: rgb(170, 170, 170) !important;
@@ -130,4 +124,28 @@
   cursor: no-drop !important;
   background-color: gray !important;
   box-shadow: none !important;
+}
+
+/*
+  Css definitions
+*/
+.no-cursor {
+  cursor: auto !important;
+}
+.no-padding {
+  padding: 0px !important;
+}
+.no-box-shadow {
+  box-shadow: none !important;
+}
+.no-text-shadow {
+  text-shadow: none !important;
+}
+.no-border {
+  border: none !important;
+}
+.background-transparent {
+  background-color: transparent !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
 }

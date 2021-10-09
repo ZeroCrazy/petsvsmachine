@@ -9,6 +9,7 @@
 .navbar-link.is-active, a.navbar-item.is-active {
   position: relative;
   color: #fff;
+  background-color: transparent;
 }
 
 .navbar-link.is-active, a.navbar-item.is-active::after {
