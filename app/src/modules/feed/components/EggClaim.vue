@@ -44,7 +44,7 @@ export default {
     date: String,
   },
 
-  setup(props) {
+  setup(props, { emit }) {
     const hours = ref(0);
     const minutes = ref(0);
     const seconds = ref(0);
@@ -93,6 +93,9 @@ export default {
       hours,
       seconds,
       minutes,
+      openEgg(canOpen, id) {
+        emit("openEgg",  canOpen, id );
+      },
     };
   },
 };

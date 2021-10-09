@@ -50,45 +50,12 @@
 
     <!-- huevo que ya ha solicitado abrirlo y está en proceso de abrirse -->
     <div class="column is-4" v-for="egg in eggs.incubate" :key="egg.id">
-      <EggClaim :id="egg.id" :open_at="egg.open_at" :date="egg.date" />
-      <!-- <div class="card">
-        <div class="card-content">
-          <div class="content">
-            <div class="egg-incubation land inventory-view-land">
-              <div
-                class="pet"
-                :style="`background: url('${require('@/assets/images/egg.png')}')`"
-              ></div>
-              <div class="coordinate btn-egg">
-                <div class="item">
-                  <button
-                    @click="
-                      openEgg(
-                        egg.hours <= 0 && egg.minutes <= 0 && egg.seconds <= 0,
-                        egg.id
-                      )
-                    "
-                    class="button shop-button is-small"
-                    :class="{
-                      disabled:
-                        egg.hours <= 0 && egg.minutes <= 0 && egg.seconds <= 0
-                          ? false
-                          : true,
-                    }"
-                  >
-                    Claim
-                  </button>
-                </div>
-              </div>
-              <div class="resources farm">
-                <div class="item have-light">
-                  {{ egg.hours }}:{{ egg.minutes }}:{{ egg.seconds }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
+      <EggClaim
+        :id="egg.id"
+        :open_at="egg.open_at"
+        :date="egg.date"
+        @openEgg="openEgg"
+      />
     </div>
   </div>
 </template>
@@ -134,6 +101,7 @@ export default {
     };
 
     const openEgg = async (canOpen, id) => {
+
       if (canOpen) {
         const resp = await open(id);
         if (resp) {
