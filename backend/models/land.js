@@ -27,14 +27,15 @@ class Land extends Model {
 
     async getUser(uid) {
         try {
-            const sql = `SELECT t1.id, t3.name AS rarity, t1.floor, COUNT(t2.id) AS pets, t4.isActive
+            const sql = `SELECT t1.id, t3.name AS rarity, t1.floor, COUNT(t5.id) AS pets, t4.isActive
             FROM petsvsmachine.land_list t1
-            LEFT JOIN petsvsmachine.farm_list t2 ON t1.id = t2.land_id AND t2.isCompleted = 0
+            LEFT JOIN petsvsmachine.farm_list t2 ON t1.id = t2.land_id AND t2.isCompleted = 0 
             LEFT JOIN petsvsmachine.land_rarity t3 ON t1.rarity_id = t3.id
             LEFT JOIN petsvsmachine.land_player t4 ON t1.id = t4.land_id
+            LEFT JOIN petsvsmachine.pet_list t5 ON t2.pet_id = t5.id  AND t5.player_id = ?
             WHERE t4.player_id = ?
             GROUP BY t2.land_id;`
-            const args = [uid];
+            const args = [uid, uid];
             const response = await this.query(sql, args);
             return response;
         } catch (error) {
@@ -61,12 +62,14 @@ class Land extends Model {
             const sql = `SELECT t1.land_id, COUNT(t1.id) AS isFarming, t2.floor
             FROM farm_list t1
             LEFT JOIN land_list t2 ON t1.land_id = t2.id
-            WHERE t1.isCompleted = 0 AND t1.land_id = (
+            LEFT JOIN pet_list t3 ON t1.pet_id = t3.id
+            WHERE t1.isCompleted = 0 AND t3.player_id = ? AND t1.land_id = (
                 SELECT land_id FROM land_player WHERE player_id = ? AND isActive = 1 LIMIT 1
             )
             GROUP BY land_id`
-            const args = [uid];
+            const args = [uid, uid];
             const response = await this.query(sql, args);
+            console.log(response)
             if (response.length === 0) return { floor: 6, isFarming: 0 }
             return response[0];
         } catch (error) {

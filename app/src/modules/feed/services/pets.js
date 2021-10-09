@@ -21,3 +21,14 @@ export const createEgg = async () => {
     }
 
 }
+
+export const getPet = async (id) => {
+
+    try {
+        const { data } = await request('get', 'pets/' + id)
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}
