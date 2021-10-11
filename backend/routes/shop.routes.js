@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { get, buyPet, buyHouse, buyFood, buyCaress } = require('../controllers/shop_controller');
+const { get, buyPet, buyHouse, buyFood, buyCaress, buyEgg } = require('../controllers/shop_controller');
 
 // const { validator } = require('../middlewares/validator')
 const { validateJWT } = require('../middlewares/validatorJWT')
@@ -34,6 +34,10 @@ router.post('/buy/caress',
     validateJWT,
     caressCE,
     buyCaress);
+
+router.post('/buy/egg',
+    validateJWT,
+    buyEgg);
 
 
 

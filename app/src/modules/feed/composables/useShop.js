@@ -16,11 +16,18 @@ const useShop = () => {
         return resp;
     }
 
+    const buyEggs = async (quantity) => {
+
+        const resp = await store.dispatch('feed/buyEggs', quantity );
+        return resp;
+    }
+
 
 
     return {
         getShop,
         buyResource,
+        buyEggs,
         shop: computed(() => store.getters['feed/shop']),
     }
 }

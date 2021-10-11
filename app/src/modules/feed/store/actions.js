@@ -2,7 +2,7 @@ import { getFarmByUser, caressPetUser, feedPetUser, housePetUser, putFarm, delet
 import { getAllLands } from '../services/lands'
 import { getPetsByUser } from '../services/pets'
 import { getResourcesUser } from '../services/player'
-import { buyCaress, buyFood, buyHouse, buyPet, getShopProducts } from '../services/shop'
+import { buyCaress, buyEgg, buyFood, buyHouse, buyPet, getShopProducts } from '../services/shop'
 
 
 export const getPetsUser = async ({ commit }) => {
@@ -96,6 +96,17 @@ export const buyResource = async ({ commit }, { resource, cost, usage, quantity 
     }
     commit('updateResource', { resource: 'coins', quantity: -cost*quantity });
     commit('updateResource', { resource, quantity: usage*quantity });
+    return { ok: true }
+}
+
+export const buyEggs = async ({ commit }, quantity ) => {
+
+        const response = await buyEgg(quantity);
+        if (!response) return { ok: false }
+
+   
+    commit('updateResource', { resource: 'pet', quantity: -100*quantity });
+    commit('updateResource', { resource: 'egg', quantity: quantity });
     return { ok: true }
 }
 

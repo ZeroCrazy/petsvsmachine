@@ -48,3 +48,13 @@ export const buyCaress = async (quantity) => {
     }
 
 }
+
+export const buyEgg = async (quantity) => {
+    try {
+        const { data } = await request('post', `shop/buy/egg`, {quantity})
+        return data;
+    } catch (error) {
+        return false;
+    }
+
+}

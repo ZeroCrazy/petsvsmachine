@@ -22,6 +22,12 @@ export default [
         meta: { title: 'Exchange - PVM' },
         component: () => import('../views/Exchange.vue')
     },
+    {
+        path: '/settings',
+        name: 'settings',
+        meta: { title: 'Settings - PVM' },
+        component: () => import('../views/Settings.vue')
+    },
 
 
 ]

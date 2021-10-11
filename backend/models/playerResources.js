@@ -126,6 +126,22 @@ class PlayerResources extends Model {
 
     }
 
+    async buyEgg(quantity) {
+        console.log(quantity)
+        try {
+            const sql = `UPDATE ${PlayerResources.table} 
+            SET pet = pet - (100*?), egg = (egg + ?)
+            WHERE player_id = ?;`
+            const args = [quantity, quantity, this.player_id];
+            const response = await this.query(sql, args);
+            return true;
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+
+    }
+
     async haveCE(action) {
         try {
             const sql = `SELECT t1.coins, t2.cost  

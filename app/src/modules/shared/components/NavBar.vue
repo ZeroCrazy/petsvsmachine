@@ -93,9 +93,12 @@
                 <template #overlay>
                   <a-menu>
                     <a-menu-item key="0">
-                      <a class="navbar-item">
+                      <router-link
+                        :to="{ name: 'settings' }"
+                        class="navbar-item"
+                      >
                         {{ $t("section.settings") }}
-                      </a>
+                      </router-link>
                     </a-menu-item>
                     <a-menu-item key="1">
                       <a class="navbar-item">
@@ -171,7 +174,9 @@
                 <i class="left fal fa-user-circle"></i> My account
               </a>
               <div class="navbar-dropdown is-boxed">
-                <a href="settings.html" class="navbar-item"> Settings </a>
+                <router-link :to="{ name: 'settings' }" class="navbar-item">
+                  Settings
+                </router-link>
                 <a class="navbar-item">
                   {{ $t("section.wallet") }}:<br />{{ metamask }}
                 </a>

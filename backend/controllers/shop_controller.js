@@ -67,6 +67,21 @@ const buyCaress = async (req, res = response) => {
 
 }
 
+const buyEgg = async (req, res = response) => {
+    const { uid } = req;
+    const { quantity } = req.body;
+
+    const player = new PlayerResources();
+    player.player_id = uid;
+    const resources = await player.get();
+    if (!resources) return resp(res, 500, { msg: 'Server error' });
+    if (resources.pet < 100 * quantity) return resp(res, 401, { msg: 'Insuficients pets' });
+    const response = await player.buyEgg(quantity);
+    if (!response) return resp(res, 500, { msg: 'Server error' });
+    return resp(res, 200, { msg: 'Success' });
+
+}
+
 
 
 module.exports = {
@@ -74,7 +89,9 @@ module.exports = {
     buyPet,
     buyHouse,
     buyFood,
-    buyCaress
+    buyCaress,
+    buyEgg
+
 
 }
 
