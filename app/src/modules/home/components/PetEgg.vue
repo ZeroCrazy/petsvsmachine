@@ -14,6 +14,7 @@
                     </p>
                     <p class="control is-expanded">
                       <input
+                        @change="exchangePETtoEGG()"
                         @keyup="exchangePETtoEGG()"
                         v-model="pet"
                         id="page_petstoegg_pet"
