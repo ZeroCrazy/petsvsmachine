@@ -98,13 +98,5 @@ export default {
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
 
-.inventorycontent {
-  padding: 6px 33px;
-}
-
-.tabs li.is-active a {
-    border-bottom-color: $primary;
-    color: $primary !important;
-}
 </style>
 

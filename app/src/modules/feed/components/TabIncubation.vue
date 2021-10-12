@@ -6,6 +6,8 @@
         <div class="card-content">
           <div class="content">
             <div class="egg-incubation land inventory-view-land">
+              <div class="time quantity">{{ eggs.eggs }}</div>
+
               <div
                 class="pet"
                 :style="`
@@ -14,31 +16,11 @@
               ></div>
               <div class="coordinate btn-egg">
                 <div class="item">
-                  <button class="button shop-button is-small">5 PVM</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="column is-4" v-for="egg in eggs.eggs" :key="egg">
-      <div class="card">
-        <div class="card-content">
-          <div class="content">
-            <div class="egg-incubation land inventory-view-land">
-              <div
-                class="pet"
-                :style="`background: url('${require('@/assets/images/egg.png')}');`"
-              ></div>
-              <div class="coordinate btn-egg">
-                <div class="item">
                   <button
                     @click="createEgg()"
                     class="button shop-button is-small"
                   >
-                    Open
+                    5 PVM
                   </button>
                 </div>
               </div>
@@ -101,7 +83,6 @@ export default {
     };
 
     const openEgg = async (canOpen, id) => {
-
       if (canOpen) {
         const resp = await open(id);
         if (resp) {
