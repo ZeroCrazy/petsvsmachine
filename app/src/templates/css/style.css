@@ -95,7 +95,19 @@ nav {
   background: transparent !important;
   backdrop-filter: none !important;
 }
-
+.btn-left-resources {
+  background: $primary;
+  border: 2px solid rgb(0 0 0 / 50%) !important;
+  box-shadow: 0 2px 0 rgb(255 255 255 / 20%), inset 0 -2px 0 rgb(0 0 0 / 35%), inset 0 2px 0 rgb(255 255 255 / 40%);
+}
+.btn-left-resources .icon {
+  text-align: center;
+}
+.btn-left-resources b {
+  background: rgb(0 0 0 / 30%);
+  border-radius: 3px;
+  padding: 0px 20px;
+}
 .input-loginregister {
   background: #2f323e;
   color: rgb(170, 170, 170) !important;

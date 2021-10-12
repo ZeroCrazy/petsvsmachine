@@ -55,17 +55,6 @@ export default {
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
 
-.button:focus {
-  box-shadow: none !important;
-}
-
-.navbar-btn-feed-left {
-  float: left;
-  width: 23%;
-  margin-left: 1%;
-  margin-right: 1%;
-}
-
 // .column:first-child {
 //   margin-left: 1rem !important;
 // }
