@@ -3,7 +3,7 @@
     <!-- mascota de huevo/marketplace -->
     <div
       class="column is-4"
-      v-for="{ id, production, hours, rarity, isFarming } in pets"
+      v-for="{ id, production, hours, rarity, isFarming, image } in pets"
       :key="id"
     >
       <div class="card">
@@ -14,7 +14,8 @@
               <div
                 :class="['pet', rarity]"
                 :style="`
-                  background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png');
+                  background: url('${require('@/assets/images/pets/' +
+                    image)}');
                 `"
               ></div>
               <div class="coordinate capacity">
@@ -47,7 +48,7 @@ export default {
 
     onMounted(async () => {
       const resp = await getPets();
-      console.log(resp)
+      console.log(resp);
       if (resp) pets.value = resp;
     });
 
@@ -61,5 +62,4 @@ export default {
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
 @import "@/css/animations.scss";
-
 </style>

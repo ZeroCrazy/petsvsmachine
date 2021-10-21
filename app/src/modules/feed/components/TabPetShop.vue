@@ -9,9 +9,9 @@
               <div class="time quantity">{{ resources.pet }}</div>
               <div
                 class="pet"
-                style="
-                  background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png');
-                "
+                  :style="`
+                    background: url('${require('@/assets/images/pets/cerdo.png')}');
+                  `"
               ></div>
               <div class="coordinate capacity">CE: 300 / 96 hours</div>
             </div>

@@ -92,7 +92,7 @@ const getRarityId = (rarity) => {
         case 'mythic':
             return 4;
     }
-  }
+}
 
 const getRoleId = (rarity) => {
     switch (rarity) {
@@ -105,7 +105,19 @@ const getRoleId = (rarity) => {
         case 'fighter':
             return 4;
     }
-  }
+}
+
+const getImage = () => {
+    const id = randomNumber(1, 3)
+    switch (id) {
+        case 1:
+            return 'cerdo.png';
+        case 2:
+            return 'loro.png';
+        case 3:
+            return 'perro.png';
+    }
+}
 
 module.exports = {
     getRarity,
@@ -113,5 +125,6 @@ module.exports = {
     getGeneticStats,
     getBaseStats,
     getRarityId,
-    getRoleId
+    getRoleId,
+    getImage
 }

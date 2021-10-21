@@ -17,9 +17,9 @@
                 <div class="time quantity">{{ resources.pet }}</div>
                 <div
                   class="pet"
-                  style="
-                    background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png');
-                  "
+                  :style="`
+                    background: url('${require('@/assets/images/pets/cerdo.png')}');
+                  `"
                 ></div>
                 <div class="coordinate capacity">CE: 300 / 96 hours</div>
               </div>
@@ -30,7 +30,7 @@
       <!-- mascota de huevo/marketplace -->
       <div
         class="column is-4"
-        v-for="{ id, production, hours, rarity, isFarming } in pets"
+        v-for="{ id, production, hours, rarity, isFarming, image } in pets"
         :key="id"
       >
         <div class="card is-clickable" @click="selectPet(id, false)">
@@ -41,7 +41,8 @@
                 <div
                   :class="['pet', rarity]"
                   :style="`
-                  background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png');
+                  background: url('${require('@/assets/images/pets/' +
+                    image)}');
                 `"
                 ></div>
                 <div class="coordinate capacity">
