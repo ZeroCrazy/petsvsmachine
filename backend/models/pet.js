@@ -25,9 +25,9 @@ class Pet extends Model {
     async create() {
         const conn = await this.getConnection();
         try {
-            const sql = `INSERT INTO ${this.table} (player_id, rarity_id, role_id, hp, attack, armor, speed, production, hours, open_at) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ADDDATE(CURRENT_TIMESTAMP(), INTERVAL 24 hour));`
-            const args = [this.player_id, this.rarity_id, this.role_id, this.hp, this.attack, this.armor, this.speed, this.production, this.hours];
+            const sql = `INSERT INTO ${this.table} (image, player_id, rarity_id, role_id, hp, attack, armor, speed, production, hours, open_at) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ADDDATE(CURRENT_TIMESTAMP(), INTERVAL 24 hour));`
+            const args = [this.image, this.player_id, this.rarity_id, this.role_id, this.hp, this.attack, this.armor, this.speed, this.production, this.hours];
             const response = await this.query(sql, args, conn);
 
             const sql2 = `UPDATE ${PlayerResources.table} SET egg = egg - 1 WHERE player_id = ?;`

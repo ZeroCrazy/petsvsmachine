@@ -2,7 +2,6 @@
   <div class="card">
     <div class="card-content">
       <div class="content">
-       
         <div class="land view-pet">
           <div v-if="haveHouse" class="time">{{ timer }}</div>
           <div class="production">CE: {{ pet_ce }}/{{ pet_time }}h</div>
@@ -10,7 +9,8 @@
           <div
             :class="['pet', pet_rarity]"
             :style="`
-              background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png');
+              background: url('${require('@/assets/images/pets/' +
+                pet_image)}');
             `"
           ></div>
           <!-- Rareza de la land -->
@@ -47,7 +47,7 @@ export default {
   props: propsBoxPet,
 
   setup(props) {
-    const calcTime = ref('00:00');
+    const calcTime = ref("00:00");
     calcTime.value = props.minsToComplete + props.extraTime;
     return {
       timer: computed(() => {
@@ -65,7 +65,4 @@ export default {
 <style lang="scss" scoped>
 @import "@/css/colors.scss";
 @import "@/css/animations.scss";
-
-
-
 </style>

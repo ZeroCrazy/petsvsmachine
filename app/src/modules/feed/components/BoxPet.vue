@@ -45,7 +45,8 @@
           <div
             :class="['pet', pet_rarity]"
             :style="`
-              background: url('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png');
+              background: url('${require('@/assets/images/pets/' +
+                pet_image)}');
             `"
           ></div>
           <!-- Rareza de la land -->
@@ -97,7 +98,6 @@ export default {
   setup(props) {
     const { feedPet, putHouse, caressPet, deletePet, finish } = useFarm();
     const { resources } = useFeed();
-    
 
     const feed = async (resource) => {
       if (resources.value[resource] < 1) {
