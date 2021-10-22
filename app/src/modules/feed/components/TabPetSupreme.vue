@@ -1,6 +1,10 @@
 <template>
   <div class="columns is-multiline">
     <!-- mascota de huevo/marketplace -->
+
+    <div v-if="pets.length === 0" style="width:100%">
+      <a-empty :description="false" />
+      </div>
     <div
       class="column is-4"
       v-for="{ id, production, hours, rarity, isFarming, image } in pets"
@@ -49,7 +53,8 @@ export default {
     onMounted(async () => {
       const resp = await getPets();
       console.log(resp);
-      if (resp) pets.value = resp;
+      if (resp) pets.value = [];
+      // if (resp) pets.value = resp;
     });
 
     return {
