@@ -108,15 +108,9 @@ const getRoleId = (rarity) => {
 }
 
 const getImage = () => {
-    const id = randomNumber(1, 3)
-    switch (id) {
-        case 1:
-            return 'cerdo.png';
-        case 2:
-            return 'loro.png';
-        case 3:
-            return 'perro.png';
-    }
+    const id = randomNumber(2, 4)
+    return id
+
 }
 
 module.exports = {

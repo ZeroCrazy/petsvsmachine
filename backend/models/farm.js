@@ -13,12 +13,13 @@ class Farm extends Model {
     async getByUser(player_id) {
         try {
             const sql = `SELECT t1.id, t1.land_id, t1.pet_id, t1.bones, t3.name AS land_rarity, t7.name AS event, t6.start_at, t6.finish_at, t1.start_at AS startFarm_at, t1.completed_at AS completedFarm_at, current_timestamp() AS stamp,
-            t8.name AS pet_rarity, t4.image AS pet_image, t4.production, t4.hours
+            t8.name AS pet_rarity, t9.name AS pet_image, t4.production, t4.hours
             FROM ${Farm.table} t1
         
             LEFT JOIN land_list t2 ON t1.land_id = t2.id
             LEFT JOIN land_rarity t3 ON t2.rarity_id = t3.id
             LEFT JOIN pet_list t4 ON t1.pet_id = t4.id
+            LEFT JOIN pet_images t9 ON t4.image_id = t9.id
             LEFT JOIN pet_rarity t8 ON t4.rarity_id = t8.id
             LEFT JOIN player_list t5 ON t4.player_id = t5.id
         
@@ -39,12 +40,13 @@ class Farm extends Model {
     async getById(player_id, id) {
         try {
             const sql = `SELECT t1.id, t1.land_id, t1.pet_id, t1.bones, t3.name AS land_rarity, t7.name AS event, t6.start_at, t6.finish_at, t1.start_at AS startFarm_at, t1.completed_at AS completedFarm_at, current_timestamp() AS stamp,
-            t8.name AS pet_rarity, t4.image AS pet_image, t4.production, t4.hours
+            t8.name AS pet_rarity, t9.name AS pet_image, t4.production, t4.hours
             FROM ${Farm.table} t1
         
             LEFT JOIN land_list t2 ON t1.land_id = t2.id
             LEFT JOIN land_rarity t3 ON t2.rarity_id = t3.id
             LEFT JOIN pet_list t4 ON t1.pet_id = t4.id
+            LEFT JOIN pet_images t9 ON t4.image_id = t9.id
             LEFT JOIN pet_rarity t8 ON t4.rarity_id = t8.id
             LEFT JOIN player_list t5 ON t4.player_id = t5.id
         
@@ -95,12 +97,13 @@ class Farm extends Model {
     async getDetails(player_id) {
         try {
             const sql = `SELECT t1.id, t1.land_id, t1.pet_id, t1.bones, t3.name AS land_rarity, t3.pets_max, t7.name AS event, t6.start_at, t6.finish_at, t1.start_at AS startFarm_at, t1.completed_at AS completedFarm_at, current_timestamp() AS stamp,
-            t8.name AS pet_rarity, t4.image AS pet_image, t4.production, t4.hours
+            t8.name AS pet_rarity, t9.name AS pet_image, t4.production, t4.hours
             FROM ${Farm.table} t1
         
             LEFT JOIN land_list t2 ON t1.land_id = t2.id
             LEFT JOIN land_rarity t3 ON t2.rarity_id = t3.id
             LEFT JOIN pet_list t4 ON t1.pet_id = t4.id
+            LEFT JOIN pet_images t9 ON t4.image_id = t9.id
             LEFT JOIN pet_rarity t8 ON t4.rarity_id = t8.id
             LEFT JOIN player_list t5 ON t4.player_id = t5.id
         
